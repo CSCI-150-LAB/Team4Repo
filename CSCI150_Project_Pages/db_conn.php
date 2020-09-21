@@ -1,8 +1,10 @@
 <?php
+// This file is used for the connection with the database on Azure
+
 $servername = "donationboardmysql.mysql.database.azure.com";
 $username = "user@donationboardmysql";
 
-//replace with db password
+// replace with db password
 $password = "!";
 $db_name = "mydb";
 
