@@ -20,22 +20,22 @@
             <div class="pageContent">
                 <!-- action_page.php is what php file you want to send the login into to -->
                 <!-- method="post" hides the sensitive data in th HTTP transaction -->
-                <form action="action_page.php" method="post">
+                <form action="./Login.php" method="post">
                     <div id="loginBox">
                         <!-- Login can be just the first part of the student/faculty email -->
-                        <label for="userLogin">Username:</label>
-                        <input type="text" id="userLogin" name="userLogin" required>
-                        
+                        <label for="userEmail">E-Mail:</label>
+                        <input type="text" id="userEmail" name="email" required>
+                    
                         <label for="pass">Password:</label>
-                        <input type="password" id="pass" name="pass" required>
+                        <input type="password" id="pass" name="pwd" required>
                         
-                        <input type="submit" value="LOGIN">
+                        <input type="submit" name="login" value="LOGIN">
                         
                         <div id="forgotPass"><a href ="#forgotPassPage">Forgot password?</a></p></div>
                     </div>
                 </form>
                 <div class="newUser">
-                    New User? <a href="#newUserPage">Create an account.</a>
+                    New User? <a href="./RegisterPage.php">Create an account.</a>
                 </div>
             </div>
         </div>
