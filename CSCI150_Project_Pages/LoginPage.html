@@ -18,16 +18,16 @@
                 <a href="#Login">Login</a>
             </div>
             <div class="pageContent">
-                <!-- action_page.php is what php file you want to send the login into to -->
+                <!-- Login.php is what php file you want to send the login into to -->
                 <!-- method="post" hides the sensitive data in th HTTP transaction -->
                 <form action="./Login.php" method="post">
                     <div id="loginBox">
                         <!-- Login can be just the first part of the student/faculty email -->
-                        <label for="userEmail">E-Mail:</label>
-                        <input type="text" id="userEmail" name="email" required>
+                        <label for="email">E-Mail:</label>
+                        <input type="text" id="email" name="email" required>
                     
-                        <label for="pass">Password:</label>
-                        <input type="password" id="pass" name="pwd" required>
+                        <label for="pwd">Password:</label>
+                        <input type="password" id="pwd" name="pwd" required>
                         
                         <input type="submit" name="login" value="LOGIN">
                         
@@ -35,7 +35,7 @@
                     </div>
                 </form>
                 <div class="newUser">
-                    New User? <a href="./RegisterPage.php">Create an account.</a>
+                    New User? <a href="./RegisterPage.html">Create an account.</a>
                 </div>
             </div>
         </div>

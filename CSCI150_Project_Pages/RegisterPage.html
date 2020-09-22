@@ -2,7 +2,7 @@
 <html lang = "en">
 <head>
     <link rel="stylesheet" href="./LoginPage.css">
-    
+    <script defer src="./EmailVerification.js"></script>
 </head>
 <body>
 <div>
@@ -18,22 +18,25 @@
                 <a href="#Login">Login</a>
             </div>
             <div class="pageContent">
-            <!-- action_page.php is what php file you want to send the login into to -->
+            <!-- Signup.php is what php file you want to send the login into to -->
             <!-- method="post" hides the sensitive data in th HTTP transaction -->
-            <form action="./Signup.php" method="post">
+            
+            <form id="form" action="./Signup.php" method="post">
                 <div id="loginBox">
                     <!-- Login can be just the first part of the student/faculty email -->
-                    <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="first" required>
+                    <label for="first">First Name:</label>
+                    <input type="text" id="first" name="first" required>
                     
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="last" required>
-
-                    <label for="userEmail">E-Mail:</label>
-                    <input type="text" id="userEmail" name="email" required>
+                    <label for="last">Last Name:</label>
+                    <input type="text" id="last" name="last" required>
                     
-                    <label for="pass">Password:</label>
-                    <input type="password" id="pass" name="pwd" required>
+                    <!-- pattern match email so only fresno state emails can be used pattern =".+@mail.fresnostate.edu"
+                                        placeholder="@mail.fresnostate.edu or @csufresno.edu"-->
+                    <label for="email">E-Mail:</label>
+                    <input type="text" id="email" name="email" placeholder="@mail.fresnostate.edu or @csufresno.edu">
+                    
+                    <label for="pwd">Password:</label>
+                    <input type="password" id="pwd" name="pwd" required>
                     
                     <input type="submit" name="register" value="REGISTER">
                 </div>
