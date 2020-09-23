@@ -21,7 +21,6 @@
         //echo "Login Successful";
         } 
         else {
-            $error = "Wrong username/password combination";
             header('Location: ./LoginPage.html?Login=Failed');
         }
 
