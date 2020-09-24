@@ -1,45 +1,46 @@
 <!DOCTYPE HTML>
 <html lang = "en">
 <head>
-    <link rel="stylesheet" href="./LoginPage.css">
-    
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./mainStyleSheet.css">
 </head>
 <body>
-<div>
     <div class="mainHolder">
-        <img id="logoText" src="./images/logoText.png" alt="Website Text Logo">
-        <img id="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
-        <div class="foreground">
-            <div class="topBar">
+        <img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
+        <img class="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
+        <div class="navBar-container">
+            <div class="navBar">
                 <a href="#home">Home</a>
                 <a href="#forums">Forums</a>
                 <a href="#listings">Donation Listings</a>
                 <a href="#About">About</a>
                 <a href="#Login">Login</a>
             </div>
-            <div class="pageContent">
-                <!-- Login.php is what php file you want to send the login into to -->
-                <!-- method="post" hides the sensitive data in th HTTP transaction -->
-                <form action="./Login.php" method="post">
-                    <div id="loginBox">
-                        <!-- Login can be just the first part of the student/faculty email -->
-                        <label for="email">E-Mail:</label>
-                        <input type="text" id="email" name="email" required>
+        </div>
+        <div class="pageContent">
+            <!-- Login.php is what php file you want to send the login into to -->
+            <!-- method="post" hides the sensitive data in th HTTP transaction -->
+            <form action="./Login.php" method="post">
+                <div class="loginBox">
+                    <!-- Login can be just the first part of the student/faculty email -->
+                    <label for="email">E-Mail:</label>
+                    <input type="text" id="email" name="email" required>
+                
+                    <label for="pwd">Password:</label>
+                    <input type="password" id="pwd" name="pwd" required>
                     
-                        <label for="pwd">Password:</label>
-                        <input type="password" id="pwd" name="pwd" required>
-                        
-                        <input type="submit" name="login" value="LOGIN">
-                        
-                        <div id="forgotPass"><a href ="#forgotPassPage">Forgot password?</a></p></div>
+                    <input type="submit" name="login" value="LOGIN">
+                    <div class="forgotPass">
+                        <a href ="#forgotPassPage">Forgot password?</a>
                     </div>
-                </form>
-                <div class="newUser">
-                    New User? <a href="./RegisterPage.html">Create an account.</a>
                 </div>
+            </form>
+            <div class="newUser">
+                New User? <a href="./RegisterPage.html">Create an account.</a>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
