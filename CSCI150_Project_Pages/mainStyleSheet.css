@@ -48,7 +48,70 @@ img.logoImage{
 }
 
 div.pageContent {
-    padding: 15px 0px;
+    padding: 20px;
+    display: block;
+}
+
+div.leftSide {
+    width: 100%;
+}
+
+div.rightSide {
+    width: 100%;
+}
+
+div.textBox {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0px 10px;
+    font-size: 12px;
+    color: black;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+div.forumPreview {
+    margin: 20px 0px;
+    padding: 10px 0px;
+    display: block;
+    float: center;
+    background-color: #D1D1D1;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+div.listingMenu {
+    margin: 20px 0px;
+    padding: 0px;
+    display: block;
+    float: center;
+    background-color: #D1D1D1;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+div.listingMenu a {
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+    display: block;
+    float: center;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+div.listingMenu a:hover{
+    background-color: #A1A1A1;
+}
+
+div.newsFeed {
+    display: flex;
+    float: center;
+    background-color: #D1D1D1;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
 form {
@@ -97,17 +160,6 @@ div.newUser {
 }
 
 @media screen and (min-width:768px) {
-    * {
-        border: 0px;
-        margin: 0px;
-        padding: 0px;
-        font-family: Arial;
-    }
-
-    body {
-        background-color: white;
-    }
-
     div.mainHolder {
         padding-bottom: 50px;
     }
@@ -121,7 +173,7 @@ div.newUser {
 
     img.logoImage{
         /* based on a 4:3 image ratio*/
-        display: inline-block;
+        display: block;
         width: 100px;
         height:75px;
         float: right;
@@ -129,12 +181,14 @@ div.newUser {
     
     .navBar-container {
         width: 100%;
-        display: table;
+        display: block;
+        padding-bottom: 50px;
     }
     
     .navBar {
         background-color: #DB0032;
         width: 100%;
+        height: auto;
         overflow: auto;
         position: fixed;
         border: 1px solid black;
@@ -143,9 +197,9 @@ div.newUser {
 
     .navBar a {
         width: 20%; /* this changes with respect to the number of elements in the top bar */
-        display: block;
+        display: inline-block;
         margin: 0;
-        padding: 14px 0 16px 0;
+        padding: 16px 0 16px 0;
         float: left;
         font-size: 16px;
         color: white;
@@ -157,8 +211,67 @@ div.newUser {
         background-color: #910323; /* on hover color #910323. DB0032 */
     }
     
+    div.homePageContent {
+        padding: 20px;
+        display: flex;
+    }
+    
     div.pageContent {
-        padding: 50px;
+        padding: 20px;
+        display: block;
+    }
+    
+    div.leftSide {
+        flex: 50%;
+    }
+    
+    div.rightSide {
+        flex: 50%;
+    }
+
+    div.forumPreview {
+        margin: 20px 0px;
+        padding: 10px 0px;
+        display: block;
+        float: center;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    div.listingMenu {
+        margin: 20px 0px;
+        padding: 0px;
+        display: block;
+        float: center;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    div.listingMenu a {
+        margin: 0;
+        padding: 10px 0;
+        width: 100%;
+        display: block;
+        float: center;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    div.listingMenu a:hover{
+        background-color: #A1A1A1;
+    }
+
+    div.newsFeed {
+        padding: 10px;
+        margin: 20px;
+        display: flex;
+        float: center;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
     }
     
     form {

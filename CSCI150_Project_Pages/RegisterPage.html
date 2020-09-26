@@ -1,49 +1,49 @@
 <!DOCTYPE HTML>
 <html lang = "en">
 <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./mainStyleSheet.css">
     <script defer src="./EmailVerification.js"></script>
 </head>
 <body>
-<div>
     <div class="mainHolder">
-        <img id="logoText" src="./images/logoText.png" alt="Website Text Logo">
-        <img id="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
-        <div class="foreground">
-            <div class="topBar">
+        <img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
+        <img class="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
+        <div class="navBar-container">
+            <div class="navBar">
                 <a href="HomePage.html">Home</a>
                 <a href="ForumPage.html">Forums</a>
                 <a href="ListPage.html">Donation Listings</a>
                 <a href="AboutPage.html">About</a>
                 <a href="LoginPage.html">Login</a>
             </div>
-            <div class="pageContent">
-            <!-- Signup.php is what php file you want to send the login into to -->
-            <!-- method="post" hides the sensitive data in th HTTP transaction -->
-            
-            <form id="form" action="./Signup.php" method="post">
-                <div id="loginBox">
-                    <!-- Login can be just the first part of the student/faculty email -->
-                    <label for="first">First Name:</label>
-                    <input type="text" id="first" name="first" required>
-                    
-                    <label for="last">Last Name:</label>
-                    <input type="text" id="last" name="last" required>
-                    
-                    <!-- pattern match email so only fresno state emails can be used pattern =".+@mail.fresnostate.edu"
-                                        placeholder="@mail.fresnostate.edu or @csufresno.edu"-->
-                    <label for="email">E-Mail:</label>
-                    <input type="text" id="email" name="email" placeholder="@mail.fresnostate.edu or @csufresno.edu" required>
-                    
-                    <label for="pwd">Password:</label>
-                    <input type="password" id="pwd" name="pwd" required>
-                    
-                    <input type="submit" name="register" value="REGISTER">
-                </div>
-                </form>
+        </div>
+        <div class="pageContent">
+        <!-- Signup.php is what php file you want to send the login into to -->
+        <!-- method="post" hides the sensitive data in the HTTP transaction -->
+        <form action="./Signup.php" method="post">
+            <div class="loginBox">
+                <!-- Login can be just the first part of the student/faculty email -->
+                <label for="first">First Name:</label>
+                <input type="text" id="first" name="first" required>
+                
+                <label for="last">Last Name:</label>
+                <input type="text" id="last" name="last" required>
+                
+                <!-- pattern match email so only fresno state emails can be used pattern =".+@mail.fresnostate.edu"
+                                    placeholder="@mail.fresnostate.edu or @csufresno.edu"-->
+                <label for="email">E-Mail:</label>
+                <input type="text" id="email" name="email" placeholder="@mail.fresnostate.edu or @csufresno.edu" required>
+                
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" name="pwd" required>
+                
+                <input type="submit" name="register" value="REGISTER">
             </div>
+            </form>
         </div>
     </div>
-</div>
 </body>
 </html>
