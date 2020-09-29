@@ -159,6 +159,10 @@ div.newUser {
     text-align: center;
 }
 
+div.interactionMenu {
+    margin-top: 100px
+}
+
 @media screen and (min-width:768px) {
     div.mainHolder {
         padding-bottom: 50px;
