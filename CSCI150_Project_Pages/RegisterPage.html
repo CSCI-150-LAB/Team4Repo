@@ -20,21 +20,19 @@
                 <a href="AboutPage.html">About</a>
                 <a href="LoginPage.html">Login</a>
             </div>
+        </div>
             <div class="pageContent">
             <!-- Signup.php is what php file you want to send the login into to -->
             <!-- method="post" hides the sensitive data in th HTTP transaction -->
             
             <form id="form" action="./Signup.php" method="post">
-                <div id="loginBox">
-                    <!-- Login can be just the first part of the student/faculty email -->
+                <div class="loginBox">
                     <label for="first">First Name:</label>
                     <input type="text" id="first" name="first" required>
                     
                     <label for="last">Last Name:</label>
                     <input type="text" id="last" name="last" required>
                     
-                    <!-- pattern match email so only fresno state emails can be used pattern =".+@mail.fresnostate.edu"
-                                        placeholder="@mail.fresnostate.edu or @csufresno.edu"-->
                     <label for="email">E-Mail:</label>
                     <input type="text" id="email" name="email" placeholder="@mail.fresnostate.edu or @csufresno.edu" required>
                     
@@ -43,9 +41,7 @@
                     
                     <input type="submit" name="register" value="REGISTER">
                 </div>
-                </form>
-            </div>
-        </div>
+            </form>
     </div>
 </div>
 </body>
