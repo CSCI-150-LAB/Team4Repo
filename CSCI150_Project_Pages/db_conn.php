@@ -5,7 +5,7 @@ $servername = "donationboardmysql.mysql.database.azure.com";
 $username = "user@donationboardmysql";
 
 // replace with db password
-$password = "!";
+$password = "DonationBoard1!";
 
 // name of database we created using MySQL
 $db_name = "mydb";

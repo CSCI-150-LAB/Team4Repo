@@ -18,10 +18,14 @@
         if ($count == 1) {
             header('Location: ./HomePage.html');
         // add if statement here to check if user is admin or just a user
-        //echo "Login Successful";
+        // echo "Login Successful";
         } 
         else {
             header('Location: ./LoginPage.html?Login=Failed');
+            echo '<script type ="text/javascript"> 
+                alert("Email or Password incorrect!");
+                window.location.href = "./LoginPage.html";
+                </script>';
         }
 
         // close out connection to database

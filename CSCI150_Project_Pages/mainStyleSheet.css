@@ -29,7 +29,7 @@ img.logoImage{
 .navBar {
     background-color: #DB0032;
     width: 100%;
-    height: auto%;
+    height: auto;
     overflow: auto;
     position: relative;
 }
@@ -171,7 +171,7 @@ div.interactionMenu {
     img.logoText {
         /* based on a 2:1 image ratio*/
         display: inline-block;
-        width: 150px;
+        width:20%;
         height: 75px;
     }
 
