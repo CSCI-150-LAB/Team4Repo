@@ -51,6 +51,6 @@
 
     }
     //sends user back to LoginPage after registration is complete and data is stored in Azure
-    //header('Location: ./LoginPage.html');
+    header('Location: ./LoginPage.html');
 
 ?>
