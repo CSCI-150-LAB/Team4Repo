@@ -1,33 +1,35 @@
 <?php
-    include ("./db_conn.php");
-
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
 
     // Checks for user to hit login button on LoginPage.html
     if(isset($_POST['login'])){
+        // connection to database
+        require ("./db_conn.php");
         $email = $_POST['email'];
-        $pwd = $_POST['pwd'];
+        $pass = $_POST['pwd'];
 
-        $sql = "SELECT ID FROM userbase WHERE user_email ='$email' AND user_pwd='$pwd' LIMIT 1";
+        // $conn->query($sql) SELECT query in database to check user info
+        $sql = "SELECT * FROM userbase WHERE user_email ='$email'";// AND user_pwd='$hashedPass' LIMIT 1";
         $result = $conn->query($sql);
-        $count = mysqli_num_rows($result);
-        // $conn->query($sql) SELECT query in database to check if user is registered
-        // if statement to check any errors for testing purposes 
-        if ($count == 1) {
-            header('Location: ./HomePage.html');
-        // add if statement here to check if user is admin or just a user
-        // echo "Login Successful";
-        } 
-        else {
-            header('Location: ./LoginPage.html?Login=Failed');
+        $row = mysqli_fetch_assoc($result);
+
+        //uses fetch_assoc and if $row returns an array then continue because there is data
+        if (is_array($row)){
+            //decrypts password hash and checks it according Bcrypt used in Signup.php
+            if(password_verify($pass, $row['user_pwd'])){
+                session_start();
+                $_SESSION['user_ID'] = $row['ID'];
+                header('Location: ./HomePage.php?Login=Success');
+                // add if statement here to check if user is admin or just a user
+                // echo "Login Successful";
+            } 
+            else {
+            header('Location: ./LoginPage.php?Login=Failed');
             echo '<script type ="text/javascript"> 
                 alert("Email or Password incorrect!");
-                window.location.href = "./LoginPage.html";
+                window.location.href = "./LoginPage.php";
                 </script>';
+            }
         }
-
         // close out connection to database
         $conn->close();
 
