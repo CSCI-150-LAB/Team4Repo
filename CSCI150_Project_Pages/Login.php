@@ -30,6 +30,13 @@
                 </script>';
             }
         }
+        else {
+            header('Location: ./LoginPage.php?Login=Failed');
+            echo '<script type ="text/javascript"> 
+                alert("Email or Password incorrect!");
+                window.location.href = "./LoginPage.php";
+                </script>';
+        }
         // close out connection to database
         $conn->close();
 
