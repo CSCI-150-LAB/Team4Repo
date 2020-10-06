@@ -1,38 +1,376 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
 	<meta charset="utf-8">
     <title></title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./mainStyleSheet.css">
 </head>
-
 <body>
 	<div class="mainHolder">
 		<img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
-        <img class="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
         <div class="navBar-container">
             <div class="navBar">
-                <a href="HomePage.html">Home</a>
-                <a href="ForumPage.html">Forums</a>
-                <a href="ListPage.html">Donation Listings</a>
-                <a href="AboutPage.html">About</a>
-                <a href="LoginPage.html">Login</a>
+                <a href="HomePage.php">Home</a>
+                <a href="ForumPage.php">Forums</a>
+                <a href="ListPage.php">Donation Listings</a>
+                <a href="AboutPage.php">About</a>
+                <a href="Logout.php">Logout</a>
             </div>
         </div>
 	</div>
-	<br>
-	<br>
+
 	<div>
-		<h1 style="text-align:center">Place Holder FurnituresList: Donating</h1>
-		<!-- Load listing here -->
-	</div>
-	<br>
-	<br>
-	<div>
-		<h1 style="text-align:center">Place Holder FurnituresList: Looking for</h1>
-		<!-- Load listing here -->
+		<h1 style="text-align:center">Furniture Listings:</h1>
+
+        <div class="listingEntry" id="listing_1" onclick="">
+            <a class="listingThumbnail" href="userListing1.html">
+                <img src="./images/table.png" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing1.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                    posted 
+                    <time title="Thu Oct 1 18:15:02 2020 UTC" datetime="2020-10-01T18:15:02+00:00" class="live-timestamp">
+                        [1 hour ago(Time since posted)]
+                    </time>
+                    by 
+                    <a href="userprofile/username.html" class="poster">
+                        [ProfileName]
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                    <li class="shareButton">
+                        <a class="shareBtn" href="#">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+
+        <div class="listingEntry" id="listing_2" onclick="">
+            <!-- This a class is used to make the image a hyperlink to the page too -->
+            <a class="listingThumbnail" href="userListing2.html">
+                <img src="./images/dresser.png" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing2.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                <!-- Information about the post -->
+                    posted 6 hours ago by 
+                    <a href="userprofile/username.html" class="poster">
+                        Fake User
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                <!-- Share, save, report buttons -->
+                    <li class="shareButton">
+                        <a class="shareBtn" href="shareClick()" id="listing2">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                    <!-- js function to report a listing -->
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+        
+        <div class="listingEntry" id="listing_3" onclick="">
+            <!-- This a class is used to make the image a hyperlink to the page too -->
+            <a class="listingThumbnail" href="userListing3.html">
+                <img src="./images/bedFrame.jpg" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing3.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                <!-- Information about the post -->
+                    posted 1 week ago by 
+                    <a href="userprofile/username.html" class="poster">
+                        John Smith
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                <!-- Share, save, report buttons -->
+                    <li class="shareButton">
+                        <a class="shareBtn" href="#">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                    <!-- js function to report a listing -->
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+        
+        
+        <!-- START REPEATED LISTINGS -->
+        
+        
+        <div class="listingEntry" id="listing_1" onclick="">
+            <a class="listingThumbnail" href="userListing1.html">
+                <img src="./images/table.png" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing1.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                    posted 
+                    <time title="Thu Oct 1 18:15:02 2020 UTC" datetime="2020-10-01T18:15:02+00:00" class="live-timestamp">
+                        [1 hour ago(Time since posted)]
+                    </time>
+                    by 
+                    <a href="userprofile/username.html" class="poster">
+                        [ProfileName]
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                    <li class="shareButton">
+                        <a class="shareBtn" href="#">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+
+        <div class="listingEntry" id="listing_2" onclick="">
+            <!-- This a class is used to make the image a hyperlink to the page too -->
+            <a class="listingThumbnail" href="userListing2.html">
+                <img src="./images/dresser.png" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing2.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                <!-- Information about the post -->
+                    posted 6 hours ago by 
+                    <a href="userprofile/username.html" class="poster">
+                        Fake User
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                <!-- Share, save, report buttons -->
+                    <li class="shareButton">
+                        <a class="shareBtn" href="shareClick()" id="listing2">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                    <!-- js function to report a listing -->
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+        
+        <div class="listingEntry" id="listing_3" onclick="">
+            <!-- This a class is used to make the image a hyperlink to the page too -->
+            <a class="listingThumbnail" href="userListing3.html">
+                <img src="./images/bedFrame.jpg" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing3.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                <!-- Information about the post -->
+                    posted 1 week ago by 
+                    <a href="userprofile/username.html" class="poster">
+                        John Smith
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                <!-- Share, save, report buttons -->
+                    <li class="shareButton">
+                        <a class="shareBtn" href="#">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                    <!-- js function to report a listing -->
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+        
+        <div class="listingEntry" id="listing_1" onclick="">
+            <a class="listingThumbnail" href="userListing1.html">
+                <img src="./images/table.png" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing1.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                    posted 
+                    <time title="Thu Oct 1 18:15:02 2020 UTC" datetime="2020-10-01T18:15:02+00:00" class="live-timestamp">
+                        [1 hour ago(Time since posted)]
+                    </time>
+                    by 
+                    <a href="userprofile/username.html" class="poster">
+                        [ProfileName]
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                    <li class="shareButton">
+                        <a class="shareBtn" href="#">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+
+        <div class="listingEntry" id="listing_2" onclick="">
+            <!-- This a class is used to make the image a hyperlink to the page too -->
+            <a class="listingThumbnail" href="userListing2.html">
+                <img src="./images/dresser.png" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing2.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                <!-- Information about the post -->
+                    posted 6 hours ago by 
+                    <a href="userprofile/username.html" class="poster">
+                        Fake User
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                <!-- Share, save, report buttons -->
+                    <li class="shareButton">
+                        <a class="shareBtn" href="shareClick()" id="listing2">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                    <!-- js function to report a listing -->
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+        
+        <div class="listingEntry" id="listing_3" onclick="">
+            <!-- This a class is used to make the image a hyperlink to the page too -->
+            <a class="listingThumbnail" href="userListing3.html">
+                <img src="./images/bedFrame.jpg" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing3.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                <!-- Information about the post -->
+                    posted 1 week ago by 
+                    <a href="userprofile/username.html" class="poster">
+                        John Smith
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                <!-- Share, save, report buttons -->
+                    <li class="shareButton">
+                        <a class="shareBtn" href="#">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                    <!-- js function to report a listing -->
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+        
+        <div class="listingEntry" id="listing_1" onclick="">
+            <a class="listingThumbnail" href="userListing1.html">
+                <img src="./images/table.png" width="70" height="52" alt="">
+            </a>
+            <div class="entry">
+                <p class="title">
+                    <a class="title" href="userListing1.html">Table looking for a new home!</a>
+                </p>
+                <p class="postInfo">
+                    posted 
+                    <time title="Thu Oct 1 18:15:02 2020 UTC" datetime="2020-10-01T18:15:02+00:00" class="live-timestamp">
+                        [1 hour ago(Time since posted)]
+                    </time>
+                    by 
+                    <a href="userprofile/username.html" class="poster">
+                        [ProfileName]
+                    </a>
+                </p>
+                <ul class="interactionButtons">
+                    <li class="shareButton">
+                        <a class="shareBtn" href="#">share</a>
+                    </li>
+                    <li class="saveButton">
+                        <a class="saveBtn" href="#">save</a>
+                    </li>
+                    <li class="reportButton">
+                        <a class="reportBtn" href="#">report</a>
+                    </li>
+                </ul>
+                <div class="reportForm"></div>
+            </div>
+        </div>
+        
+        
+        <!--END REPEATED LISTINGS -->
+        
+        
+        <div class="pageSwap">
+            <div class="prevPage">
+                <a href="#">&lt;&lt;</a>
+            </div>
+            <div class="pageNumbers"></div>
+            <div class="nextPage">
+                <a href="#">&gt;&gt;</a>
+            </div>
+        </div>
 	</div>
 </body>
 
