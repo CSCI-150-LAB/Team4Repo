@@ -356,4 +356,102 @@ div.interactionMenu {
 		margin-right:auto;
 	}
 	
+    div.listingContainer {
+        margin: 0 auto;
+        display: flex;
+        border: 1px solid black;
+    }
+    
+    .listingImage {
+        display: block;
+        max-width: 100%;
+        max-height: 50vh;
+        height: auto;
+        margin: auto;
+    }
+    
+    .listingBody {
+        border-left: 1px solid black;
+        font-size: 18px;
+        padding: 10px;
+        width: 100%;
+    }
+    
+    .listingPoster {
+        border-left: 1px solid black;
+        margin-left: 5px;
+        padding: 0px 5px;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .backToListings {
+        margin: 5px;
+        
+    }
+    
+    .listingEntry {
+        display: block;
+        margin-left: 5px;
+        
+        /* This centers the content but not to a left sided margin
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        align-items: center; */
+    }
+    
+    .entry {
+        overflow: hidden;
+        margin-left: 5px;
+    }
+
+    .listingThumbnail {
+        float: left;
+        margin-bottom: 2px;
+        margin-right: 5px;
+        margin-top: 0;
+        margin-left: 0;
+        overflow: hidden;
+        width: 70px;
+    }
+
+    .title {
+        font-size: 20px;
+        margin: 1px;
+    }
+
+    ul.interactionButtons {
+        list-style-type: none;
+        display: block;
+        padding: 1px;
+    }
+    .interactionButtons li {
+        list-style-type: none;
+        display: inline-block;
+        font-size: 12px;
+        border: none;
+        padding: 0px 5px;
+    }
+
+    .postInfo {
+        font-size: 12px;
+        padding-left: 6px;
+    }
+    
+    .pageSwap {
+        margin: 20px 50px;
+    }
+    
+    .prevPage {
+        display: inline-block;
+        float: left;
+        /* margin-left: 50px; */
+    }
+    
+    .nextPage {
+        display: inline-block;
+        float: right;
+        /* margin-right: 50px; */
+    }
 }
