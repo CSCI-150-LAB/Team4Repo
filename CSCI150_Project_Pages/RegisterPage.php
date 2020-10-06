@@ -11,7 +11,6 @@
 <body>
     <div class="mainHolder">
         <img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
-        <img class="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
         <div class="navBar-container">
             <div class="navBar">
                 <a href="HomePage.php">Home</a>
