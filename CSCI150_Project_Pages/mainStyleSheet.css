@@ -27,7 +27,7 @@ img.logoImage{
 }
 
 .navBar {
-    background-color: #DB0032;
+    background-color: #1E9AFF;
     width: 100%;
     height: auto;
     overflow: auto;
@@ -44,12 +44,7 @@ img.logoImage{
 }
 
 .navBar a:hover {
-    background-color: #910323; /* on hover color #910323. DB0032 */
-}
-
-div.profilePage {
-    padding: 20px;
-    display: block;
+    background-color: #1E79BE; /* on hover color #1E9AFF. 1E9AFF */
 }
 
 div.pageContent {
@@ -117,6 +112,17 @@ div.newsFeed {
     background-color: #D1D1D1;
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+div.tagSearch {
+    padding: 20px 10px;
+}
+
+select.tagList {
+    display: block;
+    margin: 0px auto;
+    width: 100%;
+    border: 1px solid black;
 }
 
 form {
@@ -195,7 +201,7 @@ div.interactionMenu {
     }
     
     .navBar {
-        background-color: #DB0032;
+        background-color: #1E9AFF;
         width: 100%;
         height: auto;
         overflow: auto;
@@ -217,7 +223,7 @@ div.interactionMenu {
     }
 
     .navBar a:hover{
-        background-color: #910323; /* on hover color #910323. DB0032 */
+        background-color: #1E79BE; /* on hover color #1E79BE. 1E9AFF */
     }
     
     div.homePageContent {
@@ -283,6 +289,17 @@ div.interactionMenu {
         border-collapse: collapse;
     }
     
+    div.tagSearch {
+        padding: 25px;
+    }
+
+    select.tagList {
+        display: block;
+        margin: 0px auto;
+        width: 50%;
+        border: 1px solid black;
+    }
+    
     form {
         background-color: #b3b3b3;
         border: 1px solid #8a8a8a;
@@ -338,4 +355,5 @@ div.interactionMenu {
 		margin-left:auto;
 		margin-right:auto;
 	}
+	
 }

@@ -27,6 +27,11 @@
             </div>
         </div>
 	</div>
+	<div>
+		<a href="CreateDonationPage.html">
+			<p style="text-align:center"> Click here to donate</p>
+		</a>
+	</div>
 	<div class="interactionMenu">
 		<h1 style="text-align:center">Categories</h1>
 		<table class="center">
