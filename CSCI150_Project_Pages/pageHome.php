@@ -1,24 +1,19 @@
+<?php
+   require ("./sessionCheck.php");
+   include 'header.php'; // adds the logo and the nav bar to the top of the page
+?>
+
 <!DOCTYPE HTML>
 <html lang = "en">
 <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./mainStyleSheet.css">
 </head>
 <body>
     <div class="mainHolder">
-        <img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
-        <img class="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
-        <div class="navBar-container">
-            <div class="navBar">
-                <a href="HomePage.html">Home</a>
-                <a href="ForumPage.html">Forums</a>
-                <a href="ListPage.html">Donation Listings</a>
-                <a href="AboutPage.html">About</a>
-                <a href="LoginPage.html">Login</a>
-            </div>
-        </div>
         <div class="homePageContent">
             <div class="leftSide">
                 <div class="forumPreview">
@@ -28,14 +23,14 @@
                     </div>
                 </div>
                 <div class="listingMenu">
-                    <a href="BooksList.html">Books</a>
-                    <a href="FurnituresList.html">Furniture</a>
-                    <a href="ElectronicsList.html">Electronics</a>
-                    <a href="CLothesList.html">Clothes</a>
-                    <a href="OtherList.html">Other</a>
+                    <a href="listBooks.php">Books</a>
+                    <a href="listFurniture.php">Furniture</a>
+                    <a href="listElectronics.php">Electronics</a>
+                    <a href="listClothes.php">Clothes</a>
+                    <a href="listOther.php">Other</a>
                 </div>
             </div>
-            
+
             <div class="rightSide">
                 <div class="newsFeed">
                     Import a news feed from here. This paragraph is just to fill space.
