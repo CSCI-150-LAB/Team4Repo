@@ -18,6 +18,10 @@
             if(password_verify($pass, $row['user_pwd'])){
                 session_start();
                 $_SESSION['user_ID'] = $row['ID'];
+                $_SESSION['firstName'] = $row['user_first'];
+                $_SESSION['lastName'] = $row['user_last'];
+                $_SESSION['email'] = $row['user_email'];
+                $_SESSION['role'] = $row['user_role'];
                 header('Location: ./pageHome.php?Login=Success');
                 // add if statement here to check if user is admin or just a user
                 // echo "Login Successful";

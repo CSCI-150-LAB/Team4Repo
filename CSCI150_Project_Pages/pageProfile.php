@@ -15,6 +15,23 @@
 <body>
     <div class="mainHolder">
         <div class="profilePage">
+            <img class ="profileImg" src="./images/pfp.png" alt="ProfilePicture">
+
+            <div class="userName">
+            <?php
+                echo $_SESSION['firstName']. ' ' . $_SESSION['lastName'];
+            ?>
+
+            </div>
+
+            <div class="userListings">
+                <a href="#GrabsUserListings">Your Listings</a>
+            </div>
+
+            <div class="userPosts">
+                <a href="#UserPosts">Your Forum Posts</a>
+            </div>
+
         </div>
     </div>
 </body>
