@@ -9,7 +9,7 @@
 	if(isset($_POST['post'])){
 		
 		$itemselection = $_POST['itemselection'];
-		$text = $_POST['sub'];
+		$sub = $_POST['sub'];
 		$myTextArea = $_POST['myTextArea'];
 		$user = $_SESSION['user_ID'];
 		
