@@ -156,7 +156,7 @@
  
  <div>
   <label></label>
-	<textarea id="myTextArea" required maxlength="1000"rows="30" cols="60"placeholder="Write post..."
+	<textarea id="myTextArea" name="myTextArea" required maxlength="1000"rows="30" cols="60"placeholder="Write post..."
 	spellcheck = "true"
 	style="border:4px solid #1E9AFF;"> 
 	</textarea>
@@ -166,6 +166,6 @@
   <input type="file" id="img" name="img" input accept=".jpg,.png">
 </div>
 <br><br>
-  <input type="submit" value="post">
+  <input type="submit" value="post" name ="submit">
 </form>
 </body>
