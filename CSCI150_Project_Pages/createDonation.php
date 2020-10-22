@@ -15,11 +15,13 @@
 
 <body>
 	<div class="mainHolder">
-		<form action="action.php"> <!--send to database-->
+		<!-- createDonationInsertData.php is what php file you want to send the login into to -->
+        <!-- method="post" hides the sensitive data in th HTTP transaction -->
+		<form action="./createDonationInsertData.php" method="post" enctype="multipart/form-data"> <!--send to database-->
 			<div>
-				<p>Select item type</p>
-				<label for="itemselection"> </label>
-				<select id="itemselection" name="itemselection" required>
+				<label>Select item type</label>
+				<select name="itemselection">
+					<option value="">-</option>
 					<option value="Books">Books</option>
 					<option value="Furnitures">Furnitures</option>
 					<option value="Electronic">Electronic</option>
@@ -28,24 +30,15 @@
 				</select>
 			</div>
 			<div>
-				<label for="title"> </label>
-				<input type="text" id="title" name="title" placeholder="Title" required/>
+				<input type="text" name="title" maxlength="100" placeholder="Title"></input>
 			</div>
 			<div>
-				<label> </label>
-				<textarea id="myTextArea" maxlength="500" rows="30" cols="50" placeholder="Description"></textarea>
+				<textarea name="myTextArea" maxlength="500" rows="30" cols="50" placeholder="Description"></textarea>
 			</div>
 			<div>
-				<label for="img">Select image 1:</label>
-				<input type="file" id="img" accept="image/*">
-
-				<label for="img2">Select image 2:</label>
-				<input type="file" id="img2" accept="image/*">
-
-				<label for="img3">Select image 3:</label>
-				<input type="file" id="img3" accept="image/*">
-
-				<input type="submit">
+				<label>Select image file:</label>
+				<input type="file" name="image" accept="image/*">
+				<input type="submit" name="submit">
 			</div>
 		</form>
 	</div>
