@@ -1,8 +1,3 @@
-<?php
-   include 'header.php';
-   // adds the logo and the nav bar to the top of the page
-?>
-
 <!DOCTYPE HTML>
 <html lang = "en">
 <head>

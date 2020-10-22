@@ -1,10 +1,6 @@
 <?php
-   require ("./sessionCheck.php");
    include 'header.php'; // adds the logo and the nav bar to the top of the page
 ?>
-
-<!DOCTYPE HTML>
-<html lang = "en">
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -32,19 +28,11 @@
             </div>
 
             <div class="rightSide">
-                <div class="newsFeed">
-                    Import a news feed from here. This paragraph is just to fill space.
-                    <br><br><br>
-                    Henry Madden Library’s Tech Lending service now has 100 Logitech headsets ready for student use. The headsets are part of Logitech’s recent donation of 2,300 headsets to the California State University system to support the virtual learning experience of CSU students.
-                    <br><br>
-                    The headsets include over-ear headphones and an extended mic, which enhances students’ ability to hear and be heard in the virtual classroom. These enhancements are intended to aid student focus and increase engagement in virtual presentations and discussions.
-                    <br><br>
-                    As Fresno State and other CSU campuses have moved to primarily virtual instruction, increasing investments into technology is a central focus. Access to the technology devices students need is vital to their success. The Madden Library’s Tech Lending has supported those needs for three years, offering a wide variety of technology for students, faculty and staff alike.
-                    <br><br>
-                    Over the summer, Tech Lending also added several new items to its lending roster, including noise-canceling headphones, Apple pens, surface pens, Go-pros that double as webcams, and projectors to increase monitor visibility. Fresno State Technology Services also placed 70 new webcams with Tech Lending for distribution to both students and faculty. Thanks to CARES Act funding, Tech Lending also refreshed and updated its stock of laptops, Chromebooks, tablets, cables, chargers and other items to support student and faculty technology needs this academic year.
+                <div class="newsFeed" id="newsFeed">
+                    <script type="text/javascript" src="rssExport.js"></script>
                 </div>
             </div>
         </div>
     </div>
 </body>
-</html>
+</html> 

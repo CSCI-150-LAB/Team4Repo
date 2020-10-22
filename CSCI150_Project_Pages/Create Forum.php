@@ -1,17 +1,6 @@
 <?php
-   require ("./Session.php");
+   require ("./header.php");
 ?>
-
-<!DOCTYPE HTML>
-<html>
-
-<head>
-	<meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./mainStyleSheet.css">
-</head>
-
 <body>
 	<div class="mainHolder">
 		<img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
@@ -25,12 +14,8 @@
                 <a href="LoginPage.html">Login</a>
             </div>   
         </div>
-
 <h1>Create A Forum</h1>
-
-
 <form action="ForumPage.php" method="post" target="_blank">
-
 		<div>
 			<p>Select Class</p>
 			<label for="itemselection"> </label>
@@ -184,20 +169,14 @@
   <label></label>
 	<textarea id="myTextArea" required maxlength="1000"rows="30" cols="60"placeholder="Write post..."
 	spellcheck = "true"
-	style="border:4px solid #1E9AFF;">
+	style="border:4px solid #1E9AFF;"> 
 	</textarea>
 </div>
 
 <div>
   <input type="file" id="img" name="img" input accept=".jpg,.png">
 </div>
-  
 <br><br>
- 
   <input type="submit" value="Post">
 </form>
-
-
-
 </body>
-</html>
