@@ -2,18 +2,7 @@
    require ("./header.php");
 ?>
 <body>
-	<div class="mainHolder">
-		<img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
-        <img class="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
-        <div class="navBar-container">
-            <div class="navBar">
-                <a href="HomePage.html">Home</a>
-                <a href="ForumPage.html">Forums</a>
-                <a href="ListPage.html">Donation Listings</a>
-                <a href="AboutPage.html">About</a>
-                <a href="LoginPage.html">Login</a>
-            </div>   
-        </div>
+
 <h1>Create A Forum</h1>
 <form action="./createforumdata.php" method="post" target="_blank" enctype="multipart/form-data">
 		<div>
