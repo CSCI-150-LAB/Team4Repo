@@ -32,7 +32,7 @@
 			header('Location: ./pageForum.php');
 		}
 		
-		//echo error and return to createDonationInsertData.php
+		//echo error and return to createForum.php
 		else{
 			echo "Submit Error";
 			header('Location: ./createForum.php');
