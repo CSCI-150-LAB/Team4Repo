@@ -15,7 +15,7 @@
             </div>   
         </div>
 <h1>Create A Forum</h1>
-<form action="ForumPage.php" method="post" target="_blank">
+<form action="./createforumdata.php" method="post" target="_blank" enctype="multipart/form-data">
 		<div>
 			<p>Select Class</p>
 			<label for="itemselection"> </label>
@@ -177,6 +177,6 @@
   <input type="file" id="img" name="img" input accept=".jpg,.png">
 </div>
 <br><br>
-  <input type="submit" value="Post">
+  <input type="submit" value="post">
 </form>
 </body>
