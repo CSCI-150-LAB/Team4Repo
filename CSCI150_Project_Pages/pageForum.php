@@ -145,6 +145,7 @@
         </div>
         <div class="forumPosts">
             <div class="posting">
+			<a href="Create Forum.php"><p style="text-align:center">Click here to post</p></a>
                 <img class="postImage" src="" alt="">
             </div>
         </div>
