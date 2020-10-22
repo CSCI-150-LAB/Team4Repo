@@ -21,7 +21,7 @@
 		
 
 		//insert to db
-		$sql = "INSERT into post_base (ID, post_class, post_sub, post_body, post_date)
+		$sql = "INSERT into post_base (post_ID, post_class, post_sub, post_body, post_date, user_ID)
 					values ('$user', '$itemselection', '$sub', '$myTextArea','$today')"; 
 					
 		$send = mysqli_query($conn, $sql) or die (mysqli_error($conn)); 
