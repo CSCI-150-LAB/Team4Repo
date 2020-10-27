@@ -8,7 +8,7 @@
 		<form action="./createDonationInsertData.php" method="post" enctype="multipart/form-data"> <!--send to database-->
 			<div>
 				<label>Select item type</label>
-				<select name="itemselection">
+				<select name="itemselection" required>
 					<option value="">-</option>
 					<option value="Books">Books</option>
 					<option value="Furnitures">Furnitures</option>
@@ -18,14 +18,14 @@
 				</select>
 			</div>
 			<div>
-				<input type="text" name="title" maxlength="100" placeholder="Title"></input>
+				<input type="text" name="title" maxlength="100" placeholder="Title" required></input>
 			</div>
 			<div>
-				<textarea name="myTextArea" maxlength="500" rows="30" cols="50" placeholder="Description"></textarea>
+				<textarea name="myTextArea" maxlength="500" rows="30" cols="50" placeholder="Description" required></textarea>
 			</div>
 			<div>
 				<label>Select image file:</label>
-				<input type="file" name="image" accept="image/*">
+				<input type="file" name="image" accept="image/*" required>
 				<input type="submit" name="submit">
 			</div>
 		</form>
