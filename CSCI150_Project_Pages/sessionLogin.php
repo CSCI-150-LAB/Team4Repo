@@ -17,7 +17,7 @@
             //decrypts password hash and checks it according Bcrypt used in sessionSignup.php
             if(password_verify($pass, $row['user_pwd'])){
                 session_start();
-                $_SESSION['user_ID'] = $row['ID'];
+                $_SESSION['user_ID'] = $row['user_ID'];
                 $_SESSION['firstName'] = $row['user_first'];
                 $_SESSION['lastName'] = $row['user_last'];
                 $_SESSION['email'] = $row['user_email'];
@@ -27,7 +27,7 @@
                 // echo "Login Successful";
             }
             else {
-            header('Location: ./pageLogin.php?Login=Failed');
+            header('Location: ./pageLogin.php?Login=FailedPassword');
             echo '<script type ="text/javascript">
                 alert("Email or Password incorrect!");
                 window.location.href = "./pageLogin.php";
@@ -35,7 +35,7 @@
             }
         }
         else {
-            header('Location: ./pageLogin.php?Login=Failed');
+            header('Location: ./pageLogin.php?Login=FailedInfo');
             echo '<script type ="text/javascript">
                 alert("Email or Password incorrect!");
                 window.location.href = "./pageLogin.php";
