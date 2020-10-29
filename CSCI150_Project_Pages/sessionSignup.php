@@ -8,6 +8,8 @@
         $first = $_POST['first'];
         $last = $_POST['last'];
         $email = $_POST['email'];
+        $tempArray = explode('@', $email);
+        $username = $tempArray[0];
         $pass = $_POST['pwd'];
         //hash passwords using default php method --> Bcrypt
         $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
@@ -20,8 +22,8 @@
         // insert user information into database using sql statement
         // $conn->query($sql) SELECT query in database to check if user is registered
         // if statement to check any errors for testing purposes
-        $sql = "INSERT INTO userbase (user_first, user_last, user_email, user_pwd)
-        VALUES ('$first', '$last', '$email', '$hashedPass')";
+        $sql = "INSERT INTO userbase (user_first, user_last, user_email, user_name, user_pwd)
+        VALUES ('$first', '$last', '$email', '$username', '$hashedPass')";
 
         //if email is registered tell user that
         if ($count == 1) {

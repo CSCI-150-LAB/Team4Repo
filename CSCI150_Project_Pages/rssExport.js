@@ -1,4 +1,6 @@
-const rss_url = "http://localhost/150project/rssFetch.php";
+// const rss_url = "http://localhost/150project/rssFetch.php";
+// switch to the one above when testing on local machine
+const rss_url = "https://fresnostateboard.azurewebsites.net/rssFetch.php";
 
 fetch(rss_url)
     .then(response => response.text())

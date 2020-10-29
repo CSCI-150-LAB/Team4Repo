@@ -1,0 +1,1 @@
+var currentIndex = 1;
