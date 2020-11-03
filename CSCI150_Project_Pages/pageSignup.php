@@ -1,3 +1,6 @@
+<?php
+   include 'header.php';
+?>
 <body>
     <div class="mainHolder">
         <div class="pageContent">

@@ -14,10 +14,8 @@ body {
 .logoText {
     /* based on a 2:1 image ratio*/
     display: inline-block;
-    max-width: 324px;
-    max-height: 64px;
-    width: auto;
-    height: auto;
+    width: 20%;
+    height: 75px;
 }
 
 .navbar {
@@ -104,13 +102,11 @@ table, th, td {
 /* Page Elements CSS*/
 
 .logoLogin {
-    /* based on a 5:1 image ratio*/
+    /* based on a 4:3 image ratio*/
     display: block; 
     margin: 10px auto 50px auto;
-    max-width: 810px;
-    max-height: 160px;
-    width: auto;
-    height: auto;
+    width: 50%;
+    height: 10%;
 }
 
 .homePageContent {

@@ -21,9 +21,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    var userFirst = "<?php echo $_SESSION['firstName']; ?>";
-    var userEmail = "<?php echo $_SESSION['email']; ?>";
-    var userProfilePage = userEmail.substr(0, userEmail.indexOf("@")) + ".php";
+    userFirst = "<?php echo $_SESSION['firstName']; ?>";
+    userEmail = "<?php echo $_SESSION['email']; ?>";
+    userProfilePage = userEmail.substr(0, userEmail.indexOf("@")) + ".php";
     document.getElementById("userButton").innerHTML = userFirst;
     document.getElementById("userProfile").setAttribute("href", userProfilePage);
 </script>
