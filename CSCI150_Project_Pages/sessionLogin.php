@@ -21,6 +21,7 @@
                 $_SESSION['firstName'] = $row['user_first'];
                 $_SESSION['lastName'] = $row['user_last'];
                 $_SESSION['email'] = $row['user_email'];
+                $_SESSION['username'] = $row['user_name'];
                 $_SESSION['role'] = $row['user_role'];
                 header('Location: ./pageHome.php?Login=Success');
                 // add if statement here to check if user is admin or just a user

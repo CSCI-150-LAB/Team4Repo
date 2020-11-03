@@ -14,8 +14,10 @@ body {
 .logoText {
     /* based on a 2:1 image ratio*/
     display: inline-block;
-    width: 20%;
-    height: 75px;
+    max-width: 324px;
+    max-height: 64px;
+    width: auto;
+    height: auto;
 }
 
 .navbar {
@@ -102,11 +104,13 @@ table, th, td {
 /* Page Elements CSS*/
 
 .logoLogin {
-    /* based on a 4:3 image ratio*/
+    /* based on a 5:1 image ratio*/
     display: block; 
     margin: 10px auto 50px auto;
-    width: 50%;
-    height: 10%;
+    max-width: 810px;
+    max-height: 160px;
+    width: auto;
+    height: auto;
 }
 
 .homePageContent {
@@ -253,6 +257,7 @@ input[type=submit] {
 .listingEntry {
     display: block;
     margin-left: 5px;
+    height: auto;
     /* This centers the content but not to a left sided margin
         display: flex;
         justify-content: center;
@@ -296,7 +301,6 @@ input[type=submit] {
 
 .postInfo {
     font-size: 12px;
-    padding-left: 6px;
 }
 
 .pageSwap {
