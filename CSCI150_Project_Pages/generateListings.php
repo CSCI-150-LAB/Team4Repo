@@ -6,8 +6,8 @@ $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Furniture' AN
 
 You also need to:
     1. change the where to append the listings too it is at the end of callEntries() function
-    2. call `onload="callEntries('initial')"` in the body tag
-        <body onload="callEntries('initial')">
+    2. call `onload="initialListings()"` in the body tag
+        <body onload="">
 
 You should be able to copy paste everything in the script tag (includeing the tag) and change $fetchEntries and it should work
 -->
@@ -74,7 +74,7 @@ You should be able to copy paste everything in the script tag (includeing the ta
 	}
 	?>
     <?php 
-            echo json_encode(callEntries('initial'));
+        echo json_encode(callEntries('initial')); // for testing the browser console
     ?>
 
 	function initialListings() {
