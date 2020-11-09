@@ -96,7 +96,7 @@
         
         for (var i = 0; i < jsArr.length; i++) {
             // going through the holder of the Listings
-            var pageLink = "errorLink" + ".php"; // this is temp until directories are stored in db
+            var pageLink = "template.php?listID=" + jsArr[i][0]; // this is temp until directories are stored in db
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
