@@ -2,14 +2,13 @@
    require ("./header.php");
 ?>
 <body>
-
-<h1>Create A Forum</h1>
-<form action="./createforumdata.php" method="post" target="_blank" enctype="multipart/form-data">
-		<div>
-			<p>Select Class</p>
-			<label for="itemselection"> </label>
-			<select id="itemselection" name="itemselection" required>
-                    <option selected="" value="null">Search by tag:</option>
+    <h1>Create A Forum</h1>
+    <form action="./createforumdata.php" method="post" target="_blank" enctype="multipart/form-data">
+        <div>
+	        <p>Select Class</p>
+	        <label for="itemselection"> </label>
+	        <select id="itemselection" name="itemselection" required>
+                    <option selected="" value="null">Tag:</option>
                     <option value="ACCT">Accountancy (ACCT)</option>
                     <option value="AFRS">Africana Studies Program (AFRS)</option>
                     <option value="AGBS">Agricultural Business (AGBS)</option>
@@ -146,26 +145,22 @@
                     <option value="VIT">Viticulture (VIT)</option>
                     <option value="WS">Women's Studies (WS)</option>
             </select>
-		<div>
-	</div>
-			
-  
-  
-  <input type="text" id="sub" name="sub"placeholder ="Subject" required maxlength="50">
-  </div>
- 
- <div>
-  <label></label>
-	<textarea id="myTextArea" name="myTextArea" required maxlength="1000"rows="30" cols="60"placeholder="Write post..."
-	spellcheck = "true"
-	style="border:4px solid #1E9AFF;"> 
-	</textarea>
-</div>
+        </div>
 
-<div>
-  <input type="file" id="img" name="img" input accept=".jpg,.png">
-</div>
-<br><br>
-  <input type="submit" value="post" name ="submit">
-</form>
+        <div>
+            <input type="text" id="sub" name="sub"placeholder ="Subject" required maxlength="50">
+        </div>
+ 
+        <div>
+            <label></label>
+            <textarea id="myTextArea" name="myTextArea" required maxlength="1000"rows="30" cols="60" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
+        </div>
+
+        <div>
+		    <label>Select image file:</label>
+		    <input type="file" name="image" accept="image/*" required>
+	    </div>
+        <br><br>
+        <input type="submit" value="post" name ="submit">
+    </form>
 </body>

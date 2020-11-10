@@ -25,5 +25,5 @@
     userEmail = "<?php echo $_SESSION['email']; ?>";
     userProfilePage = userEmail.substr(0, userEmail.indexOf("@")) + ".php";
     document.getElementById("userButton").innerHTML = userFirst;
-    document.getElementById("userProfile").setAttribute("href", userProfilePage);
+    //document.getElementById("userProfile").setAttribute("href", userProfilePage);
 </script>

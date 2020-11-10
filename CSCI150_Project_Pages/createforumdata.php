@@ -12,17 +12,32 @@
 		$sub = $_POST['sub'];
 		$myTextArea = $_POST['myTextArea'];
 		$user = $_SESSION['user_ID'];
-		
+		//get the name of $image
+		$imageName = $_FILES['image']['name'];
+			
+		//get file tmp location
+		$imageTempLocation = $_FILES['image']['tmp_name'];
+			
 		//get date
-		$date = getdate();
-		
-		
-		$today = $date[month]."/".$date[mday]."/".$date[year];
-		
+		$date = date("m.d.y");
+			
+		//split name and extension
+		$imageExt = explode('.', $imageName);
+			
+		//get the extenion
+		$extenion = end($imageExt);
+			
+		//new name for image using uniqid; e.g. user.uniqid.extenion
+		$uniquePic = $user.".".uniqid("",true).".".$extenion;
+
+		//image destination
+		$imageDest = 'forum_images/'.$uniquePic;
+
+		move_uploaded_file($imageTempLocation, $imageDest);
 
 		//insert to db
-		$sql = "INSERT into post_base (user_ID, post_class, post_sub, post_body, post_date)
-					values ('$user', '$itemselection', '$sub', '$myTextArea','$today')"; 
+		$sql = "INSERT into post_base (user_ID, post_class, post_sub, post_body, post_date, post_imgname)
+					values ('$user', '$itemselection', '$sub', '$myTextArea','$date','$uniquePic')"; 
 					
 		$send = mysqli_query($conn, $sql) or die (mysqli_error($conn)); 
 		
