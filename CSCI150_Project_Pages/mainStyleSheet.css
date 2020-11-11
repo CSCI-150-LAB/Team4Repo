@@ -14,10 +14,8 @@ body {
 .logoText {
     /* based on a 2:1 image ratio*/
     display: inline-block;
-    max-width: 324px;
-    max-height: 64px;
-    width: auto;
-    height: auto;
+    width: 20%;
+    height: 75px;
 }
 
 .navbar {
@@ -25,14 +23,12 @@ body {
     background-color: #1E9AFF;
     width: 100%;
     height: auto;
-    overflow: hidden;
     border: 1px solid black;
     border-collapse: collapse;
     font-size: 16px;
 }
 
-    .navbar a, .dropdownContainer {
-        margin: 0;
+.navbar a{
         padding: 16px 0;
         width: 25%;
         display: inline-block;
@@ -41,29 +37,36 @@ body {
         color: white;
         text-align: center;
         text-decoration: none;
-    }
-
-.dropdownContainer {
-    width: 25%;
-    float: left;
-    overflow: hidden;
 }
 
-    .dropdownContainer:hover .dropdownContent {
-        display: block;
-    }
 
-    .dropdownContainer .ddButton {
-        width: 100%;
-        border: none;
-        outline: none;
-        color: white;
-        background-color: inherit;
-    }
 
-    .navbar a:hover, .dropdownContainer:hover {
-        background-color: #1E79BE;
-    }
+.dropdownContainer {
+    float: left;
+    overflow: hidden;
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+}
+
+.dropdownContainer:hover .dropdownContent {
+    display: block;
+}
+
+.dropdownContainer .ddButton {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 16px 0;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdownContainer:hover {
+    background-color: #1E79BE;
+}
 
 .dropdownContent {
     display: none;
@@ -72,21 +75,22 @@ body {
     width: inherit;
     text-align: center;
     z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
 }
 
-    .dropdownContent a {
-        width: 100%;
-        float: none;
-        color: black;
-        padding: 12px 0;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-    }
+.dropdownContent a {
+    width: 100%;
+    float: center;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
 
-        .dropdownContent a:hover {
-            background-color: #ddd;
-        }
+.dropdownContent a:hover {
+    background-color: #ddd;
+}
 
 .mainHolder {
     padding-bottom: 50px;
@@ -104,13 +108,11 @@ table, th, td {
 /* Page Elements CSS*/
 
 .logoLogin {
-    /* based on a 5:1 image ratio*/
+    /* based on a 4:3 image ratio*/
     display: block; 
     margin: 10px auto 50px auto;
-    max-width: 810px;
-    max-height: 160px;
-    width: auto;
-    height: auto;
+    width: 50%;
+    height: 10%;
 }
 
 .homePageContent {
@@ -188,6 +190,10 @@ form {
     padding: 20px;
 }
 
+.messageBox{
+    padding: 20px;
+}
+
 .forgotPass {
     padding: 20px 0px 0px 0px;
     font-size: 16px;
@@ -257,7 +263,6 @@ input[type=submit] {
 .listingEntry {
     display: block;
     margin-left: 5px;
-    height: auto;
     /* This centers the content but not to a left sided margin
         display: flex;
         justify-content: center;
@@ -301,6 +306,7 @@ input[type=submit] {
 
 .postInfo {
     font-size: 12px;
+    padding-left: 6px;
 }
 
 .pageSwap {
