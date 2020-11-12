@@ -4,9 +4,10 @@
     $imageLink = "./upload_images/errorImage.png";
     $description = "No Data Loaded";
     $poster = "No Data Loaded";
+    $title = "No Data Loaded";
 
     if(isset($_GET['listID'])){
-        GLOBAL $imageLink, $description, $poster, $conn;
+        GLOBAL $imageLink, $description, $poster, $conn, $title;
         $listID = $_GET['listID'];
 
         $fetchEntries = "SELECT * FROM listingbase WHERE listing_id = $listID";
@@ -19,6 +20,8 @@
         $imageLink = "./upload_images/" . $result['listing_imgname'];
         $description = $result['listing_body'];
         $poster = $userbaseResult['user_name'];
+
+        $title = $result['listing_title'];
     }
 ?>
 <script>
@@ -30,12 +33,32 @@
         document.execCommand("copy");
         document.body.removeChild(tempTextbox);
     }
+
+    function backPage(){
+        window.history.back();
+    }
+    //sets innerHTML to hidden value we can grab in PHP
+    function setName(){
+        document.getElementById("hiddenVal").value = document.getElementById("a").innerHTML;
+    }
+
+    function openMessage() {
+    document.getElementById("messageBox").style.display = "block";
+    }
+
+    function closeMessage() {
+    document.getElementById("messageBox").style.display = "none";
+    }
 </script>
 <body>
 	<div class="mainHolder">
 	    <div class="backToListings">
-            <a href="listFurniture.php">Back to Listings</a>
+            <a href="javascript: history.go(-1)">Back to Listings</a>
             <button onclick="copyLink()">Copy Link</button>
+        </div>
+
+        <div class="listingTitle">
+            <h1 id="listingBody"><?php echo $title; ?></h1>
         </div>
 
         <div class="listingContainer">
@@ -50,8 +73,21 @@
                     <?php echo $poster ?>
                 </a>
             </div>
-            
         </div>
-	</div>
+    </div>
+
+    <button class="button1 messageButton" onclick="openMessage()">Message</button>
+    <div class="messageBox" id= "messageBox" name="messageBox">
+        <form action="./messageSend.php" method="post">
+            <label for="message">Message:</label>
+            <input type="text" id="message" name="message" required>
+            <input type="hidden" id="hiddenVal" name="hiddenVal" value="<?php echo $poster; ?>">
+            <input type="hidden" id="hiddenVal2" name="hiddenVal2" value="<?php echo $imageLink; ?>">
+            <input type="hidden" id="hiddenVal3" name="hiddenVal3" value="<?php echo $title; ?>">
+            <input type="submit" id="send" name="send" value="SEND">
+            <!-- Will cancel message pop up -->
+            <button class="button2 cancelButton" onclick="closeMessage()">Cancel Message</button>
+        </form>
+    </div>
 </body>
  

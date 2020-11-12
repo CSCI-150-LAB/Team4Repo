@@ -16,6 +16,7 @@
         <button class="ddButton" id="userButton">Profile</button>
         <div class="dropdownContent" id="myDropdown">
             <a id="userProfile" href="pageProfile.php">Profile</a>
+            <a href="messageInbox.php">My Messages</a>
             <a href="sessionLogout.php">Logout</a>
         </div>
     </div>
