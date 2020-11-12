@@ -5,9 +5,10 @@
     $description = "No Data Loaded";
     $poster = "No Data Loaded";
     $title = "No Data Loaded";
+    $posterLink = "pageProfile.php";
 
     if(isset($_GET['listID'])){
-        GLOBAL $imageLink, $description, $poster, $conn, $title;
+        GLOBAL $imageLink, $description, $poster, $conn, $title, $posterLink;
         $listID = $_GET['listID'];
 
         $fetchEntries = "SELECT * FROM listingbase WHERE listing_id = $listID";
@@ -26,6 +27,7 @@
         $_SESSION['title'] = $title;
         $_SESSION['imageLink'] = $imageLink;
         $_SESSION['poster'] = $poster;
+        $posterLink = "pageProfile.php?userID=" . $userID;
     }
 ?>
 <script>
@@ -73,7 +75,7 @@
                 <p id="listingBody"><?php echo $description; ?></p>
             </div>
             <div class="listingPoster">
-                <a href="userprofile/username.php" class="poster"> <!-- Change href and innerHTML -->
+                <a id="posterLink" href="userprofile/username.php" class="poster"> <!-- Change href and innerHTML -->
                     <?php echo $poster ?>
                 </a>
             </div>

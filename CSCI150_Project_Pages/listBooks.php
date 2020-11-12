@@ -1,7 +1,7 @@
 <?php
 	include 'header.php';
 ?>
-<body onload="initialListings()">
+<body onload="generateListings('initial')">
 	<div class="mainHolder">
         <div>
 		    <h1 style="text-align:center">Books Listings:</h1>
@@ -18,11 +18,11 @@
 
             <div class="pageSwap">
                 <div class="prevPage">
-                    <a href="#">&lt;&lt;</a>
+                    <button type="button" onclick="generateListings('prev')">&lt;&lt;Prev</button>
                 </div>
                 <div class="pageNumbers"></div>
                 <div class="nextPage">
-                    <a href="#">&gt;&gt;</a>
+                    <button type="button" onclick="generateListings('next')">Next&gt;&gt;</button>
                 </div>
             </div>
 	    </div>
@@ -37,61 +37,47 @@
 		$listEntries = 10; // possible to add a function to change number of listings to display
 		$outputArr = array();
 
-	function changeDisplayCount($displayCount) {
-		global $startList, $listEntries, $conn, $outputArr;
-		$outputArr = array();
-		$listEntries = $displayCount;
-		// do this to reset the the results so things arent messed up on prev/next
-		$startList = 0; // this should update on page change (next and prev clicks)
-		$fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Books' AND listing_id >= $startList AND listing_id < ($startList + $listEntries)";
-		$entries = $conn->query($fetchEntries);
-		while($row = mysqli_fetch_array($entries)) {
-			array_push($outputArr, $row);
-		}
-	}
-
-	// on page open call loadEntries("initial");
-	function callEntries($change) {
-		// change should be "add" or "sub"
-		// add or subtract by list entries
-		global $startList, $listEntries, $conn, $outputArr;
-		$outputArr = array();
-		if ($change == "add"){
-			$startList = $startList + $listEntries;
-		}
-		else if ($change == "sub") {
-			if ($startList > ($startList - $listEntries)) {
-				$startList = 0; // so start list doesnt end up as a neg number
-			}
-			else {
-				$startList = $startList - $listEntries;
-			}
-		}
-		else if ($change == "initial") {
-			$startList = 0;
-		}
-		else {
-			//output error
-		}
+	    // on page open call loadEntries("initial");
+	    function callEntries($myAction) {
+		    // change should be "add" or "sub"
+		    // add or subtract by list entries
+		    global $startList, $listEntries, $conn, $outputArr;
+		    $outputArr = array();
+            $highestID = "SELECT list_ID FROM listingbase WHERE list_ID = (SELECT MAX(list_ID) FROM listingbase)";
+		    if ($myAction == "next"){
+			    $startList = $startList + $listEntries;
+		    }
+		    else if ($myAction == "prev") {
+			    if ($startList > ($startList - $listEntries)) {
+				    $startList = 0; // so start list doesnt end up as a negative number
+			    }
+			    else {
+				    $startList = $startList - $listEntries;
+			    }
+		    }
+		    else {
+                // should be either 'initial' or invalid string result
+			    $startList = 0;
+		    }
 	
-		$fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Books' AND listing_id >= $startList AND listing_id < ($startList + $listEntries)";
-		$entries = $conn->query($fetchEntries);
-		// creates a 2d array with the queries results
-		while($row = mysqli_fetch_array($entries)) {
-			$idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[5]";
-			$userbaseRow = $conn->query($idToUsername);
-			array_push($row, mysqli_fetch_array($userbaseRow)[0]); // makes it so the 7th array element is username
-			array_push($outputArr, $row);
-		}
-		// return the 2d array to parse it in the js
-		$realOutput = json_encode($outputArr);
-		echo "var jsArr = " . json_encode($outputArr) . ";";
-	}
+		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Books' LIMIT $startList, $listEntries";
+		    $entries = $conn->query($fetchEntries);
+		    // creates a 2d array with the queries results
+		    while($row = mysqli_fetch_array($entries)) {
+			    $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[5]";
+			    $userbaseRow = $conn->query($idToUsername);
+			    array_push($row, mysqli_fetch_array($userbaseRow)[0]); // makes it so the 7th array element is username
+			    array_push($outputArr, $row);
+		    }
+		    // return the 2d array to parse it in the js
+		    $realOutput = json_encode($outputArr);
+		    echo "var jsArr = " . json_encode($outputArr) . ";";
+	    }
 	?>
-
-	function initialListings() {
+    // arguement should be 'initial', 'next', or 'prev'
+	function generateListings() {
         <?php 
-            echo json_encode(callEntries('initial')); //fetches the array and stores it out in jsArr
+            echo json_encode(arguments[0]); //fetches the array and stores it out in jsArr
         ?>
         
         for (var i = 0; i < jsArr.length; i++) {
