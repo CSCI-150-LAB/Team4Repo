@@ -285,6 +285,62 @@ input[type=submit] {
     display: none;
 }
 
+.inboxHeader{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    background-color: gray;
+    border: 1px solid black;
+
+}
+
+.messageContainer{
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid black;
+    position: relative;
+}
+
+.messageSubject{
+    border-left: 1px solid black;
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    margin:0;
+}
+
+.messageImage{
+    float: left;
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.inboxButtons{
+    width: 100%;
+    left: 210px;
+    bottom: 5px;
+    position: absolute;
+}
+
+.button3 {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #1154e6;
+}
+
+.button3:hover {
+    background-color: #1E79BE;
+    color: white;
+}
+
 input[name="send"] {
     width: 100%;
     padding: 12px 20px;
@@ -292,7 +348,7 @@ input[name="send"] {
     display: inline-block;
     border: 1px solid #d6cccc;
     box-sizing: border-box;
-    background-color: rgba(192, 200, 209, 0.986); /*hexcode is #648DBE*/
+    background-color: rgba(192, 200, 209, 0.986); 
 }
 
 .backToListings {

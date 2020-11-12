@@ -22,6 +22,10 @@
         $poster = $userbaseResult['user_name'];
 
         $title = $result['listing_title'];
+
+        $_SESSION['title'] = $title;
+        $_SESSION['imageLink'] = $imageLink;
+        $_SESSION['poster'] = $poster;
     }
 ?>
 <script>
@@ -78,12 +82,9 @@
 
     <button class="button1 messageButton" onclick="openMessage()">Message</button>
     <div class="messageBox" id= "messageBox" name="messageBox">
-        <form action="./messageSend.php" method="post">
+        <form action="./messageSend.php" method="POST">
             <label for="message">Message:</label>
             <input type="text" id="message" name="message" required>
-            <input type="hidden" id="hiddenVal" name="hiddenVal" value="<?php echo $poster; ?>">
-            <input type="hidden" id="hiddenVal2" name="hiddenVal2" value="<?php echo $imageLink; ?>">
-            <input type="hidden" id="hiddenVal3" name="hiddenVal3" value="<?php echo $title; ?>">
             <input type="submit" id="send" name="send" value="SEND">
             <!-- Will cancel message pop up -->
             <button class="button2 cancelButton" onclick="closeMessage()">Cancel Message</button>
