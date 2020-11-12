@@ -1,40 +1,24 @@
-<?php
-    include 'header.php';
-?>
-<body onload="initialListings()">
-	<div class="mainHolder">
-        <div>
-		    <h1 style="text-align:center">Furniture Listings:</h1>
-            <div id="listingHolder">
-            <?php
-                if ($_SESSION['role'] == 'admin') {
-                    echo "
-                    <script type='text/html'>
-                        <button type='button' onclick='deleteThisListing()' /> 
-                    </script>";
-                }
-            ?>
-            </div>
+<!-- 
+Use this as a generic template to get elements
+Edit it so the $fetchEntries condition suits the page 
+For example, on furnitures listing page you would change it to
+$fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Furniture' AND listing_id >= $startList AND listing_id < ($startList + $listEntries)";
 
-            <div class="pageSwap">
-                <div class="prevPage">
-                    <a href="#">&lt;&lt;</a>
-                </div>
-                <div class="pageNumbers"></div>
-                <div class="nextPage">
-                    <a href="#">&gt;&gt;</a>
-                </div>
-            </div>
-	    </div>
-	</div>
-</body>
-<script type="text/javascript">
+You also need to:
+    1. change the where to append the listings too it is at the end of callEntries() function
+    2. call `onload="initialListings()"` in the body tag
+        <body onload="">
+
+You should be able to copy paste everything in the script tag (includeing the tag) and change $fetchEntries and it should work
+-->
+<script>
 	<?php
 		require ("./db_conn.php");
 		// every id element is going to need to be changed to include id
 		// maybe the onclick functions too
 		$startList = 0; // this should update on page change (next and prev clicks)
 		$listEntries = 10; // possible to add a function to change number of listings to display
+		$template = "listEntryTemplate.html";
 		$outputArr = array();
 
 	function changeDisplayCount($displayCount) {
@@ -43,7 +27,7 @@
 		$listEntries = $displayCount;
 		// do this to reset the the results so things arent messed up on prev/next
 		$startList = 0; // this should update on page change (next and prev clicks)
-		$fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Furniture' AND listing_id >= $startList AND listing_id < ($startList + $listEntries)";
+		$fetchEntries = "SELECT * FROM listingbase WHERE listing_id >= $startList AND listing_id < ($startList + $listEntries)";
 		$entries = $conn->query($fetchEntries);
 		while($row = mysqli_fetch_array($entries)) {
 			array_push($outputArr, $row);
@@ -74,7 +58,7 @@
 			//output error
 		}
 	
-		$fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Furniture' AND listing_id >= $startList AND listing_id < ($startList + $listEntries)";
+		$fetchEntries = "SELECT * FROM listingbase WHERE listing_id >= $startList AND listing_id < ($startList + $listEntries)";
 		$entries = $conn->query($fetchEntries);
 		// creates a 2d array with the queries results
 		while($row = mysqli_fetch_array($entries)) {
@@ -84,19 +68,23 @@
 			array_push($outputArr, $row);
 		}
 		// return the 2d array to parse it in the js
+		//print_r($outputArr); // printing for testing purposes
 		$realOutput = json_encode($outputArr);
 		echo "var jsArr = " . json_encode($outputArr) . ";";
 	}
 	?>
+    <?php 
+        echo json_encode(callEntries('initial')); // for testing the browser console
+    ?>
 
 	function initialListings() {
         <?php 
-            echo json_encode(callEntries('initial')); //fetches the array and stores it out in jsArr
+            echo json_encode(callEntries('initial'));
         ?>
         
         for (var i = 0; i < jsArr.length; i++) {
             // going through the holder of the Listings
-            var pageLink = "exListing1.php?listID=" + jsArr[i][0]; // this is temp until directories are stored in db
+            var pageLink = "errorLink" + ".php"; // this is temp until directories are stored in db
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
@@ -197,7 +185,10 @@
             report.classList.add("reportForm");
             divE.appendChild(report);
 
-            document.getElementById("listingHolder").appendChild(le);
+            document.body.appendChild(le);
         }
     }
 </script>
+<body onload="initialListings()">
+
+</body>

@@ -1,3 +1,4 @@
+/* Universal CSS */
 * {
     border: 0px;
     margin: 0px;
@@ -6,135 +7,198 @@
 }
 
 body {
+    margin: 5px;
     background-color: white;
 }
 
-div.mainHolder {
-    display: block;
+.logoText {
+    /* based on a 2:1 image ratio*/
+    display: inline-block;
+    width: 20%;
+    height: 75px;
 }
 
-img.logoText {
-    display: none;
-}
-
-img.logoImage{
-    display: none;
-}
-
-.navBar-container {
-    width: 100%;
-    display: table;
-}
-
-.navBar {
+.navbar {
+    overflow: hidden;
     background-color: #1E9AFF;
     width: 100%;
     height: auto;
-    overflow: auto;
-    position: relative;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 16px;
 }
 
-.navBar a {
-    display: block;
-    padding: 11px;
-    float: none;
-    color: white;
+.navbar a{
+        padding: 16px 0;
+        width: 25%;
+        display: inline-block;
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+}
+
+.dropdownContainer {
+    float: left;
+    overflow: hidden;
+    width: 25%;
+    display: inline-block;
     text-align: center;
+}
+
+.dropdownContainer:hover .dropdownContent {
+    display: block;
+}
+
+.dropdownContainer .ddButton {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 16px 0;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdownContainer:hover {
+    background-color: #1E79BE;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: inherit;
+    text-align: center;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+
+.dropdownContent a {
+    width: 100%;
+    float: center;
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
+    display: block;
+    text-align: center;
 }
 
-.navBar a:hover {
-    background-color: #1E79BE; /* on hover color #1E9AFF. 1E9AFF */
+.dropdownContent a:hover {
+    background-color: #ddd;
 }
 
-div.pageContent {
+.mainHolder {
+    padding-bottom: 50px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 1px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Page Elements CSS*/
+
+.logoLogin {
+    /* based on a 4:3 image ratio*/
+    display: block; 
+    margin: 10px auto 50px auto;
+    width: 50%;
+    height: 10%;
+}
+
+.homePageContent {
+    padding: 20px;
+    display: flex;
+}
+
+.pageContent {
     padding: 20px;
     display: block;
 }
 
-div.leftSide {
-    width: 100%;
+.leftSide {
+    flex: 50%;
 }
 
-div.rightSide {
-    width: 100%;
+.rightSide {
+    flex: 50%;
 }
 
-div.textBox {
-    width: 90%;
-    margin: 0 auto;
-    padding: 0px 10px;
-    font-size: 12px;
-    color: black;
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-
-div.forumPreview {
+.forumPreview {
     margin: 20px 0px;
     padding: 10px 0px;
     display: block;
-    float: center;
     background-color: #D1D1D1;
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-div.listingMenu {
+.listingMenu {
     margin: 20px 0px;
     padding: 0px;
     display: block;
-    float: center;
     background-color: #D1D1D1;
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-div.listingMenu a {
-    margin: 0;
-    padding: 10px 0;
-    width: 100%;
-    display: block;
-    float: center;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-}
+    .listingMenu a {
+        margin: 0;
+        padding: 10px 0;
+        width: 100%;
+        display: block;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+    }
 
-div.listingMenu a:hover{
-    background-color: #A1A1A1;
-}
+        .listingMenu a:hover {
+            background-color: #A1A1A1;
+        }
 
-div.newsFeed {
+.newsFeed {
+    padding: 10px;
+    margin: 20px;
     display: flex;
-    float: center;
     background-color: #D1D1D1;
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-div.tagSearch {
-    padding: 20px 10px;
-}
-
-select.tagList {
-    display: block;
-    margin: 0px auto;
-    width: 100%;
-    border: 1px solid black;
+.newUserText {
+    padding-left: 5px;
 }
 
 form {
     background-color: #b3b3b3;
     border: 1px solid #8a8a8a;
-    width: 90%;
-    margin: 0 auto;
+    width: 400px;
+    margin: auto;
     padding: 5px;
 }
 
 .loginBox {
-    padding: 5px;
+    padding: 20px;
+}
+
+.forgotPass {
+    padding: 20px 0px 0px 0px;
+    font-size: 16px;
+}
+
+.newUser {
+    background-color: #b3b3b3;
+    border: 1px solid #8a8a8a;
+    width: 400px;
+    margin: 20px auto;
+    padding: 10px 5px 10px 5px;
 }
 
 input[type=text], input[type=password] {
@@ -155,277 +219,178 @@ input[type=submit] {
     border: 0px;
     font-weight: bold;
 }
+/* Listing Elements CSS */
 
-.forgotPass {
-    padding: 5px;
-    font-size: 16px;
+.listingContainer {
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid black;
 }
 
-div.newUser {
-    background-color: #b3b3b3;
-    border: 1px solid #8a8a8a;
-    width: 90%;
-    margin: 10px auto;
-    padding: 5px;
+.listingImage {
+    display: block;
+    max-width: 100%;
+    max-height: 50vh;
+    height: auto;
+    margin: auto;
+}
+
+.listingBody {
+    border-left: 1px solid black;
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+}
+
+.listingPoster {
+    border-left: 1px solid black;
+    margin-left: 5px;
+    padding: 0px 5px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.button1 {
+    border: none;
+    color: white;
+    padding: 15px 32px;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #1E9AFF;
 }
 
-div.interactionMenu {
-    margin-top: 100px
+.button2 {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #1154e6;
 }
 
-@media screen and (min-width:768px) {
-    div.mainHolder {
-        padding-bottom: 50px;
-    }
+.messageButton:hover, .cancelButton:hover {
+    background-color: #1E79BE;
+    color: white;
+}
 
-    img.logoText {
-        /* based on a 2:1 image ratio*/
-        display: inline-block;
-        width:20%;
-        height: 75px;
-    }
+.messageBox{
+    display: none;
+}
 
-    img.logoImage{
-        /* based on a 4:3 image ratio*/
-        display: block;
-        width: 100px;
-        height:75px;
-        float: right;
-    }
-    
-    .navBar-container {
-        width: 100%;
-        display: block;
-        padding-bottom: 50px;
-    }
-    
-    .navBar {
-        background-color: #1E9AFF;
-        width: 100%;
-        height: auto;
-        overflow: auto;
-        position: fixed;
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+.inboxHeader{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    background-color: gray;
+    border: 1px solid black;
 
-    .navBar a {
-        width: 20%; /* this changes with respect to the number of elements in the top bar */
-        display: inline-block;
-        margin: 0;
-        padding: 16px 0 16px 0;
-        float: left;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-    }
+}
 
-    .navBar a:hover{
-        background-color: #1E79BE; /* on hover color #1E79BE. 1E9AFF */
-    }
-    
-    div.homePageContent {
-        padding: 20px;
-        display: flex;
-    }
-    
-    div.pageContent {
-        padding: 20px;
-        display: block;
-    }
-    
-    div.leftSide {
-        flex: 50%;
-    }
-    
-    div.rightSide {
-        flex: 50%;
-    }
+.messageContainer{
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid black;
+    position: relative;
+}
 
-    div.forumPreview {
-        margin: 20px 0px;
-        padding: 10px 0px;
-        display: block;
-        float: center;
-        background-color: #D1D1D1;
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+.messageSubject{
+    border-left: 1px solid black;
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    margin:0;
+}
 
-    div.listingMenu {
-        margin: 20px 0px;
-        padding: 0px;
-        display: block;
-        float: center;
-        background-color: #D1D1D1;
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+.messageImage{
+    float: left;
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+}
 
-    div.listingMenu a {
-        margin: 0;
-        padding: 10px 0;
-        width: 100%;
-        display: block;
-        float: center;
-        color: black;
-        text-align: center;
-        text-decoration: none;
-    }
+.inboxButtons{
+    width: 100%;
+    left: 210px;
+    bottom: 5px;
+    position: absolute;
+}
 
-    div.listingMenu a:hover{
-        background-color: #A1A1A1;
-    }
+.button3 {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #1154e6;
+}
 
-    div.newsFeed {
-        padding: 10px;
-        margin: 20px;
-        display: flex;
-        float: center;
-        background-color: #D1D1D1;
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    
-    div.tagSearch {
-        padding: 25px;
-    }
+.button3:hover {
+    background-color: #1E79BE;
+    color: white;
+}
 
-    select.tagList {
-        display: block;
-        margin: 0px auto;
-        width: 50%;
-        border: 1px solid black;
-    }
-    
-    form {
-        background-color: #b3b3b3;
-        border: 1px solid #8a8a8a;
-        width: 400px;
-        margin: auto;
-        padding: 5px;
-    }
+input[name="send"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #d6cccc;
+    box-sizing: border-box;
+    background-color: rgba(192, 200, 209, 0.986); 
+}
 
-    .loginBox {
-        padding: 20px;
-    }
+.backToListings {
+    margin: 5px;
+}
 
-    input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #8a8a8a;
-        box-sizing: border-box;
-        background-color: rgba(100, 140, 190, 0.2); /*hexcode is #648DBE*/
-        
-    }
-
-    input[type=submit] {
-        width: 100%;
-        background-color: #002E6D;
-        color: white;
-        padding: 16px 0 16px 0;
-        border: 0px;
-        font-weight: bold;
-        
-    }
-    
-    .forgotPass {
-        padding: 20px 0px 0px 0px;
-        font-size: 16px;
-    }
-    
-    div.newUser {
-        background-color: #b3b3b3;
-        border: 1px solid #8a8a8a;
-        width: 400px;
-        margin: 20px auto;
-        padding: 10px 5px 10px 5px;
-    }
-	
-	table, th, td{
-		border: 1px solid black;
-		padding: 1px solid black;
-	}
-	
-	.center{
-		margin-left:auto;
-		margin-right:auto;
-	}
-	
-    div.listingContainer {
-        margin: 0 auto;
-        display: flex;
-        border: 1px solid black;
-    }
-    
-    .listingImage {
-        display: block;
-        max-width: 100%;
-        max-height: 50vh;
-        height: auto;
-        margin: auto;
-    }
-    
-    .listingBody {
-        border-left: 1px solid black;
-        font-size: 18px;
-        padding: 10px;
-        width: 100%;
-    }
-    
-    .listingPoster {
-        border-left: 1px solid black;
-        margin-left: 5px;
-        padding: 0px 5px;
-        display: inline-flex;
-        align-items: center;
-    }
-    
-    .backToListings {
-        margin: 5px;
-        
-    }
-    
-    .listingEntry {
-        display: block;
-        margin-left: 5px;
-        
-        /* This centers the content but not to a left sided margin
+.listingEntry {
+    display: block;
+    margin-left: 5px;
+    /* This centers the content but not to a left sided margin
         display: flex;
         justify-content: center;
         margin: auto;
         align-items: center; */
-    }
-    
-    .entry {
-        overflow: hidden;
-        margin-left: 5px;
-    }
+}
 
-    .listingThumbnail {
-        float: left;
-        margin-bottom: 2px;
-        margin-right: 5px;
-        margin-top: 0;
-        margin-left: 0;
-        overflow: hidden;
-        width: 70px;
-    }
+.entry {
+    overflow: hidden;
+    margin-left: 5px;
+}
 
-    .title {
-        font-size: 20px;
-        margin: 1px;
-    }
+.listingThumbnail {
+    float: left;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    margin-top: 0;
+    margin-left: 0;
+    overflow: hidden;
+    width: 70px;
+}
 
-    ul.interactionButtons {
-        list-style-type: none;
-        display: block;
-        padding: 1px;
-    }
+.title {
+    font-size: 20px;
+    margin: 1px;
+}
+
+.interactionButtons {
+    list-style-type: none;
+    display: block;
+    padding: 1px;
+}
+
     .interactionButtons li {
         list-style-type: none;
         display: inline-block;
@@ -434,24 +399,37 @@ div.interactionMenu {
         padding: 0px 5px;
     }
 
-    .postInfo {
-        font-size: 12px;
-        padding-left: 6px;
-    }
-    
-    .pageSwap {
-        margin: 20px 50px;
-    }
-    
-    .prevPage {
-        display: inline-block;
-        float: left;
-        /* margin-left: 50px; */
-    }
-    
-    .nextPage {
-        display: inline-block;
-        float: right;
-        /* margin-right: 50px; */
-    }
+.postInfo {
+    font-size: 12px;
+    padding-left: 6px;
+}
+
+.pageSwap {
+    margin: 20px 50px;
+}
+
+.prevPage {
+    display: inline-block;
+    float: left;
+    /* margin-left: 50px; */
+}
+
+.nextPage {
+    display: inline-block;
+    float: right;
+    /* margin-right: 50px; */
+}
+
+
+/* Forum Elements CSS */
+
+.tagSearch {
+    padding: 25px;
+}
+
+.tagList {
+    display: block;
+    margin: 0px auto;
+    width: 50%;
+    border: 1px solid black;
 }

@@ -1,37 +1,14 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-	<meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./mainStyleSheet.css">
-</head>
-
+<?php
+   require ("./header.php");
+?>
 <body>
-	<div class="mainHolder">
-		<img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
-        <img class="logoImage" src="./images/logoImage.png" alt="Website Image Logo">
-        <div class="navBar-container">
-            <div class="navBar">
-                <a href="HomePage.html">Home</a>
-                <a href="ForumPage.html">Forums</a>
-                <a href="ListPage.html">Donation Listings</a>
-                <a href="AboutPage.html">About</a>
-                <a href="LoginPage.html">Login</a>
-            </div>   
-        </div>
-
-<h1>Create A Forum</h1>
-
-
-<form action="/action_page.php" method="post" target="_blank">
-
-		<div>
-			<p>Select Class</p>
-			<label for="itemselection"> </label>
-			<select id="itemselection" name="itemselection" required>
-                    <option selected="" value="null">Search by tag:</option>
+    <h1>Create A Forum</h1>
+    <form action="./createforumdata.php" method="post" target="_blank" enctype="multipart/form-data">
+        <div>
+	        <p>Select Class</p>
+	        <label for="itemselection"> </label>
+	        <select id="itemselection" name="itemselection" required>
+                    <option selected="" value="null">Tag:</option>
                     <option value="ACCT">Accountancy (ACCT)</option>
                     <option value="AFRS">Africana Studies Program (AFRS)</option>
                     <option value="AGBS">Agricultural Business (AGBS)</option>
@@ -168,26 +145,22 @@
                     <option value="VIT">Viticulture (VIT)</option>
                     <option value="WS">Women's Studies (WS)</option>
             </select>
-		<div>
-	</div>
-			
-  <label for="sub">Subject</label>
-  
-  <input type="text" id="sub" name="sub" required maxlength="50">
-  </div>
-  <div>
-  <label></label>
-  <textarea id="myTextArea" maxlength="1000" rows="30" cols="60"placeholder= "Description"required
-  style="border:3px solid #F7730E;">
-</textarea>
+        </div>
 
-
-  <br><br>
+        <div>
+            <input type="text" id="sub" name="sub"placeholder ="Subject" required maxlength="50">
+        </div>
  
-  <input type="submit" value="Submit">
-</form>
+        <div>
+            <label></label>
+            <textarea id="myTextArea" name="myTextArea" required maxlength="1000"rows="30" cols="60" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
+        </div>
 
-
-
+        <div>
+		    <label>Select image file:</label>
+		    <input type="file" name="image" accept="image/*" required>
+	    </div>
+        <br><br>
+        <input type="submit" value="post" name ="submit">
+    </form>
 </body>
-</html>
