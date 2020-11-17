@@ -41,7 +41,6 @@
 		    // add or subtract by list entries
 		    global $startList, $listEntries, $conn, $outputArr;
 		    $outputArr = array();
-            $highestID = "SELECT list_ID FROM listingbase WHERE list_ID = (SELECT MAX(list_ID) FROM listingbase)";
 		    if ($myAction == "next"){
 			    $startList = $startList + $listEntries;
 		    }

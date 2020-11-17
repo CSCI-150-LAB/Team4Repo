@@ -6,9 +6,10 @@
     $poster = "No Data Loaded";
     $title = "No Data Loaded";
     $posterLink = "pageProfile.php";
+    $postID;
 
     if(isset($_GET['postID'])){
-        GLOBAL $imageLink, $description, $poster, $conn, $title, $posterLink;
+        GLOBAL $imageLink, $description, $poster, $conn, $title, $posterLink, $postID;
         $postID = $_GET['postID'];
 
         $fetchEntries = "SELECT * FROM post_base WHERE post_ID = $postID";
@@ -29,8 +30,28 @@
         $_SESSION['poster'] = $poster;
         $posterLink = "pageProfile.php?userID=" . $userID;
     }
+
+    function callComments(){
+        GLOBAL $postID;
+        $outputArr = array();
+
+        $fetchEntries = "SELECT * FROM forum_comments_base WHERE $postID=post_ID ORDER BY post_ID DESC";
+		$entries = $conn->query($fetchEntries);
+		// creates a 2d array with the queries results
+		while($row = mysqli_fetch_array($entries)) {
+			$idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[1]";
+			$userbaseRow = $conn->query($idToUsername);
+            $username = mysqli_fetch_array($userbaseRow)['user_name'];
+			array_push($row, $username); // makes it so the 7th array element is username
+			array_push($outputArr, $row);
+		}
+		// return the 2d array to parse it in the js
+		$realOutput = json_encode($outputArr);
+		echo "var commentArr = " . json_encode($outputArr) . ";";
+        $conn->close();
+    }
 ?>
-<script>
+<script type="text/javascript">
     function copyLink() {
         var tempTextbox = document.createElement("textarea");
         document.body.appendChild(tempTextbox);
@@ -38,6 +59,56 @@
         tempTextbox.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextbox);
+    }
+
+    function loadComments() {
+        <?php
+            echo json_encode(callComments()); //fetches the array and stores it out in commentArr
+        ?>
+
+        document.getElementById("commentContainer").innerHTML = "";
+        for (var i = 0; i < commentArr.length; i++) {
+            // going through the holder of the Listings
+            var senderID = commentArr[i][1];
+            var senderName = commentArr[i][4];
+            var profileLink = commentArr[i][4] + ".php"; // php should match the extension of the profilePage
+
+            var commentBody = commentArr[i][3];
+            
+
+            // listing entry div
+            var commentDiv = document.createElement("div");
+            commentDiv.classList.add("commentEntry");
+            commentDiv.id = "comment_" + i;
+            
+            var commentSender = document.createElement("a");
+            commentSender.classList.add("commentSenderName");
+            commentSender.setAttri
+            commentSender.innerHTML = senderName;
+            commentDiv.appendChild(commentSender);
+
+            var commentText = document.createElement("p");
+            commentText.classList.add("commentText");
+            commentDiv.appendChild(commentText);
+            
+            // interaction buttions creation
+            var ulList = document.createElement("ul");
+            ulList.classList.add("interactionButtons");
+            commentDiv.appendChild(ulList);
+
+            var li_3 = document.createElement("li");
+            li_3.classList.add("reportButton");
+            ulList.appendChild(li_3);
+
+            var button3 = document.createElement("a");
+            button3.id = "report";
+            button3.classList.add("reportBtn");
+            button3.setAttribute("value", fullPageLink);
+			button3.setAttribute("href", reportLink);
+            button3.innerHTML = "report";
+            li_3.appendChild(button3);
+
+            document.getElementById("commentContainer").appendChild(commentDiv);
     }
 
     function backPage(){

@@ -38,7 +38,7 @@
 		$outputArr = array();
 
 	    // on page open call loadEntries("initial");
-	    function callEntries($change) {
+	    function callEntries($myAction) {
 		    // change should be "add" or "sub"
 		    // add or subtract by list entries
 		    global $startList, $listEntries, $conn, $outputArr;

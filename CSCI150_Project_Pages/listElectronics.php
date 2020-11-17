@@ -38,7 +38,7 @@
 		$outputArr = array();
 
 	    // on page open call loadEntries("initial");
-	    function callEntries($change) {
+	    function callEntries($myAction) {
 		    // change should be "add" or "sub"
 		    // add or subtract by list entries
 		    global $startList, $listEntries, $conn, $outputArr;
@@ -177,7 +177,6 @@
             button3.id = "report";
             button3.classList.add("reportBtn");
             button3.setAttribute("value", fullPageLink);
-            //button3.setAttribute("onclick", "");
 			button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);

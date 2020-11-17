@@ -38,7 +38,7 @@
 		$outputArr = array();
 
 	    // on page open call loadEntries("initial");
-	    function callEntries($change) {
+	    function callEntries($myAction) {
 		    // change should be "add" or "sub"
 		    // add or subtract by list entries
 		    global $startList, $listEntries, $conn, $outputArr;
@@ -59,7 +59,7 @@
 			    $startList = 0;
 		    }
 	
-		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Others' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
+		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Other' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
 		    $entries = $conn->query($fetchEntries);
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {
