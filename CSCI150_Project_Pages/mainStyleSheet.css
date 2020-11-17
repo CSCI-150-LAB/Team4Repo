@@ -300,6 +300,8 @@ input[type=submit] {
     display: flex;
     border: 1px solid black;
     position: relative;
+    width: 100%;
+    max-height: 200px;
 }
 
 .messageSubject{
@@ -313,33 +315,37 @@ input[type=submit] {
 .messageImage{
     float: left;
     display: block;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 210px;
+    max-height: 210px;
 }
 
 .inboxButtons{
-    width: 100%;
-    left: 210px;
-    bottom: 5px;
+    width: 75%;
+    left: 110px;
+    bottom: 3px;
     position: absolute;
+    display: flex;
 }
 
-.button3 {
+#button3 {
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 24px;
     text-align: center;
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 1px 1px;
     cursor: pointer;
     background-color: #1154e6;
 }
 
-.button3:hover {
+#button3:hover {
     background-color: #1E79BE;
     color: white;
 }
+
+
 
 input[name="send"] {
     width: 100%;
