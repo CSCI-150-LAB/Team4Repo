@@ -30,6 +30,6 @@
     userFirst = "<?php echo $_SESSION['firstName']; ?>";
     userEmail = "<?php echo $_SESSION['email']; ?>";
     userProfilePage = userEmail.substr(0, userEmail.indexOf("@")) + ".php";
-    document.getElementById("userButton").innerHTML = userFirst;
+    document.getElementById("userButton").innerHTML = userFirst + '&#9662';
     //document.getElementById("userProfile").setAttribute("href", userProfilePage);
 </script>

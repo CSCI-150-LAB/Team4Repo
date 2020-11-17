@@ -5,7 +5,6 @@
 	<div class="mainHolder">
         <div>
 		    <h1 style="text-align:center">Clothes Listings:</h1>
-            <div id="listingHolder">
             <?php
                 if ($_SESSION['role'] == 'admin') {
                     echo "
@@ -14,6 +13,10 @@
                     </script>";
                 }
             ?>
+            <a href="./listDonationDir.php">Back to Directory</a>
+            <div id="listingHolder">
+            
+            
             </div>
 
             <div class="pageSwap">

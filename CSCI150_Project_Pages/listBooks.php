@@ -10,6 +10,7 @@
                     echo "<button type='button' onclick='deleteThisListing()'>Admin Button</button>;";
                 }
             ?>
+            <a href="./listDonationDir.php">Back to Directory</a>
             <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
             
