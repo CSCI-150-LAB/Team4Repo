@@ -58,7 +58,7 @@
 			    $startList = 0;
 		    }
 	
-		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Books' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
+		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Book' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
 		    $entries = $conn->query($fetchEntries);
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {

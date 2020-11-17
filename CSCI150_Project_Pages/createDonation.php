@@ -10,8 +10,8 @@
 				<label>Select item type</label>
 				<select name="itemselection" required>
 					<option value="">-</option>
-					<option value="Books">Books</option>
-					<option value="Furnitures">Furnitures</option>
+					<option value="Book">Book</option>
+					<option value="Furniture">Furniture</option>
 					<option value="Electronic">Electronic</option>
 					<option value="Clothes">Clothes</option>
 					<option value="Other">Other</option>

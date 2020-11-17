@@ -49,7 +49,8 @@
                     <?php echo $poster ?>
                 </a>
             </div>
-            
+        </div>
+        <div class="commentContainer">
         </div>
 	</div>
 </body>
