@@ -8,22 +8,26 @@
         $pass = $_POST['pwd'];
 
         // $conn->query($sql) SELECT query in database to check user info
-        $sql = "SELECT * FROM userbase WHERE user_email ='$email'";// AND user_pwd='$hashedPass' LIMIT 1";
+        $sql = "SELECT * FROM userbase WHERE user_email ='$email' AND user_ban = '0'";// AND user_pwd='$hashedPass' LIMIT 1";
         $result = $conn->query($sql);
+		
+		//check if query return any results, if not user was banned
+		if(mysqli_num_rows($result)==0){	
+			echo '<script type ="text/javascript">
+				alert("Your account is banned.");
+				window.location.href = "./pageLogin.php";
+				</script>';
+		}
+		
+		//assign $row return values from $result into associate array
         $row = mysqli_fetch_assoc($result);
+		
 		
         //uses fetch_assoc and if $row returns an array then continue because there is data
         if (is_array($row)){
-			//check for banned user; '1' is banned users
-			if($row['user_ban'] = '1'){
-				echo '<script type ="text/javascript">
-					alert("Your account is banned.");
-					window.location.href = "./pageLogin.php";
-					</script>';
-				return;
-			}
+			
             //decrypts password hash and checks it according Bcrypt used in sessionSignup.php
-            else if(password_verify($pass, $row['user_pwd'])){
+            if(password_verify($pass, $row['user_pwd'])){
                 session_start();
                 $_SESSION['user_ID'] = $row['user_ID'];
                 $_SESSION['firstName'] = $row['user_first'];
