@@ -1,28 +1,26 @@
 <?php
 	include 'header.php';
 ?>
-<body onload="generateListings('initial')">
+<body onload="initialListings()">
 	<div class="mainHolder">
         <div>
 		    <h1 style="text-align:center">Books Listings:</h1>
-            <div id="listingHolder">
             <?php
                 if ($_SESSION['role'] == 'admin') {
-                    echo "
-                    <script type='text/html'>
-                        <button type='button' onclick='deleteThisListing()' /> 
-                    </script>";
+                    echo "<button type='button' onclick='deleteThisListing()'>Admin Button</button>;";
                 }
             ?>
+            <!-- leave listingHolder empty it gets wiped when loading entries -->
+            <div id="listingHolder">
+            
             </div>
-
             <div class="pageSwap">
                 <div class="prevPage">
-                    <button type="button" onclick="generateListings('prev')">&lt;&lt;Prev</button>
+                    <button type="button" onclick="prevListings()">&lt;&lt;Prev</button>
                 </div>
                 <div class="pageNumbers"></div>
                 <div class="nextPage">
-                    <button type="button" onclick="generateListings('next')">Next&gt;&gt;</button>
+                    <button type="button" onclick="nextListings()">Next&gt;&gt;</button>
                 </div>
             </div>
 	    </div>
@@ -60,7 +58,7 @@
 			    $startList = 0;
 		    }
 	
-		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Books' LIMIT $startList, $listEntries";
+		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Books' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
 		    $entries = $conn->query($fetchEntries);
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {
@@ -75,20 +73,21 @@
 	    }
 	?>
     // arguement should be 'initial', 'next', or 'prev'
-	function generateListings() {
+	function initialListings() {
         <?php 
-            echo json_encode(arguments[0]); //fetches the array and stores it out in jsArr
+            echo json_encode(callEntries('initial')); //fetches the array and stores it out in jsArr
         ?>
         
+        document.getElementById("listingHolder").innerHTML = "";
         for (var i = 0; i < jsArr.length; i++) {
             // going through the holder of the Listings
-            var pageLink = "exListing1.php?listID=" + jsArr[i][0]; // this is temp until directories are stored in db
+            var pageLink = "listEntry.php?listID=" + jsArr[i][0]; // this is temp until directories are stored in db
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
             var profileName = jsArr[i][7];
             var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
-            var postTime = jsArr[i][6].replace(/\./gi, " ");
+            var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 
             // listing entry div
@@ -183,6 +182,231 @@
             report.classList.add("reportForm");
             divE.appendChild(report);
 
+            document.getElementById("listingHolder").appendChild(le);
+        }
+    }
+    function prevListings() {
+        <?php 
+            echo json_encode(callEntries('prev')); //fetches the array and stores it out in jsArr
+        ?>
+        
+        document.getElementById("listingHolder").innerHTML = "";
+        for (var i = 0; i < jsArr.length; i++) {
+            // going through the holder of the Listings
+            var pageLink = "listEntry.php?listID=" + jsArr[i][0]; // this is temp until directories are stored in db
+            var imgLink = "./upload_images/" + jsArr[i][4];
+            var listingTitle = jsArr[i][2];
+            var listingBody = jsArr[i][3];
+            var profileName = jsArr[i][7];
+            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var postTime = jsArr[i][6].replace(/\./gi, "/");
+            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+
+            // listing entry div
+            var le = document.createElement("div");
+            le.classList.add("listingEntry");
+            le.id = "listing_" + i;
+
+            // image stuff
+            var imgA = document.createElement("a");
+            imgA.classList.add("listingThumbnail");
+            imgA.setAttribute("href", pageLink);
+            le.appendChild(imgA);
+
+            var imgImg = document.createElement("img");
+            imgImg.setAttribute("src", imgLink);
+            imgImg.setAttribute("width", "70");
+            imgImg.setAttribute("height", "52");
+            imgImg.setAttribute("alt", "");
+            imgA.appendChild(imgImg);
+
+            // entry div
+            var divE = document.createElement("div");
+            divE.classList.add("entry");
+            le.appendChild(divE);
+
+            // post info
+            var pTitle = document.createElement("p");
+            pTitle.classList.add("title");
+            divE.appendChild(pTitle);
+
+            var aTitle = document.createElement("a");
+            aTitle.classList.add("title");
+            aTitle.setAttribute("href", pageLink);
+            aTitle.innerHTML = listingTitle;
+            pTitle.appendChild(aTitle);
+
+            // post info
+            var pInfo = document.createElement("p");
+            pInfo.classList.add("postInfo");
+            pInfo.innerHTML = "posted on " + postTime + " by ";
+            divE.appendChild(pInfo);
+
+            var aInfo = document.createElement("a");
+            aInfo.classList.add("poster");
+            aInfo.setAttribute("href", profileLink);
+            aInfo.innerHTML = profileName;
+            pInfo.appendChild(aInfo);
+
+            // interaction buttions creation
+            var ulList = document.createElement("ul");
+            ulList.classList.add("interactionButtons");
+            divE.appendChild(ulList);
+            // share button is named copyBtn as shareBtn was not displaying for some reason
+            var li_1 = document.createElement("li");
+            li_1.classList.add("copyButton");
+            ulList.appendChild(li_1);
+
+            var button1 = document.createElement("a");
+            button1.id = "copyBtn";
+            button1.classList.add("copyBtn");
+            button1.setAttribute("value", fullPageLink);
+            //button1.setAttribute("onclick", "");
+            button1.innerHTML = "share";
+            li_1.appendChild(button1);
+
+            var li_2 = document.createElement("li");
+            li_2.classList.add("saveButton");
+            ulList.appendChild(li_2);
+
+            var button2 = document.createElement("a");
+            button2.id = "saveBtn";
+            button2.classList.add("saveBtn");
+            button2.setAttribute("value", fullPageLink);
+            //button2.setAttribute("onclick", "");
+            button2.innerHTML = "save";
+            li_2.appendChild(button2);
+
+            var li_3 = document.createElement("li");
+            li_3.classList.add("reportButton");
+            ulList.appendChild(li_3);
+
+            var button3 = document.createElement("a");
+            button3.id = "report";
+            button3.classList.add("reportBtn");
+            button3.setAttribute("value", fullPageLink);
+            //button3.setAttribute("onclick", "");
+            button3.innerHTML = "report";
+            li_3.appendChild(button3);
+
+            // report div
+            var report = document.createElement("div");
+            report.classList.add("reportForm");
+            divE.appendChild(report);
+
+            document.getElementById("listingHolder").appendChild(le);
+        }
+    }
+    function nextListings() {
+        <?php 
+            echo json_encode(callEntries('next')); //fetches the array and stores it out in jsArr
+        ?>
+
+        document.getElementById("listingHolder").innerHTML = "";
+        for (var i = 0; i < jsArr.length; i++) {
+            // going through the holder of the Listings
+            var pageLink = "listEntry.php?listID=" + jsArr[i][0]; // this is temp until directories are stored in db
+            var imgLink = "./upload_images/" + jsArr[i][4];
+            var listingTitle = jsArr[i][2];
+            var listingBody = jsArr[i][3];
+            var profileName = jsArr[i][7];
+            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var postTime = jsArr[i][6].replace(/\./gi, "/");
+            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+
+            // listing entry div
+            var le = document.createElement("div");
+            le.classList.add("listingEntry");
+            le.id = "listing_" + i;
+
+            // image stuff
+            var imgA = document.createElement("a");
+            imgA.classList.add("listingThumbnail");
+            imgA.setAttribute("href", pageLink);
+            le.appendChild(imgA);
+
+            var imgImg = document.createElement("img");
+            imgImg.setAttribute("src", imgLink);
+            imgImg.setAttribute("width", "70");
+            imgImg.setAttribute("height", "52");
+            imgImg.setAttribute("alt", "");
+            imgA.appendChild(imgImg);
+
+            // entry div
+            var divE = document.createElement("div");
+            divE.classList.add("entry");
+            le.appendChild(divE);
+
+            // post info
+            var pTitle = document.createElement("p");
+            pTitle.classList.add("title");
+            divE.appendChild(pTitle);
+
+            var aTitle = document.createElement("a");
+            aTitle.classList.add("title");
+            aTitle.setAttribute("href", pageLink);
+            aTitle.innerHTML = listingTitle;
+            pTitle.appendChild(aTitle);
+
+            // post info
+            var pInfo = document.createElement("p");
+            pInfo.classList.add("postInfo");
+            pInfo.innerHTML = "posted on " + postTime + " by ";
+            divE.appendChild(pInfo);
+
+            var aInfo = document.createElement("a");
+            aInfo.classList.add("poster");
+            aInfo.setAttribute("href", profileLink);
+            aInfo.innerHTML = profileName;
+            pInfo.appendChild(aInfo);
+
+            // interaction buttions creation
+            var ulList = document.createElement("ul");
+            ulList.classList.add("interactionButtons");
+            divE.appendChild(ulList);
+            // share button is named copyBtn as shareBtn was not displaying for some reason
+            var li_1 = document.createElement("li");
+            li_1.classList.add("copyButton");
+            ulList.appendChild(li_1);
+
+            var button1 = document.createElement("a");
+            button1.id = "copyBtn";
+            button1.classList.add("copyBtn");
+            button1.setAttribute("value", fullPageLink);
+            //button1.setAttribute("onclick", "");
+            button1.innerHTML = "share";
+            li_1.appendChild(button1);
+
+            var li_2 = document.createElement("li");
+            li_2.classList.add("saveButton");
+            ulList.appendChild(li_2);
+
+            var button2 = document.createElement("a");
+            button2.id = "saveBtn";
+            button2.classList.add("saveBtn");
+            button2.setAttribute("value", fullPageLink);
+            //button2.setAttribute("onclick", "");
+            button2.innerHTML = "save";
+            li_2.appendChild(button2);
+
+            var li_3 = document.createElement("li");
+            li_3.classList.add("reportButton");
+            ulList.appendChild(li_3);
+
+            var button3 = document.createElement("a");
+            button3.id = "report";
+            button3.classList.add("reportBtn");
+            button3.setAttribute("value", fullPageLink);
+            //button3.setAttribute("onclick", "");
+            button3.innerHTML = "report";
+            li_3.appendChild(button3);
+
+            // report div
+            var report = document.createElement("div");
+            report.classList.add("reportForm");
+            divE.appendChild(report);
+
+            //while(document.getElementById("listing"))
             document.getElementById("listingHolder").appendChild(le);
         }
     }

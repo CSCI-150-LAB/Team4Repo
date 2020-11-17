@@ -7,22 +7,22 @@
     $title = "No Data Loaded";
     $posterLink = "pageProfile.php";
 
-    if(isset($_GET['listID'])){
+    if(isset($_GET['postID'])){
         GLOBAL $imageLink, $description, $poster, $conn, $title, $posterLink;
-        $listID = $_GET['listID'];
+        $postID = $_GET['postID'];
 
-        $fetchEntries = "SELECT * FROM listingbase WHERE listing_id = $listID";
+        $fetchEntries = "SELECT * FROM post_base WHERE post_ID = $postID";
         $result = mysqli_fetch_array($conn->query($fetchEntries));
         $userID = $result['user_ID'];
 
         $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $userID";
 		$userbaseResult = mysqli_fetch_array($conn->query($idToUsername));
 
-        $imageLink = "./upload_images/" . $result['listing_imgname'];
-        $description = $result['listing_body'];
+        $imageLink = "./forum_images/" . $result['post_imgname'];
+        $description = $result['post_body'];
         $poster = $userbaseResult['user_name'];
 
-        $title = $result['listing_title'];
+        $title = $result['post_sub'];
 
         $_SESSION['title'] = $title;
         $_SESSION['imageLink'] = $imageLink;
@@ -34,7 +34,7 @@
     function copyLink() {
         var tempTextbox = document.createElement("textarea");
         document.body.appendChild(tempTextbox);
-        tempTextbox.value = "https://fresnostateboard.azurewebsites.net/listEntry.php?listID=" + "<?php echo $listID; ?>";
+        tempTextbox.value = "https://fresnostateboard.azurewebsites.net/forumEntry.php?postID=" + "<?php echo $postID; ?>";
         tempTextbox.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextbox);
@@ -75,7 +75,7 @@
                 <p id="listingBody"><?php echo $description; ?></p>
             </div>
             <div class="listingPoster">
-                <a id="posterLink" href="userprofile/username.php" class="poster"> <!-- Change href and innerHTML -->
+                <a id="posterLink" href="<?php echo $posterLink; ?>" class="poster"> <!-- Change href and innerHTML -->
                     <?php echo $poster ?>
                 </a>
             </div>

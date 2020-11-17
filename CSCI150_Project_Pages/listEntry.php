@@ -75,7 +75,7 @@
                 <p id="listingBody"><?php echo $description; ?></p>
             </div>
             <div class="listingPoster">
-                <a id="posterLink" href="userprofile/username.php" class="poster"> <!-- Change href and innerHTML -->
+                <a id="posterLink" href="<?php echo $posterLink; ?>" class="poster"> <!-- Change href and innerHTML -->
                     <?php echo $poster ?>
                 </a>
             </div>
@@ -93,4 +93,3 @@
         </form>
     </div>
 </body>
- 
