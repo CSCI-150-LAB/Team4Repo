@@ -90,6 +90,9 @@
             var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+			
+			//report form
+			var reportLink = "pageReportForm.php?listID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
@@ -175,6 +178,7 @@
             button3.classList.add("reportBtn");
             button3.setAttribute("value", fullPageLink);
             //button3.setAttribute("onclick", "");
+			button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);
 
@@ -202,6 +206,9 @@
             var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+			
+			//report form
+			var reportLink = "pageReportForm.php?listID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
@@ -287,6 +294,7 @@
             button3.classList.add("reportBtn");
             button3.setAttribute("value", fullPageLink);
             //button3.setAttribute("onclick", "");
+			button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);
 
@@ -314,6 +322,9 @@
             var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+			
+			//report form
+			var reportLink = "pageReportForm.php?listID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
@@ -399,6 +410,7 @@
             button3.classList.add("reportBtn");
             button3.setAttribute("value", fullPageLink);
             //button3.setAttribute("onclick", "");
+			button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);
 
