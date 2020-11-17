@@ -8,7 +8,7 @@
         <!-- method="post" hides the sensitive data in th HTTP transaction -->
 		<?php
 			if ($_SESSION['role'] == 'admin') {
-                    $sql = "SELECT * FROM reports_base LIMIT 3";
+                    $sql = "SELECT * FROM reports_base";
 					$result = mysqli_query($conn, $sql);
 					if(mysqli_num_rows($result)>0){
 						while($row = mysqli_fetch_assoc($result)){

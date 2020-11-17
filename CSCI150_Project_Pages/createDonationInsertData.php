@@ -14,6 +14,7 @@
 		$image = $_FILES['image']; //temp_name from image array
 		$imageErro = $_FILES['image']['error'];
 		$user = $_SESSION['user_ID'];
+		$status = "available";
 		
 		if(empty($itemselection) || empty($title) || empty($myTextArea) || $imageErro===1){
 			echo '<script type="text/javascript"> 
@@ -48,8 +49,8 @@
 			move_uploaded_file($imageTempLocation, $imageDest);
 			
 			//insert to db stmt
-			$sql = "INSERT INTO listingbase (listing_itemtype, listing_title, listing_body, listing_imgname, user_ID, listing_date)
-						VALUES ('$itemselection', '$title', '$myTextArea', '$uniquePic', '$user', '$date')"; 
+			$sql = "INSERT INTO listingbase (listing_itemtype, listing_title, listing_body, listing_imgname, user_ID, listing_date, listing_status)
+						VALUES ('$itemselection', '$title', '$myTextArea', '$uniquePic', '$user', '$date', '$status')"; 
 			
 			//inserted to db
 			$send = mysqli_query($conn, $sql) or die (mysqli_error($conn)); 
