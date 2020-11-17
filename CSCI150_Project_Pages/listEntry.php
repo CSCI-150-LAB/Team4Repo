@@ -40,14 +40,6 @@
         document.body.removeChild(tempTextbox);
     }
 
-    function backPage(){
-        window.history.back();
-    }
-    //sets innerHTML to hidden value we can grab in PHP
-    function setName(){
-        document.getElementById("hiddenVal").value = document.getElementById("a").innerHTML;
-    }
-
     function openMessage() {
     document.getElementById("messageBox").style.display = "block";
     }
@@ -82,14 +74,15 @@
         </div>
     </div>
 
-    <button class="button1 messageButton" onclick="openMessage()">Message</button>
-    <div class="messageBox" id= "messageBox" name="messageBox">
-        <form action="./messageSend.php" method="POST">
-            <label for="message">Message:</label>
-            <input type="text" id="message" name="message" required>
-            <input type="submit" id="send" name="send" value="SEND">
-            <!-- Will cancel message pop up -->
-            <button class="button2 cancelButton" onclick="closeMessage()">Cancel Message</button>
-        </form>
+    <button class="button1" onclick="openMessage()">Message</button>
+    <div class="messageBox" id= "messageBox" > 
+            <form class= "formBox" action="./messageSend.php" method="POST">
+                <input type="text" id="message" name="message" placeholder="Enter Message Here... "required>
+                <div class="messageButtons">
+                    <input type="submit" id="button2" name="send" value="Send Message">
+                    <!-- Will cancel message pop up -->
+                    <input type="submit" id="button2" onclick="closeMessage()" value="Cancel Message"/>
+                </div>
+            </form>
     </div>
 </body>

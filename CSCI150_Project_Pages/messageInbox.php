@@ -39,7 +39,7 @@
                         echo'        <div class="inboxButtons">
                                 <p>
                                 <form class="inboxButtons" action="./buttonActions.php" method="POST">
-                                    <input type="hidden" name="title" value='.$receiver[subject].'>
+                                    <input type="hidden" name="imageLink" value='.$receiver[imageLink].'>
                                     <input id="button3" type="submit" name="view" value="View Messages">
                                     <input id="button3" type="submit" name="delete" value="Delete Conversation">
                                     <input id="button3" type="submit" name="report" value="Report User">
@@ -62,7 +62,7 @@
                            echo'        <div class="inboxButtons">
                                         <p>
                                         <form class="inboxButtons" action="./buttonActions.php" method="POST">
-                                            <input type="hidden" name="title" value='.$receiver[subject].'>
+                                            <input type="hidden" name="imageLink" value='.$receiver[imageLink].'>
                                             <input id="button3" type="submit" name="view" value="View Messages">
                                             <input id="button3" type="submit" name="delete" value="Delete Conversation">
                                             <input id="button3" type="submit" name="report" value="Report User">

@@ -42,8 +42,9 @@
         if($senderID != $userID){
             if (($conn->query($userSQL) == 1 and $conn->query($postSQL) == 1) or 
                 ($conn->query($userSQL) == 1 and $conn->query($listingSQL) == 1)){
-                echo "User will be messaged ";
-                header("Location: " . $_SERVER["HTTP_REFERER"]);
+
+                //header("Location: " . $_SERVER["HTTP_REFERER"]);
+                header("Location: ./messageInbox.php");
                 if ($conn->query($sql) === TRUE){
                     echo "Inserted";
                 }

@@ -91,7 +91,7 @@ body {
 }
 
 .mainHolder {
-    padding-bottom: 50px;
+    padding-bottom: 12px;
 }
 
 table, th, td {
@@ -263,26 +263,71 @@ input[type=submit] {
     background-color: #1E9AFF;
 }
 
-.button2 {
+#button2 {
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 24px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 1px 1px;
     cursor: pointer;
     background-color: #1154e6;
 }
 
-.messageButton:hover, .cancelButton:hover {
+#message{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button1:hover, #button2:hover, #donationButton:hover{
     background-color: #1E79BE;
     color: white;
 }
 
-.messageBox{
-    display: none;
+#messageBox{
+    display: none;   
+}
+
+.formBox{
+    width: 75%;
+    position: absolute;
+    display: inline-block;
+    background-color: #ffffff;
+    border:none;
+}
+
+.messageButtons{
+    display: flex;
+}
+
+.formHolder{
+    padding: 20px;
+    display:block;
+    text-align: center;
+}
+
+.donationButton{
+    background-color: #ffffff;
+}
+
+#donationButton{
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: #1154e6;
 }
 
 .inboxHeader{
@@ -345,17 +390,6 @@ input[type=submit] {
     color: white;
 }
 
-
-
-input[name="send"] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #d6cccc;
-    box-sizing: border-box;
-    background-color: rgba(192, 200, 209, 0.986); 
-}
 
 .backToListings {
     margin: 5px;
