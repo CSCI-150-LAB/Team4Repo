@@ -70,7 +70,7 @@
             var imgLink = "./forum_images/" + jsArr[i][6];
             var postTitle = jsArr[i][2];
             var postBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
+            var profileName = jsArr[i][9];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][4].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
