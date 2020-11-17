@@ -52,6 +52,38 @@
 						}
 					</script>
 				</div>
+				
+				<div class="wishlistHolder">
+						<form class= "wishlistForm" action="./wishlist.php" method="POST">
+							<input type="text" id="wishlist" name="wishlist" placeholder="What would you like to add to your wishlist?"required>
+							<div class="messageButtons">
+								<input type="submit" id="button2" value="Add to Wishlist">
+							</div>
+						</form>
+						<div class="wishlist">
+							<?php
+							//outputs wishlist onto profile page in comma separated list
+								$sql_wishlist = "SELECT wishlist_items FROM wishlist_base WHERE user_ID=$user";
+								$result_wishlist = mysqli_query($conn, $sql_wishlist);
+								if(mysqli_num_rows($result_wishlist)>0){
+									echo 'My Wishlist: ', "<br>";
+									$x = 0;
+									while($row = mysqli_fetch_assoc($result_wishlist)){
+										if($x >=1){
+											echo ', ';
+										}
+										echo $row['wishlist_items'];
+										$x = $x+1;
+									}
+								}
+								else{
+									echo 'Wishlist is Empty!';
+
+								}
+							?>
+						</div>
+				</div>
+
 				<label>Donated History:</label>
 				<div>
 					<?php

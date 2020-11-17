@@ -25,8 +25,7 @@
             echo "<tr align='center'> <td colspan='2'> Failed to connect to MySQL </td> </tr>";
         }
         else {
-            $id=$_SESSION["user_ID"]; 
-            header('Location: ./messages.php');         
+            header('Location: ./messageChat.php');         
             }
     }
 

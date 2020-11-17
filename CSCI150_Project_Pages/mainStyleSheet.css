@@ -473,3 +473,19 @@ input[type=submit] {
     width: 50%;
     border: 1px solid black;
 }
+
+.wishlistForm{
+    display: inline-block;
+}
+
+
+
+.chatHolder{
+    background: #368dda;
+    margin: 20px;
+    width: 90%;
+    height: 90%;
+}
+
+
+  
