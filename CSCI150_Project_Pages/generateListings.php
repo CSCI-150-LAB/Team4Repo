@@ -35,15 +35,15 @@ You should be able to copy paste everything in the script tag (includeing the ta
 	}
 
 	// on page open call loadEntries("initial");
-	function callEntries($change) {
+	function callEntries($myAction) {
 		// change should be "add" or "sub"
 		// add or subtract by list entries
 		global $startList, $listEntries, $conn, $outputArr;
 		$outputArr = array();
-		if ($change == "add"){
+		if ($myAction == "add"){
 			$startList = $startList + $listEntries;
 		}
-		else if ($change == "sub") {
+		else if ($myAction == "sub") {
 			if ($startList > ($startList - $listEntries)) {
 				$startList = 0; // so start list doesnt end up as a neg number
 			}
@@ -51,7 +51,7 @@ You should be able to copy paste everything in the script tag (includeing the ta
 				$startList = $startList - $listEntries;
 			}
 		}
-		else if ($change == "initial") {
+		else if ($myAction == "initial") {
 			$startList = 0;
 		}
 		else {
@@ -88,8 +88,8 @@ You should be able to copy paste everything in the script tag (includeing the ta
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
-            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, " ");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 

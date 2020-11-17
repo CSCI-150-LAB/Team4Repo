@@ -5,7 +5,6 @@
 	<div class="mainHolder">
         <div>
 		    <h1 style="text-align:center">Other Listings:</h1>
-            <div id="listingHolder">
             <?php
                 if ($_SESSION['role'] == 'admin') {
                     echo "
@@ -14,6 +13,10 @@
                     </script>";
                 }
             ?>
+            <a href="./listDonationDir.php">Back to Directory</a>
+            <div id="listingHolder">
+            
+           
             </div>
 
             <div class="pageSwap">
@@ -38,7 +41,7 @@
 		$outputArr = array();
 
 	    // on page open call loadEntries("initial");
-	    function callEntries($change) {
+	    function callEntries($myAction) {
 		    // change should be "add" or "sub"
 		    // add or subtract by list entries
 		    global $startList, $listEntries, $conn, $outputArr;
@@ -59,7 +62,7 @@
 			    $startList = 0;
 		    }
 	
-		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Others' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
+		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Other' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
 		    $entries = $conn->query($fetchEntries);
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {
@@ -86,8 +89,8 @@
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
-            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			
@@ -202,8 +205,8 @@
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
-            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			
@@ -318,8 +321,8 @@
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
-            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			

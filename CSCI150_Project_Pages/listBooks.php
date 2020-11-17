@@ -10,6 +10,7 @@
                     echo "<button type='button' onclick='deleteThisListing()'>Admin Button</button>;";
                 }
             ?>
+            <a href="./listDonationDir.php">Back to Directory</a>
             <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
             
@@ -41,7 +42,6 @@
 		    // add or subtract by list entries
 		    global $startList, $listEntries, $conn, $outputArr;
 		    $outputArr = array();
-            $highestID = "SELECT list_ID FROM listingbase WHERE list_ID = (SELECT MAX(list_ID) FROM listingbase)";
 		    if ($myAction == "next"){
 			    $startList = $startList + $listEntries;
 		    }
@@ -85,8 +85,8 @@
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
-            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			
@@ -201,8 +201,8 @@
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
-            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			
@@ -317,8 +317,8 @@
             var imgLink = "./upload_images/" + jsArr[i][4];
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
-            var profileName = jsArr[i][7];
-            var profileLink = jsArr[i][7] + ".php"; // php should match the extension of the profilePage
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			
