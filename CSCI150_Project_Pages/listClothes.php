@@ -4,7 +4,7 @@
 <body onload="initialListings()">
 	<div class="mainHolder">
         <div>
-		    <h1 style="text-align:center">Books Listings:</h1>
+		    <h1 style="text-align:center">Clothes Listings:</h1>
             <?php
                 if ($_SESSION['role'] == 'admin') {
                     echo "<button type='button' onclick='deleteThisListing()'>Admin Button</button>;";
@@ -62,12 +62,12 @@
 		    $entries = $conn->query($fetchEntries);
             // If you hit the end of the list it means you are at the oldest entries so you display the first 10 results from table ordered ASC
             if ($myAction == "next" && mysqli_num_rows($entries) < 10){
-                $fetchEntries = "SELECT * FROM (SELECT * FROM listingbase WHERE listing_itemtype='Clothes' ORDER BY listing_ID ASC LIMIT 0, 10) AS Tempdb ORDER BY listing_ID DESC";
+                $fetchEntries = "SELECT * FROM (SELECT * FROM listingbase WHERE listing_itemtype='Clothes' AND listing_delete = '0' AND listing_status = 'available' ORDER BY listing_ID ASC LIMIT 0, 10) AS Tempdb ORDER BY listing_ID DESC";
                 $entries = $conn->query($fetchEntries);
             }
             // If you hit prev on the first page you should want the first 10 results
             else if ($myAction == "prev" && mysqli_num_rows($entries) < 10){
-                $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Clothes' ORDER BY listing_ID DESC LIMIT 0, 10";
+                $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Clothes' AND listing_delete = '0' AND listing_status = 'available' ORDER BY listing_ID DESC LIMIT 0, 10";
                 $entries = $conn->query($fetchEntries);
             }
 		    // creates a 2d array with the queries results
