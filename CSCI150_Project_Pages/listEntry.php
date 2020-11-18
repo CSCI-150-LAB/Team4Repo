@@ -57,6 +57,14 @@
 
         <div class="listingTitle">
             <h1 id="listingBody"><?php echo $title; ?></h1>
+			<?php
+					if($userID = $_SESSION['user_ID']){
+						echo '<form action="donated.php" method="get">';
+						echo '<input type="hidden" name="postID" value="'.htmlspecialchars($listID).'"/>';
+						echo '<input type="submit" name="submit" value="Click here if item was donated."/>';
+						echo '</form>';
+					}
+				?>
         </div>
 
         <div class="listingContainer">

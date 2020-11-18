@@ -19,6 +19,7 @@
             <a href="messageInbox.php">My Messages</a>
 			<?php
 				if ($_SESSION['role'] == 'admin') {
+					echo '<a href="pageManageUser.php">Manage Users</a>';
                     echo '<a href="pageReportsView.php">View Donation Listings Reports</a>';
                 }
 			?>

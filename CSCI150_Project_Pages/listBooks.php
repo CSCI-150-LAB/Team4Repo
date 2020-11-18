@@ -13,8 +13,8 @@
             <a href="./listDonationDir.php">Back to Directory</a>
             <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
+            
             </div>
-
             <div class="pageSwap">
                 <div class="prevPage">
                     <button type="button" onclick="prevListings()">&lt;&lt;Prev</button>
@@ -58,18 +58,8 @@
 			    $startList = 0;
 		    }
 	
-		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Book' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
+		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Book' AND listing_delete = '0' AND listing_status = 'available' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
 		    $entries = $conn->query($fetchEntries);
-            // If you hit the end of the list it means you are at the oldest entries so you display the first 10 results from table ordered ASC
-            if ($myAction == "next" && mysqli_num_rows($entries) < 10){
-                $fetchEntries = "SELECT * FROM (SELECT * FROM listingbase WHERE listing_itemtype='Book' ORDER BY listing_ID ASC LIMIT 0, 10) AS Tempdb ORDER BY listing_ID DESC";
-                $entries = $conn->query($fetchEntries);
-            }
-            // If you hit prev on the first page you should want the first 10 results
-            else if ($myAction == "prev" && mysqli_num_rows($entries) < 10){
-                $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Book' ORDER BY listing_ID DESC LIMIT 0, 10";
-                $entries = $conn->query($fetchEntries);
-            }
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {
 			    $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[5]";
@@ -96,12 +86,16 @@
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
             var profileName = jsArr[i][9];
+			var listStatus = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			
 			//report form
 			var reportLink = "pageReportForm.php?listID=" + jsArr[i][0];
+			
+			//hide post
+			var hideLink = "pageHideListingPost.php?listID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
@@ -163,9 +157,9 @@
             button1.classList.add("copyBtn");
             button1.setAttribute("value", fullPageLink);
             //button1.setAttribute("onclick", "");
-            button1.innerHTML = "share";
+            button1.innerHTML = listStatus;
             li_1.appendChild(button1);
-
+			/*
             var li_2 = document.createElement("li");
             li_2.classList.add("saveButton");
             ulList.appendChild(li_2);
@@ -175,9 +169,10 @@
             button2.classList.add("saveBtn");
             button2.setAttribute("value", fullPageLink);
             //button2.setAttribute("onclick", "");
+			button2.setAttribute("href", reportLink);
             button2.innerHTML = "save";
             li_2.appendChild(button2);
-
+			*/
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
             ulList.appendChild(li_3);
@@ -216,8 +211,12 @@
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 			
+			
 			//report form
 			var reportLink = "pageReportForm.php?listID=" + jsArr[i][0];
+			
+			//hide post
+			var hideLink = "pageHideListingPost.php?listID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
@@ -279,9 +278,9 @@
             button1.classList.add("copyBtn");
             button1.setAttribute("value", fullPageLink);
             //button1.setAttribute("onclick", "");
-            button1.innerHTML = "share";
+            button1.innerHTML = listStatus;
             li_1.appendChild(button1);
-
+/*
             var li_2 = document.createElement("li");
             li_2.classList.add("saveButton");
             ulList.appendChild(li_2);
@@ -291,9 +290,10 @@
             button2.classList.add("saveBtn");
             button2.setAttribute("value", fullPageLink);
             //button2.setAttribute("onclick", "");
+			button2.setAttribute("href", hideLink);
             button2.innerHTML = "save";
-            li_2.appendChild(button2);
-
+			li_2.appendChild(button2);
+*/
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
             ulList.appendChild(li_3);
@@ -334,6 +334,9 @@
 			
 			//report form
 			var reportLink = "pageReportForm.php?listID=" + jsArr[i][0];
+			
+			//hide post
+			var hideLink = "pageHideListingPost.php?listID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
@@ -395,9 +398,9 @@
             button1.classList.add("copyBtn");
             button1.setAttribute("value", fullPageLink);
             //button1.setAttribute("onclick", "");
-            button1.innerHTML = "share";
+            button1.innerHTML = listStatus;
             li_1.appendChild(button1);
-
+/*
             var li_2 = document.createElement("li");
             li_2.classList.add("saveButton");
             ulList.appendChild(li_2);
@@ -407,9 +410,10 @@
             button2.classList.add("saveBtn");
             button2.setAttribute("value", fullPageLink);
             //button2.setAttribute("onclick", "");
-            button2.innerHTML = "save";
+			button2.setAttribute("href", hideLink);
+            button2.innerHTML = "hide post";
             li_2.appendChild(button2);
-
+*/
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
             ulList.appendChild(li_3);

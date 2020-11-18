@@ -7,21 +7,25 @@
 		    <h1 style="text-align:center">Furniture Listings:</h1>
             <?php
                 if ($_SESSION['role'] == 'admin') {
-                    echo "<button type='button' onclick='deleteThisListing()'>Admin Button</button>;";
+                    echo "
+                    <script type='text/html'>
+                        <button type='button' onclick='deleteThisListing()' /> 
+                    </script>";
                 }
             ?>
             <a href="./listDonationDir.php">Back to Directory</a>
-            <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
+            
+
             </div>
 
             <div class="pageSwap">
                 <div class="prevPage">
-                    <button type="button" onclick="prevListings()">&lt;&lt;Prev</button>
+                    <a href="#">&lt;&lt;</a>
                 </div>
                 <div class="pageNumbers"></div>
                 <div class="nextPage">
-                    <button type="button" onclick="nextListings()">Next&gt;&gt;</button>
+                    <a href="#">&gt;&gt;</a>
                 </div>
             </div>
 	    </div>
@@ -58,18 +62,8 @@
 			    $startList = 0;
 		    }
 	
-		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Furniture' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
+		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Furniture' AND listing_delete = '0' AND listing_status = 'available' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
 		    $entries = $conn->query($fetchEntries);
-            // If you hit the end of the list it means you are at the oldest entries so you display the first 10 results from table ordered ASC
-            if ($myAction == "next" && mysqli_num_rows($entries) < 10){
-                $fetchEntries = "SELECT * FROM (SELECT * FROM listingbase WHERE listing_itemtype='Furniture' ORDER BY listing_ID ASC LIMIT 0, 10) AS Tempdb ORDER BY listing_ID DESC";
-                $entries = $conn->query($fetchEntries);
-            }
-            // If you hit prev on the first page you should want the first 10 results
-            else if ($myAction == "prev" && mysqli_num_rows($entries) < 10){
-                $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Furniture' ORDER BY listing_ID DESC LIMIT 0, 10";
-                $entries = $conn->query($fetchEntries);
-            }
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {
 			    $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[5]";
@@ -96,6 +90,7 @@
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
             var profileName = jsArr[i][9];
+			var listStatus = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
@@ -163,9 +158,9 @@
             button1.classList.add("copyBtn");
             button1.setAttribute("value", fullPageLink);
             //button1.setAttribute("onclick", "");
-            button1.innerHTML = "share";
+            button1.innerHTML = listStatus;
             li_1.appendChild(button1);
-
+/*
             var li_2 = document.createElement("li");
             li_2.classList.add("saveButton");
             ulList.appendChild(li_2);
@@ -177,7 +172,7 @@
             //button2.setAttribute("onclick", "");
             button2.innerHTML = "save";
             li_2.appendChild(button2);
-
+*/
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
             ulList.appendChild(li_3);
@@ -212,6 +207,7 @@
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
             var profileName = jsArr[i][9];
+			var listStatus = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
@@ -279,9 +275,9 @@
             button1.classList.add("copyBtn");
             button1.setAttribute("value", fullPageLink);
             //button1.setAttribute("onclick", "");
-            button1.innerHTML = "share";
+            button1.innerHTML = listStatus;
             li_1.appendChild(button1);
-
+/*
             var li_2 = document.createElement("li");
             li_2.classList.add("saveButton");
             ulList.appendChild(li_2);
@@ -293,7 +289,7 @@
             //button2.setAttribute("onclick", "");
             button2.innerHTML = "save";
             li_2.appendChild(button2);
-
+*/
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
             ulList.appendChild(li_3);
@@ -328,6 +324,7 @@
             var listingTitle = jsArr[i][2];
             var listingBody = jsArr[i][3];
             var profileName = jsArr[i][9];
+			var listStatus = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][6].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
@@ -395,9 +392,9 @@
             button1.classList.add("copyBtn");
             button1.setAttribute("value", fullPageLink);
             //button1.setAttribute("onclick", "");
-            button1.innerHTML = "share";
+            button1.innerHTML = listStatus;
             li_1.appendChild(button1);
-
+/*
             var li_2 = document.createElement("li");
             li_2.classList.add("saveButton");
             ulList.appendChild(li_2);
@@ -409,7 +406,7 @@
             //button2.setAttribute("onclick", "");
             button2.innerHTML = "save";
             li_2.appendChild(button2);
-
+*/
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
             ulList.appendChild(li_3);

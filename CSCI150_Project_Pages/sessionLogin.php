@@ -14,12 +14,12 @@
 		//check if query return any results, if not user was banned
 		if(mysqli_num_rows($result)==0){	
 			echo '<script type ="text/javascript">
-				alert("Your account is banned.");
+				alert("Your account was banned or no such account exit.");
 				window.location.href = "./pageLogin.php";
 				</script>';
 		}
 		
-		//assign $row return values from $result into associate array
+		//assign $row to return values from $result into associate array
         $row = mysqli_fetch_assoc($result);
 		
 		
