@@ -16,12 +16,13 @@
         $result = mysqli_fetch_array($conn->query($fetchEntries));
         $userID = $result['user_ID'];
 
-        $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $userID";
+        $idToUsername = "SELECT user_name, user_email FROM userbase WHERE user_ID = $userID";
 		$userbaseResult = mysqli_fetch_array($conn->query($idToUsername));
 
         $imageLink = "./forum_images/" . $result['post_imgname'];
         $description = $result['post_body'];
         $poster = $userbaseResult['user_name'];
+        $posterEmail = $userbaseResult['user_email'];
 
         $title = $result['post_sub'];
 
@@ -32,7 +33,7 @@
     }
 
     function callComments(){
-        GLOBAL $postID;
+        GLOBAL $postID, $conn;
         $outputArr = array();
 
         $fetchEntries = "SELECT * FROM forum_comments_base WHERE $postID=post_ID ORDER BY post_ID DESC";
@@ -71,10 +72,8 @@
             // going through the holder of the Listings
             var senderID = commentArr[i][1];
             var senderName = commentArr[i][4];
-            var profileLink = commentArr[i][4] + ".php"; // php should match the extension of the profilePage
-
+            var profileLink = "pageProfile.php?userID=" + commentArr[i][1]; // sends the user id to be accessed by get
             var commentBody = commentArr[i][3];
-            
 
             // listing entry div
             var commentDiv = document.createElement("div");
@@ -83,14 +82,15 @@
             
             var commentSender = document.createElement("a");
             commentSender.classList.add("commentSenderName");
-            commentSender.setAttri
+            commentSender.setAttribute("href", profileLink);
             commentSender.innerHTML = senderName;
             commentDiv.appendChild(commentSender);
 
             var commentText = document.createElement("p");
+            commentText.innerHTML = commentBody;
             commentText.classList.add("commentText");
             commentDiv.appendChild(commentText);
-            
+            /*
             // interaction buttions creation
             var ulList = document.createElement("ul");
             ulList.classList.add("interactionButtons");
@@ -103,12 +103,12 @@
             var button3 = document.createElement("a");
             button3.id = "report";
             button3.classList.add("reportBtn");
-            button3.setAttribute("value", fullPageLink);
 			button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);
-
+            */
             document.getElementById("commentContainer").appendChild(commentDiv);
+        }
     }
 
     function backPage(){
@@ -127,7 +127,7 @@
     document.getElementById("messageBox").style.display = "none";
     }
 </script>
-<body>
+<body onload="loadComments()">
 	<div class="mainHolder">
 	    <div class="backToListings">
             <a href="javascript: history.go(-1)">Back to Listings</a>
@@ -146,9 +146,9 @@
                 <p id="listingBody"><?php echo $description; ?></p>
             </div>
             <div class="listingPoster">
-                <a id="posterLink" href="<?php echo $posterLink; ?>" class="poster"> <!-- Change href and innerHTML -->
-                    <?php echo $poster ?>
-                </a>
+                <a id="posterLink" href="<?php echo $posterLink; ?>" class="poster"> <!-- Change href and innerHTML --><?php echo $poster; ?></a>
+                <br>
+                <p><?php echo $posterEmail; ?></p>
             </div>
         </div>
     </div>
@@ -162,6 +162,16 @@
             <!-- Will cancel message pop up -->
             <button class="button2 cancelButton" onclick="closeMessage()">Cancel Message</button>
         </form>
+    </div>
+    <div class="wishlistHolder">
+		<form class= "commentForm" action="<?php echo './comment.php?postID=' . $_GET['postID'] ?>" method="POST">
+			<input type="text" id="comment" name="comment" placeholder="Type your comment here."required>
+			<div class="messageButtons">
+				<input type="submit" id="button2" value="Post Comment">
+			</div>
+		</form>
+    </div>
+    <div class="commentContainer" id="commentContainer">
     </div>
 </body>
  
