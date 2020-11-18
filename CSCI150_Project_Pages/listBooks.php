@@ -13,8 +13,8 @@
             <a href="./listDonationDir.php">Back to Directory</a>
             <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
-            
             </div>
+
             <div class="pageSwap">
                 <div class="prevPage">
                     <button type="button" onclick="prevListings()">&lt;&lt;Prev</button>
@@ -60,6 +60,16 @@
 	
 		    $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Book' ORDER BY listing_ID DESC LIMIT $startList, $listEntries";
 		    $entries = $conn->query($fetchEntries);
+            // If you hit the end of the list it means you are at the oldest entries so you display the first 10 results from table ordered ASC
+            if ($myAction == "next" && mysqli_num_rows($entries) < 10){
+                $fetchEntries = "SELECT * FROM (SELECT * FROM listingbase WHERE listing_itemtype='Book' ORDER BY listing_ID ASC LIMIT 0, 10) AS Tempdb ORDER BY listing_ID DESC";
+                $entries = $conn->query($fetchEntries);
+            }
+            // If you hit prev on the first page you should want the first 10 results
+            else if ($myAction == "prev" && mysqli_num_rows($entries) < 10){
+                $fetchEntries = "SELECT * FROM listingbase WHERE listing_itemtype='Book' ORDER BY listing_ID DESC LIMIT 0, 10";
+                $entries = $conn->query($fetchEntries);
+            }
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {
 			    $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[5]";
