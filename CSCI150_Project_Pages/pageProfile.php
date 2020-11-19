@@ -100,7 +100,7 @@
 								echo "<a href='./exListing1.php?listID=" . $row['listing_ID'] . "'>";
 								echo $row['listing_title'];
 								echo "</a>";
-								echo "<input type='text' id='shortEntry' value=" . $row['listing_body'] . " readonly>";
+								echo "<input type='text' id='shortEntry' value='" . $row['listing_body'] . "' readonly>";
 								echo "</input>";
 							}
 						}
