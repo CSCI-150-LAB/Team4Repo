@@ -3,12 +3,17 @@
 ?>
 <body>
 	<div class="mainHolder">
-		<a href="createDonation.php"><p style="text-align:center">Click here to donate</p></a>
+		<div class="formHolder">
+			<form class="donationButton" method="post" action=./createDonation.php> 
+				<input id="donationButton" type="submit" value="Create a Donation!"/> 
+			</form>
+		</div>
+
 		<div class="interactionMenu">
-			<h1 style="text-align:center">Categories</h1>
+			<h1 style="text-align:center">View Listings</h1>
 			<table class="center">
 				<tr>
-					<th>Books</th> <!--Columns -->
+					<th>Books</th> <!--Columns <a href="createDonation.php"><p style="text-align:center">Click here to donate</p></a>-->
 					<th>Furnitures</th>
 					<th>Electronics</th>
 					<th>Clothes</th>
@@ -32,7 +37,7 @@
 					</td>
 					<td>
 						<a href="listClothes.php">
-							<img src="./images/clothes.jpg" width="200" height="200">
+							<img src="./images/clothes.png" width="200" height="200">
 						</a>
 					</td>
 					<td>

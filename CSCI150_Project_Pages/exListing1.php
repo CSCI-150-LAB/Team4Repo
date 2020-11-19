@@ -5,9 +5,10 @@
     $description = "No Data Loaded";
     $poster = "No Data Loaded";
     $title = "No Data Loaded";
+    $posterLink = "pageProfile.php";
 
     if(isset($_GET['listID'])){
-        GLOBAL $imageLink, $description, $poster, $conn, $title;
+        GLOBAL $imageLink, $description, $poster, $conn, $title, $posterLink;
         $listID = $_GET['listID'];
 
         $fetchEntries = "SELECT * FROM listingbase WHERE listing_id = $listID";
@@ -26,13 +27,14 @@
         $_SESSION['title'] = $title;
         $_SESSION['imageLink'] = $imageLink;
         $_SESSION['poster'] = $poster;
+        $posterLink = "pageProfile.php?userID=" . $userID;
     }
 ?>
 <script>
     function copyLink() {
         var tempTextbox = document.createElement("textarea");
         document.body.appendChild(tempTextbox);
-        tempTextbox.value = "https://fresnostateboard.azurewebsites.net/exListing1.php?listID=" + "<?php echo $listID; ?>";
+        tempTextbox.value = "https://fresnostateboard.azurewebsites.net/listEntry.php?listID=" + "<?php echo $listID; ?>";
         tempTextbox.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextbox);
@@ -63,6 +65,14 @@
 
         <div class="listingTitle">
             <h1 id="listingBody"><?php echo $title; ?></h1>
+			<?php
+					if($userID = $_SESSION['user_ID']){
+						echo '<form action="donated.php" method="get">';
+						echo '<input type="hidden" name="postID" value="'.htmlspecialchars($listID).'"/>';
+						echo '<input type="submit" name="submit" value="Click here if item was donated."/>';
+						echo '</form>';
+					}
+				?>
         </div>
 
         <div class="listingContainer">
@@ -73,7 +83,7 @@
                 <p id="listingBody"><?php echo $description; ?></p>
             </div>
             <div class="listingPoster">
-                <a href="userprofile/username.php" class="poster"> <!-- Change href and innerHTML -->
+                <a id="posterLink" href="userprofile/username.php" class="poster"> <!-- Change href and innerHTML -->
                     <?php echo $poster ?>
                 </a>
             </div>

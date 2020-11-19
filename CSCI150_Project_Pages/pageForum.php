@@ -1,7 +1,8 @@
 <?php
    include 'header.php';
 ?>
-<body>
+
+<body onload="initialListings()">
 	<div class="mainHolder">
         <div class="tagSearch">
             <select class="tagList" name="tagList" id="tagList">
@@ -145,9 +146,409 @@
         </div>
         <div class="forumPosts">
             <div class="posting">
-			<a href="createForum.php"><p style="text-align:center">Click here to post</p></a>
+			    <a href="createForum.php"><p style="text-align:center">Click here to post</p></a>
                 <img class="postImage" src="" alt="">
+            </div>
+        </div>
+        <div id="listingHolder">
+        </div>
+        <div class="pageSwap">
+            <div class="prevPage">
+                <button type="button" onclick="prevListings()">&lt;&lt;Prev</button>
+            </div>
+            <div class="pageNumbers"></div>
+            <div class="nextPage">
+                <button type="button" onclick="nextListings()">Next&gt;&gt;</button>
             </div>
         </div>
 	</div>
 </body>
+<script type="text/javascript">
+	<?php
+		require ("./db_conn.php");
+		// every id element is going to need to be changed to include id
+		// maybe the onclick functions too
+		$startList = 0; // this should update on page change (next and prev clicks)
+		$listEntries = 10; // possible to add a function to change number of listings to display
+		$outputArr = array();
+
+	    // on page open call loadEntries("initial");
+	    function callEntries($myAction) {
+		    // change should be "add" or "sub"
+		    // add or subtract by list entries
+		    global $startList, $listEntries, $conn, $outputArr;
+		    $outputArr = array();
+		    if ($myAction == "next"){
+			    $startList = $startList + $listEntries;
+		    }
+		    else if ($myAction == "prev") {
+			    if ($startList > ($startList - $listEntries)) {
+				    $startList = 0; // so start list doesnt end up as a negative number
+			    }
+			    else {
+				    $startList = $startList - $listEntries;
+			    }
+		    }
+		    else {
+                // should be either 'initial' or invalid string result
+			    $startList = 0;
+		    }
+            if(isset($_POST['itemselection'])){
+                $itemselection = $_POST['itemselection'];
+                $fetchEntries = "SELECT * FROM post_base WHERE post_class = $itemselection ORDER BY post_ID DESC LIMIT $startList, $listEntries";
+            }
+            else {
+                $fetchEntries = "SELECT * FROM post_base ORDER BY post_ID DESC LIMIT $startList, $listEntries";
+            }
+		    $entries = $conn->query($fetchEntries);
+		    // creates a 2d array with the queries results
+		    while($row = mysqli_fetch_array($entries)) {
+			    $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[5]";
+			    $userbaseRow = $conn->query($idToUsername);
+                $username = mysqli_fetch_array($userbaseRow)['user_name'];
+			    array_push($row, $username); // makes it so the 7th array element is username
+			    array_push($outputArr, $row);
+		    }
+		    // return the 2d array to parse it in the js
+		    $realOutput = json_encode($outputArr);
+		    echo "var jsArr = " . json_encode($outputArr) . ";";
+	    }
+	?>
+
+	function initialListings() {
+        <?php 
+            echo json_encode(callEntries('initial')); //fetches the array and stores it out in jsArr
+        ?>
+        
+        document.getElementById("listingHolder").innerHTML = "";
+        for (var i = 0; i < jsArr.length; i++) {
+            // going through the holder of the Listings
+            var pageLink = "forumEntry.php?postID=" + jsArr[i][0]; // this is temp until directories are stored in db
+            var imgLink = "./forum_images/" + jsArr[i][6];
+            var postTitle = jsArr[i][2];
+            var postBody = jsArr[i][3];
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
+            var postTime = jsArr[i][4].replace(/\./gi, "/");
+            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+
+            // listing entry div
+            var le = document.createElement("div");
+            le.classList.add("listingEntry");
+            le.id = "listing_" + i;
+
+            // image stuff
+            var imgA = document.createElement("a");
+            imgA.classList.add("listingThumbnail");
+            imgA.setAttribute("href", pageLink);
+            le.appendChild(imgA);
+
+            var imgImg = document.createElement("img");
+            imgImg.setAttribute("src", imgLink);
+            imgImg.setAttribute("width", "70");
+            imgImg.setAttribute("height", "52");
+            imgImg.setAttribute("alt", "");
+            imgA.appendChild(imgImg);
+
+            // entry div
+            var divE = document.createElement("div");
+            divE.classList.add("entry");
+            le.appendChild(divE);
+
+            // post info
+            var pTitle = document.createElement("p");
+            pTitle.classList.add("title");
+            divE.appendChild(pTitle);
+
+            var aTitle = document.createElement("a");
+            aTitle.classList.add("title");
+            aTitle.setAttribute("href", pageLink);
+            aTitle.innerHTML = postTitle;
+            pTitle.appendChild(aTitle);
+
+            // post info
+            var pInfo = document.createElement("p");
+            pInfo.classList.add("postInfo");
+            pInfo.innerHTML = "posted on " + postTime + " by ";
+            divE.appendChild(pInfo);
+
+            var aInfo = document.createElement("a");
+            aInfo.classList.add("poster");
+            aInfo.setAttribute("href", profileLink);
+            aInfo.innerHTML = profileName;
+            pInfo.appendChild(aInfo);
+
+            // interaction buttions creation
+            var ulList = document.createElement("ul");
+            ulList.classList.add("interactionButtons");
+            divE.appendChild(ulList);
+            // share button is named copyBtn as shareBtn was not displaying for some reason
+            var li_1 = document.createElement("li");
+            li_1.classList.add("copyButton");
+            ulList.appendChild(li_1);
+
+            var button1 = document.createElement("a");
+            button1.id = "copyBtn";
+            button1.classList.add("copyBtn");
+            button1.setAttribute("value", fullPageLink);
+            //button1.setAttribute("onclick", "");
+            button1.innerHTML = "share";
+            li_1.appendChild(button1);
+
+            var li_2 = document.createElement("li");
+            li_2.classList.add("saveButton");
+            ulList.appendChild(li_2);
+
+            var button2 = document.createElement("a");
+            button2.id = "saveBtn";
+            button2.classList.add("saveBtn");
+            button2.setAttribute("value", fullPageLink);
+            //button2.setAttribute("onclick", "");
+            button2.innerHTML = "save";
+            li_2.appendChild(button2);
+
+            var li_3 = document.createElement("li");
+            li_3.classList.add("reportButton");
+            ulList.appendChild(li_3);
+
+            var button3 = document.createElement("a");
+            button3.id = "report";
+            button3.classList.add("reportBtn");
+            button3.setAttribute("value", fullPageLink);
+            //button3.setAttribute("onclick", "");
+            button3.innerHTML = "report";
+            li_3.appendChild(button3);
+
+            // report div
+            var report = document.createElement("div");
+            report.classList.add("reportForm");
+            divE.appendChild(report);
+
+            document.getElementById("listingHolder").appendChild(le);
+        }
+    }
+    function prevListings() {
+        <?php 
+            echo json_encode(callEntries('prev')); //fetches the array and stores it out in jsArr
+        ?>
+        
+        document.getElementById("listingHolder").innerHTML = "";
+        for (var i = 0; i < jsArr.length; i++) {
+            // going through the holder of the Listings
+            var pageLink = "forumEntry.php?postID=" + jsArr[i][0]; // this is temp until directories are stored in db
+            var imgLink = "./forum_images/" + jsArr[i][6];
+            var postTitle = jsArr[i][2];
+            var postBody = jsArr[i][3];
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
+            var postTime = jsArr[i][4].replace(/\./gi, "/");
+            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+
+            // listing entry div
+            var le = document.createElement("div");
+            le.classList.add("listingEntry");
+            le.id = "listing_" + i;
+
+            // image stuff
+            var imgA = document.createElement("a");
+            imgA.classList.add("listingThumbnail");
+            imgA.setAttribute("href", pageLink);
+            le.appendChild(imgA);
+
+            var imgImg = document.createElement("img");
+            imgImg.setAttribute("src", imgLink);
+            imgImg.setAttribute("width", "70");
+            imgImg.setAttribute("height", "52");
+            imgImg.setAttribute("alt", "");
+            imgA.appendChild(imgImg);
+
+            // entry div
+            var divE = document.createElement("div");
+            divE.classList.add("entry");
+            le.appendChild(divE);
+
+            // post info
+            var pTitle = document.createElement("p");
+            pTitle.classList.add("title");
+            divE.appendChild(pTitle);
+
+            var aTitle = document.createElement("a");
+            aTitle.classList.add("title");
+            aTitle.setAttribute("href", pageLink);
+            aTitle.innerHTML = postTitle;
+            pTitle.appendChild(aTitle);
+
+            // post info
+            var pInfo = document.createElement("p");
+            pInfo.classList.add("postInfo");
+            pInfo.innerHTML = "posted on " + postTime + " by ";
+            divE.appendChild(pInfo);
+
+            var aInfo = document.createElement("a");
+            aInfo.classList.add("poster");
+            aInfo.setAttribute("href", profileLink);
+            aInfo.innerHTML = profileName;
+            pInfo.appendChild(aInfo);
+
+            // interaction buttions creation
+            var ulList = document.createElement("ul");
+            ulList.classList.add("interactionButtons");
+            divE.appendChild(ulList);
+            // share button is named copyBtn as shareBtn was not displaying for some reason
+            var li_1 = document.createElement("li");
+            li_1.classList.add("copyButton");
+            ulList.appendChild(li_1);
+
+            var button1 = document.createElement("a");
+            button1.id = "copyBtn";
+            button1.classList.add("copyBtn");
+            button1.setAttribute("value", fullPageLink);
+            //button1.setAttribute("onclick", "");
+            button1.innerHTML = "share";
+            li_1.appendChild(button1);
+
+            var li_2 = document.createElement("li");
+            li_2.classList.add("saveButton");
+            ulList.appendChild(li_2);
+
+            var button2 = document.createElement("a");
+            button2.id = "saveBtn";
+            button2.classList.add("saveBtn");
+            button2.setAttribute("value", fullPageLink);
+            //button2.setAttribute("onclick", "");
+            button2.innerHTML = "save";
+            li_2.appendChild(button2);
+
+            var li_3 = document.createElement("li");
+            li_3.classList.add("reportButton");
+            ulList.appendChild(li_3);
+
+            var button3 = document.createElement("a");
+            button3.id = "report";
+            button3.classList.add("reportBtn");
+            button3.setAttribute("value", fullPageLink);
+            //button3.setAttribute("onclick", "");
+            button3.innerHTML = "report";
+            li_3.appendChild(button3);
+
+            // report div
+            var report = document.createElement("div");
+            report.classList.add("reportForm");
+            divE.appendChild(report);
+
+            document.getElementById("listingHolder").appendChild(le);
+        }
+    }
+    function nextListings() {
+        <?php 
+            echo json_encode(callEntries('next')); //fetches the array and stores it out in jsArr
+        ?>
+        
+        document.getElementById("listingHolder").innerHTML = "";
+        for (var i = 0; i < jsArr.length; i++) {
+            // going through the holder of the Listings
+            var pageLink = "forumEntry.php?postID=" + jsArr[i][0]; // this is temp until directories are stored in db
+            var imgLink = "./forum_images/" + jsArr[i][6];
+            var postTitle = jsArr[i][2];
+            var postBody = jsArr[i][3];
+            var profileName = jsArr[i][9];
+            var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
+            var postTime = jsArr[i][4].replace(/\./gi, "/");
+            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+
+            // listing entry div
+            var le = document.createElement("div");
+            le.classList.add("listingEntry");
+            le.id = "listing_" + i;
+
+            // image stuff
+            var imgA = document.createElement("a");
+            imgA.classList.add("listingThumbnail");
+            imgA.setAttribute("href", pageLink);
+            le.appendChild(imgA);
+
+            var imgImg = document.createElement("img");
+            imgImg.setAttribute("src", imgLink);
+            imgImg.setAttribute("width", "70");
+            imgImg.setAttribute("height", "52");
+            imgImg.setAttribute("alt", "");
+            imgA.appendChild(imgImg);
+
+            // entry div
+            var divE = document.createElement("div");
+            divE.classList.add("entry");
+            le.appendChild(divE);
+
+            // post info
+            var pTitle = document.createElement("p");
+            pTitle.classList.add("title");
+            divE.appendChild(pTitle);
+
+            var aTitle = document.createElement("a");
+            aTitle.classList.add("title");
+            aTitle.setAttribute("href", pageLink);
+            aTitle.innerHTML = postTitle;
+            pTitle.appendChild(aTitle);
+
+            // post info
+            var pInfo = document.createElement("p");
+            pInfo.classList.add("postInfo");
+            pInfo.innerHTML = "posted on " + postTime + " by ";
+            divE.appendChild(pInfo);
+
+            var aInfo = document.createElement("a");
+            aInfo.classList.add("poster");
+            aInfo.setAttribute("href", profileLink);
+            aInfo.innerHTML = profileName;
+            pInfo.appendChild(aInfo);
+
+            // interaction buttions creation
+            var ulList = document.createElement("ul");
+            ulList.classList.add("interactionButtons");
+            divE.appendChild(ulList);
+            // share button is named copyBtn as shareBtn was not displaying for some reason
+            var li_1 = document.createElement("li");
+            li_1.classList.add("copyButton");
+            ulList.appendChild(li_1);
+
+            var button1 = document.createElement("a");
+            button1.id = "copyBtn";
+            button1.classList.add("copyBtn");
+            button1.setAttribute("value", fullPageLink);
+            //button1.setAttribute("onclick", "");
+            button1.innerHTML = "share";
+            li_1.appendChild(button1);
+
+            var li_2 = document.createElement("li");
+            li_2.classList.add("saveButton");
+            ulList.appendChild(li_2);
+
+            var button2 = document.createElement("a");
+            button2.id = "saveBtn";
+            button2.classList.add("saveBtn");
+            button2.setAttribute("value", fullPageLink);
+            //button2.setAttribute("onclick", "");
+            button2.innerHTML = "save";
+            li_2.appendChild(button2);
+
+            var li_3 = document.createElement("li");
+            li_3.classList.add("reportButton");
+            ulList.appendChild(li_3);
+
+            var button3 = document.createElement("a");
+            button3.id = "report";
+            button3.classList.add("reportBtn");
+            button3.setAttribute("value", fullPageLink);
+            //button3.setAttribute("onclick", "");
+            button3.innerHTML = "report";
+            li_3.appendChild(button3);
+
+            // report div
+            var report = document.createElement("div");
+            report.classList.add("reportForm");
+            divE.appendChild(report);
+
+            document.getElementById("listingHolder").appendChild(le);
+        }
+    }
+</script>

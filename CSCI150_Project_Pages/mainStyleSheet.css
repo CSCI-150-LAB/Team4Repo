@@ -78,7 +78,6 @@ body {
 
 .dropdownContent a {
     width: 100%;
-    float: center;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -91,7 +90,7 @@ body {
 }
 
 .mainHolder {
-    padding-bottom: 50px;
+    padding-bottom: 12px;
 }
 
 table, th, td {
@@ -246,7 +245,6 @@ input[type=submit] {
     border-left: 1px solid black;
     margin-left: 5px;
     padding: 0px 5px;
-    display: inline-flex;
     align-items: center;
 }
 
@@ -263,26 +261,71 @@ input[type=submit] {
     background-color: #1E9AFF;
 }
 
-.button2 {
+#button2 {
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 24px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 1px 1px;
     cursor: pointer;
     background-color: #1154e6;
 }
 
-.messageButton:hover, .cancelButton:hover {
+#message{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button1:hover, #button2:hover, #donationButton:hover{
     background-color: #1E79BE;
     color: white;
 }
 
-.messageBox{
-    display: none;
+#messageBox{
+    display: none;   
+}
+
+.formBox{
+    width: 75%;
+    position: absolute;
+    display: inline-block;
+    background-color: #ffffff;
+    border:none;
+}
+
+.messageButtons{
+    display: flex;
+}
+
+.formHolder{
+    padding: 20px;
+    display:block;
+    text-align: center;
+}
+
+.donationButton{
+    background-color: #ffffff;
+}
+
+#donationButton{
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: #1154e6;
 }
 
 .inboxHeader{
@@ -300,6 +343,8 @@ input[type=submit] {
     display: flex;
     border: 1px solid black;
     position: relative;
+    width: 100%;
+    max-height: 200px;
 }
 
 .messageSubject{
@@ -313,43 +358,36 @@ input[type=submit] {
 .messageImage{
     float: left;
     display: block;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 210px;
+    max-height: 210px;
 }
 
 .inboxButtons{
-    width: 100%;
-    left: 210px;
-    bottom: 5px;
+    width: 75%;
+    left: 110px;
+    bottom: 3px;
     position: absolute;
+    display: flex;
 }
 
-.button3 {
+#button3 {
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 24px;
     text-align: center;
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 1px 1px;
     cursor: pointer;
     background-color: #1154e6;
 }
 
-.button3:hover {
+#button3:hover {
     background-color: #1E79BE;
     color: white;
 }
 
-input[name="send"] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #d6cccc;
-    box-sizing: border-box;
-    background-color: rgba(192, 200, 209, 0.986); 
-}
 
 .backToListings {
     margin: 5px;
@@ -433,3 +471,43 @@ input[name="send"] {
     width: 50%;
     border: 1px solid black;
 }
+
+.wishlistForm{
+    display: inline-block;
+}
+
+.bubble{
+    border: 1px solid black;
+    font-size: 12px;
+    display: block;
+    line-height: 2;
+    width: 50%;
+    margin: 3;
+}
+
+.bubble-left{
+    text-align: left;
+}
+
+.bubble-right{
+    text-align: right;
+}
+
+.formBox2{
+    width: 75%;
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    background-color: #ffffff;
+    border:none;
+}
+
+.chatHolder{
+    background: #368dda;
+    margin: 10px;
+    width: 75%;
+    height: 75%;
+}
+
+
+  

@@ -8,12 +8,24 @@
         $pass = $_POST['pwd'];
 
         // $conn->query($sql) SELECT query in database to check user info
-        $sql = "SELECT * FROM userbase WHERE user_email ='$email'";// AND user_pwd='$hashedPass' LIMIT 1";
+        $sql = "SELECT * FROM userbase WHERE user_email ='$email' AND user_ban = '0'";// AND user_pwd='$hashedPass' LIMIT 1";
         $result = $conn->query($sql);
+		
+		//check if query return any results, if not user was banned
+		if(mysqli_num_rows($result)==0){	
+			echo '<script type ="text/javascript">
+				alert("Your account was banned or no such account exit.");
+				window.location.href = "./pageLogin.php";
+				</script>';
+		}
+		
+		//assign $row to return values from $result into associate array
         $row = mysqli_fetch_assoc($result);
-
+		
+		
         //uses fetch_assoc and if $row returns an array then continue because there is data
         if (is_array($row)){
+			
             //decrypts password hash and checks it according Bcrypt used in sessionSignup.php
             if(password_verify($pass, $row['user_pwd'])){
                 session_start();
@@ -28,7 +40,7 @@
                 // echo "Login Successful";
             }
             else {
-            header('Location: ./pageLogin.php?Login=FailedPassword');
+            //header('Location: ./pageLogin.php?Login=FailedPassword'); //this will bypass the echo javascript
             echo '<script type ="text/javascript">
                 alert("Email or Password incorrect!");
                 window.location.href = "./pageLogin.php";
@@ -36,12 +48,13 @@
             }
         }
         else {
-            header('Location: ./pageLogin.php?Login=FailedInfo');
+            //header('Location: ./pageLogin.php?Login=FailedInfo'); //this will bypass the echo javascript
             echo '<script type ="text/javascript">
                 alert("Email or Password incorrect!");
                 window.location.href = "./pageLogin.php";
                 </script>';
         }
+
         // close out connection to database
         $conn->close();
 

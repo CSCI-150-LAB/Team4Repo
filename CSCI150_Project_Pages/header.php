@@ -17,6 +17,12 @@
         <div class="dropdownContent" id="myDropdown">
             <a id="userProfile" href="pageProfile.php">Profile</a>
             <a href="messageInbox.php">My Messages</a>
+			<?php
+				if ($_SESSION['role'] == 'admin') {
+					echo '<a href="pageManageUser.php">Manage Users</a>';
+                    echo '<a href="pageReportsView.php">View Donation Listings Reports</a>';
+                }
+			?>
             <a href="sessionLogout.php">Logout</a>
         </div>
     </div>
@@ -25,6 +31,6 @@
     userFirst = "<?php echo $_SESSION['firstName']; ?>";
     userEmail = "<?php echo $_SESSION['email']; ?>";
     userProfilePage = userEmail.substr(0, userEmail.indexOf("@")) + ".php";
-    document.getElementById("userButton").innerHTML = userFirst;
+    document.getElementById("userButton").innerHTML = userFirst + '&#9662';
     //document.getElementById("userProfile").setAttribute("href", userProfilePage);
 </script>

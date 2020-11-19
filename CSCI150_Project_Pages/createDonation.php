@@ -10,8 +10,8 @@
 				<label>Select item type</label>
 				<select name="itemselection" required>
 					<option value="">-</option>
-					<option value="Books">Books</option>
-					<option value="Furnitures">Furnitures</option>
+					<option value="Book">Book</option>
+					<option value="Furniture">Furniture</option>
 					<option value="Electronic">Electronic</option>
 					<option value="Clothes">Clothes</option>
 					<option value="Other">Other</option>
@@ -21,7 +21,7 @@
 				<input type="text" name="title" maxlength="100" placeholder="Title" required></input>
 			</div>
 			<div>
-				<textarea name="myTextArea" maxlength="500" rows="30" cols="50" placeholder="Description" required></textarea>
+				<textarea name="myTextArea" maxlength="1000" rows="30" cols="50" placeholder="Description" required></textarea>
 			</div>
 			<div>
 				<label>Select image file:</label>
