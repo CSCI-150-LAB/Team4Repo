@@ -476,13 +476,37 @@ input[type=submit] {
     display: inline-block;
 }
 
+.bubble{
+    border: 1px solid black;
+    font-size: 12px;
+    display: block;
+    line-height: 2;
+    width: 50%;
+    margin: 3;
+}
 
+.bubble-left{
+    text-align: left;
+}
+
+.bubble-right{
+    text-align: right;
+}
+
+.formBox2{
+    width: 75%;
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    background-color: #ffffff;
+    border:none;
+}
 
 .chatHolder{
     background: #368dda;
-    margin: 20px;
-    width: 90%;
-    height: 90%;
+    margin: 10px;
+    width: 75%;
+    height: 75%;
 }
 
 

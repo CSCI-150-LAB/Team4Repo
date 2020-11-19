@@ -15,7 +15,7 @@
             }
             else {
                 $id=$_SESSION["user_ID"];
-                $query="SELECT * FROM message_base WHERE (receiver_ID= '$id' OR sender_ID='$id') AND receiver_delete='0' ORDER BY message_ID desc";    
+                $query="SELECT * FROM message_base WHERE (receiver_ID= '$id' OR sender_ID='$id') AND receiver_delete='0' ORDER BY message_ID desc LIMIT 1";    
                 $result = $conn->query($query);
                 $receiver=mysqli_fetch_assoc($result);
                 //if there are any messages
@@ -39,7 +39,10 @@
                         echo'        <div class="inboxButtons">
                                 <p>
                                 <form class="inboxButtons" action="./buttonActions.php" method="POST">
-                                    <input type="hidden" name="imageLink" value='.$receiver[imageLink].'>
+                                    <input type="hidden" name="imageLink" value='.$receiver['imageLink'].'>
+                                    <input type="hidden" name="ID" value='.$sender['user_ID'].'>
+                                    <input type="hidden" name="title" value="'.$receiver["subject"].'">
+                                    <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
                                     <input id="button3" type="submit" name="view" value="View Messages">
                                     <input id="button3" type="submit" name="delete" value="Delete Conversation">
                                     <input id="button3" type="submit" name="report" value="Report User">
@@ -62,7 +65,10 @@
                            echo'        <div class="inboxButtons">
                                         <p>
                                         <form class="inboxButtons" action="./buttonActions.php" method="POST">
-                                            <input type="hidden" name="imageLink" value='.$receiver[imageLink].'>
+                                            <input type="hidden" name="imageLink" value='.$receiver['imageLink'].'>
+                                            <input type="hidden" name="ID" value='.$sender['user_ID'].'>
+                                            <input type="hidden" name="title" value="'.$receiver["subject"].'">
+                                            <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
                                             <input id="button3" type="submit" name="view" value="View Messages">
                                             <input id="button3" type="submit" name="delete" value="Delete Conversation">
                                             <input id="button3" type="submit" name="report" value="Report User">
