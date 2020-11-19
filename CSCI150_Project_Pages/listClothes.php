@@ -3,6 +3,11 @@
 ?>
 <body onload="initialListings()">
 	<div class="mainHolder">
+		<div class="formHolder">
+			<form class="donationButton" method="post" action=./createDonation.php> 
+				<input id="donationButton" type="submit" value="Create a Donation!"/> 
+			</form>
+		</div>
         <div>
 		    <h1 style="text-align:center">Clothes Listings:</h1>
             <?php

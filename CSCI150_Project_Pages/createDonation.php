@@ -21,7 +21,7 @@
 				<input type="text" name="title" maxlength="100" placeholder="Title" required></input>
 			</div>
 			<div>
-				<textarea name="myTextArea" maxlength="500" rows="30" cols="50" placeholder="Description" required></textarea>
+				<textarea name="myTextArea" maxlength="1000" rows="30" cols="50" placeholder="Description" required></textarea>
 			</div>
 			<div>
 				<label>Select image file:</label>

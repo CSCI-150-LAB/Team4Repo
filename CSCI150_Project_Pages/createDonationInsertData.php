@@ -8,9 +8,9 @@
 	//using $_POST[''] because of method="post"
 	if(isset($_POST['submit'])){
 		
-		$itemselection = $_POST['itemselection'];
-		$title = $_POST['title'];
-		$myTextArea = $_POST['myTextArea'];
+		$itemselection = mysqli_real_escape_string($conn, $_POST['itemselection']);
+		$title = mysqli_real_escape_string($conn, $_POST['title']);
+		$myTextArea = mysqli_real_escape_string($conn, $_POST['myTextArea']);
 		$image = $_FILES['image']; //temp_name from image array
 		$imageErro = $_FILES['image']['error'];
 		$user = $_SESSION['user_ID'];
