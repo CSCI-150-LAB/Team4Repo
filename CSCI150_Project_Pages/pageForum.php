@@ -143,6 +143,7 @@
                     <option value="VIT">Viticulture (VIT)</option>
                     <option value="WS">Women's Studies (WS)</option>
             </select>
+            <button type"button" onclick="applyFilter()">Submit</button>
         </div>
         <div class="forumPosts">
             <div class="posting">
@@ -193,9 +194,9 @@
                 // should be either 'initial' or invalid string result
 			    $startList = 0;
 		    }
-            if(isset($_POST['itemselection'])){
-                $itemselection = $_POST['itemselection'];
-                $fetchEntries = "SELECT * FROM post_base WHERE post_class = $itemselection ORDER BY post_ID DESC LIMIT $startList, $listEntries";
+            if(isset($_GET['classTag']) && $_GET['classTag'] != 'null'){
+                $classTag = $_GET['classTag'];
+                $fetchEntries = "SELECT * FROM post_base WHERE post_class = '$classTag' ORDER BY post_ID DESC LIMIT $startList, $listEntries";
             }
             else {
                 $fetchEntries = "SELECT * FROM post_base ORDER BY post_ID DESC LIMIT $startList, $listEntries";
@@ -215,6 +216,10 @@
 	    }
 	?>
 
+    function applyFilter() {
+        location.replace("./pageForum.php?classTag=" + document.getElementById("tagList").value);
+    }
+
 	function initialListings() {
         <?php 
             echo json_encode(callEntries('initial')); //fetches the array and stores it out in jsArr
@@ -225,9 +230,9 @@
             // going through the holder of the Listings
             var pageLink = "forumEntry.php?postID=" + jsArr[i][0]; // this is temp until directories are stored in db
             var imgLink = "./forum_images/" + jsArr[i][6];
-            var postTitle = jsArr[i][2];
+            var postTitle = jsArr[i][1] + " - " + jsArr[i][2];
             var postBody = jsArr[i][3];
-            var profileName = jsArr[i][9];
+            var profileName = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][4].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
