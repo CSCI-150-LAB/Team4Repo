@@ -163,7 +163,7 @@
             <button class="button2 cancelButton" onclick="closeMessage()">Cancel Message</button>
         </form>
     </div>
-    <div class="wishlistHolder">
+    <div class="commentFormHolder">
 		<form class= "commentForm" action="<?php echo './comment.php?postID=' . $_GET['postID'] ?>" method="POST">
 			<input type="text" id="comment" name="comment" placeholder="Type your comment here."required>
 			<div class="messageButtons">

@@ -4,6 +4,7 @@
 
 <body onload="initialListings()">
 	<div class="mainHolder">
+    	<h1 style="text-align:center">Forum Entries:</h1>
         <div class="tagSearch">
             <select class="tagList" name="tagList" id="tagList">
                     <option selected="" value="null">Search by tag:</option>
@@ -202,6 +203,32 @@
                 $fetchEntries = "SELECT * FROM post_base ORDER BY post_ID DESC LIMIT $startList, $listEntries";
             }
 		    $entries = $conn->query($fetchEntries);
+            /*
+            if ($myAction == "next" && mysqli_num_rows($entries) < 10){
+                if(isset($_GET['classTag']) && $_GET['classTag'] != 'null'){
+                    $classTag = $_GET['classTag'];
+                    $fetchEntries = "SELECT * FROM (SELECT * FROM post_base WHERE post_class='$classTag' ORDER BY post_ID ASC LIMIT 0, 10) AS Tempdb ORDER BY post_ID DESC";
+                    $entries = $conn->query($fetchEntries);
+                }
+                else {
+                    $fetchEntries = "SELECT * FROM (SELECT * FROM post_base ORDER BY post_ID ASC LIMIT 0, 10) AS Tempdb ORDER BY listing_ID DESC";
+                    $entries = $conn->query($fetchEntries);
+                }
+            }
+            // If you hit prev on the first page you should want the first 10 results
+            else if ($myAction == "prev" && mysqli_num_rows($entries) < 10){
+                if(isset($_GET['classTag']) && $_GET['classTag'] != 'null'){
+                    $classTag = $_GET['classTag'];
+                    $fetchEntries = "SELECT * FROM post_base WHERE post_class='$classTag' ORDER BY post_ID ASC LIMIT 0, 10";
+                    $entries = $conn->query($fetchEntries);
+                }
+                else {
+                    $fetchEntries = "SELECT * FROM post_base ORDER BY post_ID ASC LIMIT 0, 10";
+                    $entries = $conn->query($fetchEntries);
+                }
+            }
+            */
+
 		    // creates a 2d array with the queries results
 		    while($row = mysqli_fetch_array($entries)) {
 			    $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $row[5]";
@@ -344,7 +371,7 @@
             var imgLink = "./forum_images/" + jsArr[i][6];
             var postTitle = jsArr[i][2];
             var postBody = jsArr[i][3];
-            var profileName = jsArr[i][9];
+            var profileName = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][4].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
@@ -456,7 +483,7 @@
             var imgLink = "./forum_images/" + jsArr[i][6];
             var postTitle = jsArr[i][2];
             var postBody = jsArr[i][3];
-            var profileName = jsArr[i][9];
+            var profileName = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][4].replace(/\./gi, "/");
             var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
