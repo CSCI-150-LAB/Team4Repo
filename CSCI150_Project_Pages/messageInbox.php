@@ -15,7 +15,8 @@
             }
             else {
                 $id=$_SESSION["user_ID"];
-                $query="SELECT * FROM message_base WHERE (receiver_ID= '$id' OR sender_ID='$id') AND receiver_delete='0' ORDER BY message_ID desc LIMIT 1";    
+                // query will return latest message between two users for an item they were discussing
+                $query="SELECT * FROM message_base WHERE message_ID IN (SELECT max(message_ID) FROM message_base WHERE ((receiver_ID= '$id' OR sender_ID='$id') AND receiver_delete='0') GROUP BY imageLink  ) ORDER BY message_ID desc;";
                 $result = $conn->query($query);
                 $receiver=mysqli_fetch_assoc($result);
                 //if there are any messages
@@ -26,8 +27,6 @@
                     $sender=mysqli_fetch_assoc($senderResults);
                     //if there are any messages
                     if(mysqli_num_rows($result) >= 0){
-                        //$num_rows = mysqli_num_rows($result);
-                        //echo "$num_rows Rows\n";
                         echo' <div class="messageContainer">';
                         echo' <div class="messageImage">';
                         echo'       <img id="messageImage" class="messageImage" src=" '. $receiver['imageLink'].'">';
@@ -50,7 +49,6 @@
                                 </p>
                                 </div>
                             </div>
-
                         </div>';
                         while($receiver=mysqli_fetch_assoc($result))
                         { 
@@ -76,7 +74,6 @@
                                         </p>
                                         </div>
                                     </div>
-
                             </div>';
                         }
                     }

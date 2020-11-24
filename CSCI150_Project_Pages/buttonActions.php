@@ -37,15 +37,22 @@
         $title = $_POST['title'];
         $id = $_SESSION['user_ID'];
         $receiver = $_POST['receiver'];
-        $query="SELECT * FROM message_base WHERE imageLink='$image' ORDER BY message_ID desc";    
+        $query="SELECT * FROM message_base WHERE imageLink='$image' AND ((receiver_ID= '$id' OR sender_ID='$id')AND receiver_delete='0' OR sender_delete='0')  ORDER BY message_ID asc";    
         $result = $conn->query($query);
         $messages = mysqli_fetch_assoc($result);
-        $_SESSION['poster'] = $receiver;
+        $messageReceiver = $messages['receiver_ID'];
+        $messageSender = $messages['sender_ID'];
+
+        //queries to grab User_ID of user that posted Donation Listing
+        $listingQuery="SELECT * FROM listingbase WHERE (listing_title='$title')";    
+        $listingResults = $conn->query($listingQuery);
+        $listingOutput = mysqli_fetch_assoc($listingResults);
+
         $_SESSION['imageLink'] = $image;
         $_SESSION['title'] = $title;
             //checks if there are messages
             if(is_array($messages)) {
-                if($id=== $_POST['ID']){
+                if($listingOutput['user_ID']!== $messages['sender_ID']){
                     
                     echo '<div class="bubble bubble-left">';
                     echo '<p id="messageText">Requester Message: '. $messages['message'].' </p>';
@@ -57,7 +64,7 @@
                     echo '</div>';
                     }
                 while($messages=mysqli_fetch_assoc($result)){
-                    if($id=== $_POST['ID']){
+                    if($listingOutput['user_ID']!== $messages['sender_ID']){
                     
                     echo '<div class="bubble bubble-left">';
                     echo '<p id="messageText">Requester Message: '. $messages['message'].' </p>';
@@ -72,8 +79,20 @@
             }
         ?>
             
-        <form class= "formBox2" action="./messageSend.php" method="POST">
+        <form class= "formBox2" action="./inboxSend.php" method="POST">
             <input type="text" id="message" name="message" placeholder="Enter Message Here... "required>
+            <input type="hidden" name="donor" value="<?php echo $listingOutput['user_ID'] ?>">
+            <?php 
+                //if the User in the inbox is not the donor 
+                //if($id === $listingOutput['user_ID']){
+                if($id === $listingOutput['user_ID']){
+                    echo '<input type="hidden" name="receiver" value="'.$messageSender.'">';
+                }
+                else{
+                    echo '<input type="hidden" name="receiver" value="'.$messageReceiver.'">';
+                }
+            
+            ?>
             <div class="messageButtons">
                 <input type="submit" id="button2" name="send" value="Send Message">
             </div>
@@ -89,7 +108,7 @@
 
 
     </body>
-    </html>;         
+    </html>      
 
 
 <?php
