@@ -30,7 +30,7 @@ body {
 
 .navbar a{
         padding: 16px 0;
-        width: 25%;
+        width: 20%;
         display: inline-block;
         float: left;
         font-size: 16px;
@@ -42,7 +42,7 @@ body {
 .dropdownContainer {
     float: left;
     overflow: hidden;
-    width: 25%;
+    width: 20%;
     display: inline-block;
     text-align: center;
 }
@@ -509,5 +509,46 @@ input[type=submit] {
     height: 75%;
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
 
-  
+.mapHolder{
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.mapTitle{
+    padding: 25px;
+    text-align: center;
+}
+
+.mapText{
+    padding: 25px 0 ;
+}
+
+.mapLabels{
+    max-width: 50px;
+    max-height: 50px;
+    float: left;
+    display: inline-block;
+    padding: 10px;
+}
+
+.mapKey{
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.mapLocation{
+    display: flex;
+    align-items: center;
+
+}
+
+.mapPhotos{
+    max-width: 35%;
+    max-height: 35%;
+}

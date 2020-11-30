@@ -12,6 +12,7 @@
     <a href="pageHome.php">Home</a>
     <a href="pageForum.php">Forums</a>
     <a href="listDonationDir.php">Donation Listings</a>
+    <a href="meetupLocations.php">MeetUp Locations</a>
     <div class="dropdownContainer">
         <button class="ddButton" id="userButton">Profile</button>
         <div class="dropdownContent" id="myDropdown">
