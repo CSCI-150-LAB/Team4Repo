@@ -14,29 +14,26 @@
                     $sql = "SELECT * FROM userbase";
 					$result = mysqli_query($conn, $sql);
 					if(mysqli_num_rows($result)>0){
+						echo '<div width:100%;>';
 						while($row = mysqli_fetch_assoc($result)){
 
-							
 							//dynamic echo forms with result from report db
-							echo '<div>';
-							echo '<form action="pageManageUserAction.php" method="get">';
+							echo '<div style="float:left; width:25%; padding:10px;">';
+							echo '<form action="pageManageUserAction.php" method="get" style="width:100%;">';
 							echo 'First Name - '.$row['user_first'].'<br>';
 							echo ' Last Name - '.$row['user_last'].'<br>';
 							echo ' Email - '.$row['user_email'].'<br>';
 							echo ' User Status - '.$row['user_role'].'<br>';
 							echo ' Ban Status - '.$row['user_ban'].'<br>';
 							echo '<input type="hidden" name="userID" value="'.htmlspecialchars($row['user_ID']).'"/>';
-							echo '<input type="submit" name="ban" value="Ban User"/>';
-							echo '<br>';
-							echo '<input type="submit" name="unban" value="Unban User"/>';
-							echo '<br>';
-							echo '<input type="submit" name="adm" value="Make User Admin"/>';
-							echo '<br>';
-							echo '<input type="submit" name="unadm" value="Undo User Admin"/>';
+							echo '<input type="submit" name="ban" value="Ban User" style="height:2em;"/>';
+							echo '<input type="submit" name="unban" value="Unban User" style="height:2em;"/>';
+							echo '<input type="submit" name="adm" value="Make User Admin" style="height:2em;"/>';
+							echo '<input type="submit" name="unadm" value="Undo User Admin" style="height:2em;"/>';
 							echo '</form>';
 							echo '</div>';
-							echo '<br>';
 						}
+						echo '</div>';
 					}else{
 						//if there is nothing to display
 						echo '<p align="center">There is no report.</p>';

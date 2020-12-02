@@ -62,7 +62,16 @@
             <a href="javascript: history.go(-1)">Back to Listings</a>
             <button onclick="copyLink()">Copy Link</button>
         </div>
-
+		<?php
+		echo '<div>';
+			if($_SESSION['role'] == 'admin'){
+				echo '<form action="pageAdminhide.php" method="get">';
+				echo '<input type="hidden" name="postID" value="'.htmlspecialchars($listID).'"/>';
+				echo '<input type="submit" name="submit" value="Hide post (Admin ONLY)"/>';
+				echo '</form>';
+			}
+		echo '</div>';
+		?>
         <div class="listingTitle">
             <h1 id="listingBody"><?php echo $title; ?></h1>
 			<?php
