@@ -23,6 +23,7 @@ fetch(rss_url)
 
             // Linking all the elements together
             newNewsFeed.appendChild(art);
+            newNewsFeed.appendChild(document.createElement("br"));
             art.appendChild(hFour);
             hFour.appendChild(aLink);
             art.appendChild(hFive);

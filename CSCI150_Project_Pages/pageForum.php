@@ -241,7 +241,13 @@
 		    // return the 2d array to parse it in the js
 		    $realOutput = json_encode($outputArr);
 		    echo "var jsArr = " . json_encode($outputArr) . ";";
-            echo "var filter = " . json_encode($_GET['classTag']). ";";
+
+            if(isset($_GET['classTag'])){
+                echo "var filter = " . json_encode($_GET['classTag']). ";";
+            }
+            else {
+                echo "var filter = 'null';";
+            }
 	    }
 	?>
 

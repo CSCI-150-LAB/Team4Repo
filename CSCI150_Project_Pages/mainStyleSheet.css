@@ -14,8 +14,8 @@ body {
 .logoText {
     /* based on a 2:1 image ratio*/
     display: inline-block;
-    width: 20%;
-    height: 75px;
+    width: 324px;
+    height: 64px;
 }
 
 .navbar {
@@ -28,7 +28,7 @@ body {
     font-size: 16px;
 }
 
-.navbar a{
+.navbar a {
         padding: 16px 0;
         width: 20%;
         display: inline-block;
@@ -561,4 +561,244 @@ img {
 .mapPhotos{
     max-width: 35%;
     max-height: 35%;
+}
+
+/* 
+    this style is only used when the max width of the screen is 768px
+    meaning if the width > 768px it uses the style above this comment
+*/
+@media only screen and (max-width: 768px) {
+    /* Universal CSS */
+    * {
+        border: 0px;
+        margin: 0px;
+        padding: 0px;
+        font-family: Arial;
+    }
+
+    body {
+        margin: 5px;
+        background-color: white;
+    }
+
+    .logoText {
+        /* based on a 2:1 image ratio*/
+        display: block;
+        max-width: 324px;
+        max-height: 64px;
+        margin: 0 auto;
+        padding-bottom: 2px;
+    }
+
+    .navbar {
+        overflow: hidden;
+        background-color: #1E9AFF;
+        width: 100%;
+        height: auto;
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 16px;
+    }
+
+        .navbar a {
+            padding: 16px 0;
+            width: 100%;
+            display: inline-block;
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+    .dropdownContainer {
+        float: left;
+        overflow: hidden;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
+
+        .dropdownContainer:hover .dropdownContent {
+            display: block;
+        }
+
+        .dropdownContainer .ddButton {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 16px 0;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover, .dropdownContainer:hover {
+            background-color: #1E79BE;
+        }
+
+    .dropdownContent {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        width: inherit;
+        text-align: center;
+        z-index: 1;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    }
+
+        .dropdownContent a {
+            width: 100%;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+            .dropdownContent a:hover {
+                background-color: #ddd;
+            }
+
+    .mainHolder {
+        padding-bottom: 12px;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 1px;
+    }
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Page Elements CSS*/
+
+    .logoLogin {
+        /* based on a 4:3 image ratio*/
+        display: block;
+        margin: 10px auto 50px auto;
+        width: 50%;
+        height: 10%;
+    }
+
+    .homePageContent {
+        padding: 0px;
+        display: flex;
+    }
+
+    .pageContent {
+        padding: 20px;
+        display: block;
+    }
+
+    .leftSide {
+        display: none;
+    }
+
+    .rightSide {
+        flex: 100%;
+    }
+    
+    .forumPreview {
+        margin: 20px 0px;
+        padding: 10px 0px;
+        display: block;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .listingMenu {
+        margin: 20px 0px;
+        padding: 0px;
+        display: block;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+        .listingMenu a {
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+            display: block;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            .listingMenu a:hover {
+                background-color: #A1A1A1;
+            }
+
+    .newsFeed {
+        padding: 10px;
+        margin: 20px;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .menuTitle {
+        margin: 0;
+        padding: 10px 0px;
+        width: 100%;
+        display: block;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .newUserText {
+        padding-left: 5px;
+    }
+
+    form {
+        background-color: #b3b3b3;
+        border: 1px solid #8a8a8a;
+        width: 400px;
+        margin: auto;
+        padding: 5px;
+    }
+
+    .loginBox {
+        padding: 20px;
+    }
+
+    .forgotPass {
+        padding: 20px 0px 0px 0px;
+        font-size: 16px;
+    }
+
+    .newUser {
+        background-color: #b3b3b3;
+        border: 1px solid #8a8a8a;
+        width: 400px;
+        margin: 20px auto;
+        padding: 10px 5px 10px 5px;
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #8a8a8a;
+        box-sizing: border-box;
+        background-color: rgba(100, 140, 190, 0.2); /*hexcode is #648DBE*/
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #002E6D;
+        color: white;
+        padding: 16px 0 16px 0;
+        border: 0px;
+        font-weight: bold;
+    }
 }
