@@ -21,7 +21,7 @@
 			<?php
 				if ($_SESSION['role'] == 'admin') {
 					echo '<a href="pageManageUser.php">Manage Users</a>';
-                    echo '<a href="pageReportsView.php">View Donation Listings Reports</a>';
+                    echo '<a href="pageReportsView.php">View Reports</a>';
                 }
 			?>
             <a href="sessionLogout.php">Logout</a>

@@ -10,6 +10,8 @@
 			//check for admin before display content
 			if ($_SESSION['role'] == 'admin') {
 				
+					echo '<h1>View all reports</h1>';
+					
 					//get info from report db
                     $sql = "SELECT * FROM reports_base WHERE reports_Delete = '0'";
 					$result = mysqli_query($conn, $sql);

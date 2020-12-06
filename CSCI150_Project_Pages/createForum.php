@@ -2,7 +2,7 @@
    require ("./header.php");
 ?>
 <body>
-    <h1>Create A Forum</h1>
+    <h1 style="text-align:center color:red">Create a post</h1>
     <form action="./createforumdata.php" method="post" target="_blank" enctype="multipart/form-data">
         <div>
 	        <p>Select Class</p>
@@ -153,7 +153,7 @@
  
         <div>
             <label></label>
-            <textarea id="myTextArea" name="myTextArea" required maxlength="1000"rows="30" cols="60" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
+            <textarea id="myTextArea" name="myTextArea" required maxlength="1000" rows="30" cols="49" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
         </div>
 
         <br><br>

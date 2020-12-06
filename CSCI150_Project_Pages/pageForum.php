@@ -6,6 +6,7 @@
 	<div class="mainHolder">
     	<h1 style="text-align:center">Forum Entries:</h1>
         <div class="tagSearch">
+			<div class="centerText">
             <select class="tagList" name="tagList" id="tagList">
                     <option selected="" value="null">Search by tag:</option>
                     <option value="ACCT">Accountancy (ACCT)</option>
@@ -144,14 +145,17 @@
                     <option value="VIT">Viticulture (VIT)</option>
                     <option value="WS">Women's Studies (WS)</option>
             </select>
-            <button type"button" onclick="applyFilter()">Submit</button>
+			
+			<button type="button" style="width:50; height:30; margin-top:1%;" onclick="applyFilter()">Submit</button>
+			</div>
         </div>
         <input type="text" id="currentFilterBox" value="Filter: No Filter Selected" readonly/>
         <div class="forumPosts">
-            <div class="posting">
-			    <a href="createForum.php"><p style="text-align:center">Click here to post</p></a>
-                <img class="postImage" src="" alt="">
-            </div>
+			<div class="formHolder">
+				<form class="donationButton" method="post" action="./createForum.php"> 
+					<input id="donationButton" type="submit" value="Click here to post"/> 
+				</form>
+			</div>
         </div>
         <div id="listingHolder">
         </div>

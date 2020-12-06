@@ -9,7 +9,7 @@
 		<?php
 			//check for admin before display content
 			if ($_SESSION['role'] == 'admin') {
-				
+					echo '<h1>Manage all users</h1>';
 					//get info from report db
                     $sql = "SELECT * FROM userbase";
 					$result = mysqli_query($conn, $sql);

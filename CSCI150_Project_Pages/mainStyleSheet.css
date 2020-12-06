@@ -6,6 +6,14 @@
     font-family: Arial;
 }
 
+.centerText{
+	text-align:center;
+}
+
+h1{
+	color:red;
+	text-align:center;
+}
 body {
     margin: 5px;
     background-color: white;
