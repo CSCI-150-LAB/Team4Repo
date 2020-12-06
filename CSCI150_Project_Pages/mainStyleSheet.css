@@ -123,7 +123,7 @@ table, th, td {
 }
 
 .leftSide {
-    flex: 50%;
+    width: 325px;
 }
 
 .rightSide {
@@ -165,10 +165,20 @@ table, th, td {
 .newsFeed {
     padding: 10px;
     margin: 20px;
-    display: flex;
     background-color: #D1D1D1;
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.menuTitle {
+    margin: 0;
+    padding: 10px 0px;
+    width: 100%;
+    display: block;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .newUserText {
@@ -482,7 +492,7 @@ input[type=submit] {
     display: block;
     line-height: 2;
     width: 50%;
-    margin: 3;
+    margin: 3px;
 }
 
 .bubble-left{

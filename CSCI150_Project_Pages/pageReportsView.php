@@ -25,6 +25,8 @@
 							//dynamic echo forms with result from report db
 							echo '<div style="float:left; width:25%; padding:10px;">';
 							echo '<form action="pageReportsAction.php" method="get">';
+							echo 'Report Type: ' . $row['report_Type'];
+							echo '<br>';
 							echo 'Posted by: '.$fectchUserRow['user_name'];
 							echo '<input type="hidden" name="reportID" value="'.htmlspecialchars($row['report_ID']).'"/>';
 							echo '<br>';
@@ -39,11 +41,22 @@
 							echo '</textarea>';
 							echo '<input type="submit" name="hidePost" value="Hide Post" style="height:2em;"/>';
 							echo '</form>';
-							echo '<form class="donationButton" method="get" action=./listEntry.php>';
-							echo '<input type="hidden" name="listID" value="'.htmlspecialchars($row['report_PostID']).'" style="height:2em;"/>';
-							echo '<input type="submit" value="Go to post."/>';
-							echo '</form>';
-							echo '</div>';
+							
+							if($row['report_Type'] == "Donation Listing") {
+								echo '<form class="donationButton" method="get" action=./listEntry.php>';
+								echo '<input type="hidden" name="listID" value="'.htmlspecialchars($row['report_PostID']).'" style="height:2em;"/>';
+								echo '<input type="submit" value="Go to post."/>';
+								echo '</form>';
+								echo '</div>';
+							}
+							else {
+								echo '<form class="donationButton" method="get" action=./forumEntry.php>';
+								echo '<input type="hidden" name="postID" value="'.htmlspecialchars($row['report_PostID']).'" style="height:2em;"/>';
+								echo '<input type="submit" value="Go to post."/>';
+								echo '</form>';
+								echo '</div>';
+							}
+							
 						}
 						echo '</div>';
 					}else{

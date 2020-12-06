@@ -113,7 +113,7 @@
             var le = document.createElement("div");
             le.classList.add("listingEntry");
             le.id = "listing_" + i;
-
+            /*
             // image stuff
             var imgA = document.createElement("a");
             imgA.classList.add("listingThumbnail");
@@ -126,7 +126,7 @@
             imgImg.setAttribute("height", "52");
             imgImg.setAttribute("alt", "");
             imgA.appendChild(imgImg);
-
+            */
             // entry div
             var divE = document.createElement("div");
             divE.classList.add("entry");

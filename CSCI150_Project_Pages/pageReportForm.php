@@ -19,6 +19,33 @@
 		//assign new variables to assoc query result
 		$userID = $result['user_ID'];
 		$title = $result['listing_title'];
+		$type = "Donation Listing";
+
+		//stm for userbase db
+		$sql2 = "SELECT user_name FROM userbase WHERE user_ID = $userID";
+		
+		//assign $result2 to the return result from query stm($sql2)
+		$result2 = mysqli_fetch_assoc(mysqli_query($conn, $sql2));
+		
+		//assign new variable to assoc $result2
+		$poster = $result2['user_name'];
+	}
+	// added functionality to support reporting forum posts
+	elseif(isset($_GET['postID'])){
+		
+		//result from "get" method and assigned to a new variable
+		$listID = $_GET['postID'];
+		
+		//stm for listing db
+		$sql = "SELECT * FROM post_base WHERE post_id = $listID";
+		
+		//assign $result to the return result from query stm($sql) with $conn(connection)
+		$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+		
+		//assign new variables to assoc query result
+		$userID = $result['user_ID'];
+		$title = $result['post_sub'];
+		$type = "Forum Post";
 		
 		//stm for userbase db
 		$sql2 = "SELECT user_name FROM userbase WHERE user_ID = $userID";
@@ -46,6 +73,10 @@
 			<div>
 				<label>Post title:</label>
 				<input type="text" name="posttitle" value="<?php echo $title; ?>" readonly></input>
+			</div>
+			<div>
+				<label>Post Type:</label>
+				<input type="text" name="posttype" value="<?php echo $type; ?>" readonly></input>
 			</div>
 			<div>
 				<textarea name="myTextArea" maxlength="300" rows="30" cols="50" placeholder="Please explain the reason and give as much details as possible." required></textarea>

@@ -156,11 +156,8 @@
             <textarea id="myTextArea" name="myTextArea" required maxlength="1000"rows="30" cols="60" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
         </div>
 
-        <div>
-		    <label>Select image file:</label>
-		    <input type="file" name="image" accept="image/*" required>
-	    </div>
         <br><br>
+
         <input type="submit" value="post" name ="submit">
     </form>
 </body>

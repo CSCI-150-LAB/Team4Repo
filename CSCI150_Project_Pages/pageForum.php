@@ -146,6 +146,7 @@
             </select>
             <button type"button" onclick="applyFilter()">Submit</button>
         </div>
+        <input type="text" id="currentFilterBox" value="Filter: No Filter Selected" readonly/>
         <div class="forumPosts">
             <div class="posting">
 			    <a href="createForum.php"><p style="text-align:center">Click here to post</p></a>
@@ -240,6 +241,7 @@
 		    // return the 2d array to parse it in the js
 		    $realOutput = json_encode($outputArr);
 		    echo "var jsArr = " . json_encode($outputArr) . ";";
+            echo "var filter = " . json_encode($_GET['classTag']). ";";
 	    }
 	?>
 
@@ -252,35 +254,28 @@
             echo json_encode(callEntries('initial')); //fetches the array and stores it out in jsArr
         ?>
         
+        if (filter == "null"){
+            document.getElementById("currentFilterBox").value = "Filter: No Filter Selected";
+        }
+        else {
+            document.getElementById("currentFilterBox").value = "Filter: " + filter;
+        }
         document.getElementById("listingHolder").innerHTML = "";
         for (var i = 0; i < jsArr.length; i++) {
             // going through the holder of the Listings
             var pageLink = "forumEntry.php?postID=" + jsArr[i][0]; // this is temp until directories are stored in db
-            var imgLink = "./forum_images/" + jsArr[i][6];
-            var postTitle = jsArr[i][1] + " - " + jsArr[i][2];
+            var postTitle = jsArr[i][2];
             var postBody = jsArr[i][3];
             var profileName = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][4].replace(/\./gi, "/");
-            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
 
+            // report form
+            var reportLink = "./pageReportForm.php?postID=" + jsArr[i][0];
             // listing entry div
             var le = document.createElement("div");
             le.classList.add("listingEntry");
             le.id = "listing_" + i;
-
-            // image stuff
-            var imgA = document.createElement("a");
-            imgA.classList.add("listingThumbnail");
-            imgA.setAttribute("href", pageLink);
-            le.appendChild(imgA);
-
-            var imgImg = document.createElement("img");
-            imgImg.setAttribute("src", imgLink);
-            imgImg.setAttribute("width", "70");
-            imgImg.setAttribute("height", "52");
-            imgImg.setAttribute("alt", "");
-            imgA.appendChild(imgImg);
 
             // entry div
             var divE = document.createElement("div");
@@ -322,22 +317,8 @@
             var button1 = document.createElement("a");
             button1.id = "copyBtn";
             button1.classList.add("copyBtn");
-            button1.setAttribute("value", fullPageLink);
-            //button1.setAttribute("onclick", "");
             button1.innerHTML = "share";
             li_1.appendChild(button1);
-
-            var li_2 = document.createElement("li");
-            li_2.classList.add("saveButton");
-            ulList.appendChild(li_2);
-
-            var button2 = document.createElement("a");
-            button2.id = "saveBtn";
-            button2.classList.add("saveBtn");
-            button2.setAttribute("value", fullPageLink);
-            //button2.setAttribute("onclick", "");
-            button2.innerHTML = "save";
-            li_2.appendChild(button2);
 
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
@@ -346,8 +327,7 @@
             var button3 = document.createElement("a");
             button3.id = "report";
             button3.classList.add("reportBtn");
-            button3.setAttribute("value", fullPageLink);
-            //button3.setAttribute("onclick", "");
+            button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);
 
@@ -363,36 +343,30 @@
         <?php 
             echo json_encode(callEntries('prev')); //fetches the array and stores it out in jsArr
         ?>
-        
+
+        if (filter == "null"){
+            document.getElementById("currentFilterBox").value = "Filter: No Filter Selected";
+        }
+        else {
+            document.getElementById("currentFilterBox").value = "Filter: " + filter;
+        }
         document.getElementById("listingHolder").innerHTML = "";
         for (var i = 0; i < jsArr.length; i++) {
             // going through the holder of the Listings
             var pageLink = "forumEntry.php?postID=" + jsArr[i][0]; // this is temp until directories are stored in db
-            var imgLink = "./forum_images/" + jsArr[i][6];
             var postTitle = jsArr[i][2];
             var postBody = jsArr[i][3];
             var profileName = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][4].replace(/\./gi, "/");
-            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+
+            // report form
+            var reportLink = "./pageReportForm.php?postID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
             le.classList.add("listingEntry");
             le.id = "listing_" + i;
-
-            // image stuff
-            var imgA = document.createElement("a");
-            imgA.classList.add("listingThumbnail");
-            imgA.setAttribute("href", pageLink);
-            le.appendChild(imgA);
-
-            var imgImg = document.createElement("img");
-            imgImg.setAttribute("src", imgLink);
-            imgImg.setAttribute("width", "70");
-            imgImg.setAttribute("height", "52");
-            imgImg.setAttribute("alt", "");
-            imgA.appendChild(imgImg);
 
             // entry div
             var divE = document.createElement("div");
@@ -434,22 +408,8 @@
             var button1 = document.createElement("a");
             button1.id = "copyBtn";
             button1.classList.add("copyBtn");
-            button1.setAttribute("value", fullPageLink);
-            //button1.setAttribute("onclick", "");
             button1.innerHTML = "share";
             li_1.appendChild(button1);
-
-            var li_2 = document.createElement("li");
-            li_2.classList.add("saveButton");
-            ulList.appendChild(li_2);
-
-            var button2 = document.createElement("a");
-            button2.id = "saveBtn";
-            button2.classList.add("saveBtn");
-            button2.setAttribute("value", fullPageLink);
-            //button2.setAttribute("onclick", "");
-            button2.innerHTML = "save";
-            li_2.appendChild(button2);
 
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
@@ -458,8 +418,7 @@
             var button3 = document.createElement("a");
             button3.id = "report";
             button3.classList.add("reportBtn");
-            button3.setAttribute("value", fullPageLink);
-            //button3.setAttribute("onclick", "");
+            button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);
 
@@ -476,35 +435,29 @@
             echo json_encode(callEntries('next')); //fetches the array and stores it out in jsArr
         ?>
         
+        if (filter == "null"){
+            document.getElementById("currentFilterBox").value = "Filter: No Filter Selected";
+        }
+        else {
+            document.getElementById("currentFilterBox").value = "Filter: " + filter;
+        }
         document.getElementById("listingHolder").innerHTML = "";
         for (var i = 0; i < jsArr.length; i++) {
             // going through the holder of the Listings
             var pageLink = "forumEntry.php?postID=" + jsArr[i][0]; // this is temp until directories are stored in db
-            var imgLink = "./forum_images/" + jsArr[i][6];
             var postTitle = jsArr[i][2];
             var postBody = jsArr[i][3];
             var profileName = jsArr[i][7];
             var profileLink = "pageProfile.php?userID=" + jsArr[i][5]; // sends the user id to be accessed by get
             var postTime = jsArr[i][4].replace(/\./gi, "/");
-            var fullPageLink = "https://fresnostateboard.azurewebsites.net/" + pageLink;
+
+            // report form
+            var reportLink = "./pageReportForm.php?postID=" + jsArr[i][0];
 
             // listing entry div
             var le = document.createElement("div");
             le.classList.add("listingEntry");
             le.id = "listing_" + i;
-
-            // image stuff
-            var imgA = document.createElement("a");
-            imgA.classList.add("listingThumbnail");
-            imgA.setAttribute("href", pageLink);
-            le.appendChild(imgA);
-
-            var imgImg = document.createElement("img");
-            imgImg.setAttribute("src", imgLink);
-            imgImg.setAttribute("width", "70");
-            imgImg.setAttribute("height", "52");
-            imgImg.setAttribute("alt", "");
-            imgA.appendChild(imgImg);
 
             // entry div
             var divE = document.createElement("div");
@@ -546,22 +499,8 @@
             var button1 = document.createElement("a");
             button1.id = "copyBtn";
             button1.classList.add("copyBtn");
-            button1.setAttribute("value", fullPageLink);
-            //button1.setAttribute("onclick", "");
             button1.innerHTML = "share";
             li_1.appendChild(button1);
-
-            var li_2 = document.createElement("li");
-            li_2.classList.add("saveButton");
-            ulList.appendChild(li_2);
-
-            var button2 = document.createElement("a");
-            button2.id = "saveBtn";
-            button2.classList.add("saveBtn");
-            button2.setAttribute("value", fullPageLink);
-            //button2.setAttribute("onclick", "");
-            button2.innerHTML = "save";
-            li_2.appendChild(button2);
 
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
@@ -570,8 +509,7 @@
             var button3 = document.createElement("a");
             button3.id = "report";
             button3.classList.add("reportBtn");
-            button3.setAttribute("value", fullPageLink);
-            //button3.setAttribute("onclick", "");
+            button3.setAttribute("href", reportLink);
             button3.innerHTML = "report";
             li_3.appendChild(button3);
 

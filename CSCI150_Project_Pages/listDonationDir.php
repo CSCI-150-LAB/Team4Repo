@@ -14,7 +14,7 @@
 			<table class="center">
 				<tr>
 					<th>Books</th> <!--Columns <a href="createDonation.php"><p style="text-align:center">Click here to donate</p></a>-->
-					<th>Furnitures</th>
+					<th>Furniture</th>
 					<th>Electronics</th>
 					<th>Clothes</th>
 					<th>Other</th>
