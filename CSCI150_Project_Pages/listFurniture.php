@@ -4,7 +4,7 @@
 <body onload="initialListings()">
 	<div class="mainHolder">
 		<div class="formHolder">
-			<form class="donationButton" method="post" action=./createDonation.php> 
+			<form class="donationForm" method="post" action=./createDonation.php> 
 				<input id="donationButton" type="submit" value="Create a Donation!"/> 
 			</form>
 		</div>

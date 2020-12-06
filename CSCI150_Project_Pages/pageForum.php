@@ -5,6 +5,13 @@
 <body onload="initialListings()">
 	<div class="mainHolder">
     	<h1 style="text-align:center">Forum Entries:</h1>
+        <div class="formHolder">
+			<form class="donationForm" method="post" action=./createForum.php> 
+				<input id="donationButton" type="submit" value="Create a Post!"/> 
+			</form>
+		</div>
+
+        <input type="text" id="currentFilterBox" value="Filter: No Filter Selected" readonly/>
         <div class="tagSearch">
 			<div class="centerText">
             <select class="tagList" name="tagList" id="tagList">
@@ -147,14 +154,6 @@
             </select>
 			
 			<button type="button" style="width:50; height:30; margin-top:1%;" onclick="applyFilter()">Submit</button>
-			</div>
-        </div>
-        <input type="text" id="currentFilterBox" value="Filter: No Filter Selected" readonly/>
-        <div class="forumPosts">
-			<div class="formHolder">
-				<form class="donationButton" method="post" action="./createForum.php"> 
-					<input id="donationButton" type="submit" value="Click here to post"/> 
-				</form>
 			</div>
         </div>
         <div id="listingHolder">

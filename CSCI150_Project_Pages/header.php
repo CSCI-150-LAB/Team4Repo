@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./mainStyleSheet.css">
 </head>
-<img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
+<a href="./pageHome.php">
+    <img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
+</a>
 <div class="navbar">
     <a href="pageHome.php">Home</a>
     <a href="pageForum.php">Forums</a>

@@ -218,6 +218,32 @@ form {
     padding: 10px 5px 10px 5px;
 }
 
+.formHolder{
+    padding: 20px;
+    display:block;
+    text-align: center;
+}
+
+.donationForm {
+    background-color: #ffffff;
+    border: 1px solid #8a8a8a;
+    margin: auto;
+    padding: 5px;
+}
+
+#donationButton{
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: #1154e6;
+}
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -323,28 +349,7 @@ input[type=submit] {
     display: flex;
 }
 
-.formHolder{
-    padding: 20px;
-    display:block;
-    text-align: center;
-}
 
-.donationButton{
-    background-color: #ffffff;
-}
-
-#donationButton{
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 1px 1px;
-    cursor: pointer;
-    background-color: #1154e6;
-}
 
 .inboxHeader{
     text-align: center;
@@ -674,6 +679,7 @@ img {
     }
 
     table, th, td {
+        border-collapse: collapse;
         border: 1px solid black;
         padding: 1px;
     }
@@ -683,8 +689,12 @@ img {
         margin-right: auto;
     }
 
-    /* Page Elements CSS*/
+    .imageDir{
+        width: 100px;
+        height: 100px;
+    }
 
+    /* Page Elements CSS*/
     .logoLogin {
         /* based on a 4:3 image ratio*/
         display: block;
@@ -808,5 +818,27 @@ img {
         padding: 16px 0 16px 0;
         border: 0px;
         font-weight: bold;
+    }
+
+    .donationForm {
+        background-color: #ffffff;
+        border: 1px solid #8a8a8a;
+        width: 75%;
+        min-width: 300px;
+        margin: auto;
+        padding: 5px;
+    }
+
+    #donationButton {
+        border: none;
+        color: white;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 1px 1px;
+        cursor: pointer;
+        background-color: #1154e6;
     }
 }
