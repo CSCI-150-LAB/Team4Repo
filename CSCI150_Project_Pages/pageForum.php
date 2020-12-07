@@ -153,18 +153,46 @@
                     <option value="WS">Women's Studies (WS)</option>
             </select>
 			
-			<button type="button" style="width:50; height:30; margin-top:1%;" onclick="applyFilter()">Submit</button>
+			<button type="button" 
+		style="width:50; 
+		height:30; 
+		margin-top:1%;
+		border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        background-color: #1154e6;" 
+		onclick="applyFilter()">Submit</button>
 			</div>
         </div>
         <div id="listingHolder">
         </div>
         <div class="pageSwap">
             <div class="prevPage">
-                <button type="button" onclick="prevListings()">&lt;&lt;Prev</button>
+                <button type="button" onclick="prevListings()"style="
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: #1154e6;">
+	&lt;&lt;Prev</button>
             </div>
             <div class="pageNumbers"></div>
             <div class="nextPage">
-                <button type="button" onclick="nextListings()">Next&gt;&gt;</button>
+                <button type="button" onclick="nextListings()"style="
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: #1154e6;">
+	>>Next&gt;&gt;</button>
             </div>
         </div>
 	</div>
