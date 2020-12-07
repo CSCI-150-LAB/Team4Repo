@@ -853,5 +853,17 @@ img {
         cursor: pointer;
         background-color: #1154e6;
     }
+    .button {
+   	border: none;
+    	color: white;
+    	padding: 5px 15px;
+   	text-align: center;
+    	text-decoration: none;
+    	display: inline-block;
+    	font-size: 16px;
+    	margin: 1px 1px;
+    	cursor: pointer;
+    	background-color: #1154e6;
+     }
 }
 
