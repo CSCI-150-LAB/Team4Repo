@@ -154,17 +154,7 @@
             </select>
 			
 			<button type="button" 
-		style="width:50; 
-		height:30; 
-		margin-top:1%;
-		border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        margin: 1px 1px;
-        cursor: pointer;
-        background-color: #1154e6;" 
+
 		onclick="applyFilter()">Submit</button>
 			</div>
         </div>
