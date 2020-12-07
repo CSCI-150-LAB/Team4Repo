@@ -61,7 +61,7 @@
             $subject = "Donatr Account Activation";
 
             $headers = array(
-                'Authorization: Bearer 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',
+                'API KEY',
                 'Content-Type: application/json'
             );
 
