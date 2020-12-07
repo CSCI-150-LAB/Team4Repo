@@ -576,6 +576,18 @@ img {
     max-height: 35%;
 }
 
+.thanksText{
+    display: block;
+    text-align: center;
+}
+
+.emailLogo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
 /* 
     this style is only used when the max width of the screen is 768px
     meaning if the width > 768px it uses the style above this comment
@@ -842,3 +854,4 @@ img {
         background-color: #1154e6;
     }
 }
+
