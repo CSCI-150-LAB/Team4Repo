@@ -44,7 +44,7 @@
                                     <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
                                     <input id="button3" type="submit" name="view" value="View Messages">
                                     <input id="button3" type="submit" name="delete" value="Delete Conversation">
-                                    <input id="button3" type="submit" name="report" value="Report User">
+                                    
                                 </form>
                                 </p>
                                 </div>
@@ -69,7 +69,7 @@
                                             <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
                                             <input id="button3" type="submit" name="view" value="View Messages">
                                             <input id="button3" type="submit" name="delete" value="Delete Conversation">
-                                            <input id="button3" type="submit" name="report" value="Report User">
+                                            
                                         </form>
                                         </p>
                                         </div>

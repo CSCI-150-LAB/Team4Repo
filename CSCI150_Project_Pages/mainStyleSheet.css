@@ -399,7 +399,7 @@ input[type=submit] {
 }
 
 .inboxButtons{
-    width: 75%;
+    width: 50%;
     left: 110px;
     bottom: 3px;
     position: absolute;
@@ -512,12 +512,14 @@ input[type=submit] {
     display: inline-block;
 }
 
+#messageText2{
+    color:white;
+    font-size: 16px;
+}
 .bubble{
     border: 1px solid black;
-    font-size: 12px;
     display: block;
     line-height: 2;
-    width: 50%;
     margin: 3px;
 }
 
@@ -530,19 +532,21 @@ input[type=submit] {
 }
 
 .formBox2{
-    width: 75%;
+    width: 49%;
     position: absolute;
     display: block;
-    bottom: 10px;
+    bottom: 25%;
     background-color: #ffffff;
     border:none;
+    margin: auto;
 }
 
 .chatHolder{
     background: #368dda;
     margin: 10px;
-    width: 75%;
-    height: 75%;
+    width: 50%;
+    height: 50%;
+    margin: auto;
 }
 
 img {
@@ -553,40 +557,43 @@ img {
 .mapHolder{
     max-width: 70%;
     max-height: 70%;
+    margin: auto;
 }
 
 .mapTitle{
     padding: 25px;
     text-align: center;
+    font-size: 30;
 }
 
 .mapText{
-    padding: 25px 0 ;
+    padding: 45px 0 ;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .mapLabels{
     max-width: 50px;
     max-height: 50px;
-    float: left;
-    display: inline-block;
-    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .mapKey{
-    display: inline-block;
+    text-align: center;
     font-size: 20px;
     padding: 10px;
 }
 
 .mapLocation{
-    display: flex;
-    align-items: center;
-
+    float: left;
+    width: 30%;
+    padding: 10px;
 }
 
 .mapPhotos{
-    max-width: 35%;
-    max-height: 35%;
+    padding-bottom: 40px;
 }
 
 .thanksText{

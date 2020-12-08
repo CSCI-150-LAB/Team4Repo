@@ -30,6 +30,9 @@
     <!doctype html>
     <html>
     <body>
+    
+    
+
 
     <div class = "chatHolder">
         <?php
@@ -55,24 +58,24 @@
                 if($listingOutput['user_ID']!== $messages['sender_ID']){
                     
                     echo '<div class="bubble bubble-left">';
-                    echo '<p id="messageText">Requester Message: '. $messages['message'].' </p>';
+                    echo '<p id="messageText2">Requester Message: '. $messages['message'].' </p>';
                     echo '</div>';
                     }
                     else{
                     echo '<div class="bubble bubble-right">';
-                    echo '<p id="messageText">Donor Message: '. $messages['message'].' </p>';
+                    echo '<p id="messageText2">Donor Message: '. $messages['message'].' </p>';
                     echo '</div>';
                     }
                 while($messages=mysqli_fetch_assoc($result)){
                     if($listingOutput['user_ID']!== $messages['sender_ID']){
                     
                     echo '<div class="bubble bubble-left">';
-                    echo '<p id="messageText">Requester Message: '. $messages['message'].' </p>';
+                    echo '<p id="messageText2">Requester Message: '. $messages['message'].' </p>';
                     echo '</div>';
                     }
                     else{
                     echo '<div class="bubble bubble-right">';
-                    echo '<p id="messageText">Donor Message: '. $messages['message'].' </p>';
+                    echo '<p id="messageText2">Donor Message: '. $messages['message'].' </p>';
                     echo '</div>';
                     }
                 }
