@@ -399,20 +399,20 @@ input[type=submit] {
 .messageImage{
     float: left;
     display: block;
-    max-width: 210px;
-    max-height: 210px;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 .inboxButtons{
-    width: 50%;
-    left: 110px;
+    max-width: 50%;
     bottom: 3px;
     position: absolute;
     display: flex;
+    
 }
 
 #button3 {
-    border: none;
+    border: 1px black;
     color: white;
     padding: 10px 24px;
     text-align: center;
@@ -428,7 +428,6 @@ input[type=submit] {
     background-color: #1E79BE;
     color: white;
 }
-
 
 .backToListings {
     margin: 5px;
@@ -522,28 +521,73 @@ input[type=submit] {
     font-size: 16px;
 }
 .bubble{
-    border: 1px solid black;
     display: block;
     line-height: 2;
-    margin: 3px;
 }
 
 .bubble-left{
     text-align: left;
+    position: relative;
+    background: gray;
+    padding: 5px;
+    color: #222;
+    border-radius: 3px;
+    margin-left: .4rem;
+    margin-right: auto;
+    margin-bottom: 2px;
+    max-width: 50%;
+}
+
+.bubble-left::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 15px solid gray;
+    left: -15px;
+    top: 15px;
 }
 
 .bubble-right{
     text-align: right;
+    position: relative;
+    background: #282828 ;
+    padding: 5px;
+    color: #222;
+    border-radius: 3px;
+    margin-right: .4rem;
+    margin-left: auto;
+    margin-bottom: 2px;
+    max-width: 50%;
+}
+
+.bubble-right::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 15px solid #282828 ;
+    right: -15px;
+    top: 15px;
+}
+
+.messageFormBox{
+    display: block;
+    margin: auto;
 }
 
 .formBox2{
-    width: 49%;
-    position: absolute;
-    display: block;
+    width: 49vw;
     bottom: 25%;
     background-color: #ffffff;
     border:none;
-    margin: auto;
+
 }
 
 .chatHolder{

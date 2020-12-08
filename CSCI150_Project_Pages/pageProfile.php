@@ -97,7 +97,7 @@
 						$result2 = mysqli_query($conn, $sql2);
 						if(mysqli_num_rows($result2)>0){
 							while($row = mysqli_fetch_assoc($result2)){
-								echo "<a href='./exListing1.php?listID=" . $row['listing_ID'] . "'>";
+								echo "<a href='./listEntry.php?listID=" . $row['listing_ID'] . "'>";
 								echo $row['listing_title'];
 								echo "</a>";
 								echo "<input type='text' id='shortEntry' value='" . $row['listing_body'] . "' readonly>";
