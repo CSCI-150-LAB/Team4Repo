@@ -25,19 +25,19 @@
 							$fectchUserRow = mysqli_fetch_assoc($fectchUserResult);
 							
 							//dynamic echo forms with result from report db
-							echo '<div style="float:left; width:25%; padding:10px;">';
-							echo '<form action="pageReportsAction.php" method="get">';
+							echo '<div class="adminDiv">';
+							echo '<form class="adminReportForm" action="pageReportsAction.php" method="get">';
 							echo 'Report Type: ' . $row['report_Type'];
-							echo '<br>';
+							echo '<div>';
 							echo 'Posted by: '.$fectchUserRow['user_name'];
 							echo '<input type="hidden" name="reportID" value="'.htmlspecialchars($row['report_ID']).'"/>';
-							echo '<br>';
+							echo '</div>';
+							echo '<div>';
 							echo 'Poster ID: '.$fectchUserRow['user_ID'];
 							echo '<input type="hidden" name="posterId" value="'.htmlspecialchars($fectchUserRow['user_ID']).'"/>';
-							echo '<br>';
+							echo '</div>';
 							echo 'Post ID: '.$row['report_PostID'];
 							echo '<input type="hidden" name="postId" value="'.htmlspecialchars($row['report_PostID']).'"/>';
-							echo '<br>';
 							echo '<textarea rows="10" cols="50" readonly>';
 							echo $row['report_Reasons'];
 							echo '</textarea>';

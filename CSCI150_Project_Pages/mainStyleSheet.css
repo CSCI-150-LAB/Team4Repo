@@ -24,7 +24,6 @@ button {
 }
 
 h1{
-	color:red;
 	text-align:center;
 }
 body {
@@ -666,6 +665,29 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 40%;
+}
+
+.adminDiv{
+	display:block;
+	float:left; 
+	width:25%; 
+}
+
+.adminManageUserForm{
+	margin-top:5%;
+	background-color: aqua;
+	width:100%;
+}
+
+
+.adminReportForm{
+	margin-top:5%;
+	background-color: aqua;
+}
+
+.adminButton{
+	display:block;
+	width:50%;
 }
 
 /* 
