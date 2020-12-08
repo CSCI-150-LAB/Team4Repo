@@ -16,7 +16,7 @@ Our donation board aims to create a forum where students both arriving and leavi
     * Ensure they are not threats, fake, or scams
 * Check User’s reports of a listing and feedback
 * Verify/manage users
-* Ban users, verify frequency donors,
+* Ban users, verify frequency donors
 * Create verified meeting zones for users to use
 * A public list of meeting zones that are safe to use and possibly monitored by cameras
 * Pin important posts that are relevant to the community on Class Board
