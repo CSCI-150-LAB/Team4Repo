@@ -113,6 +113,11 @@ body {
     padding-bottom: 12px;
 }
 
+.profilePage {
+    margin: auto;
+    width: 50%;
+}
+
 table, th, td {
     border: 1px solid black;
     padding: 1px;
