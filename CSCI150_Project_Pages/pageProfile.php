@@ -54,7 +54,7 @@
 						}
 					</script>
 				</div>
-				
+				<br>
 				<div class="wishlistHolder">
 					<?php
 						if($OwnPage){
@@ -72,6 +72,7 @@
 							$sql_wishlist = "SELECT wishlist_items FROM wishlist_base WHERE user_ID=$user";
 							$result_wishlist = mysqli_query($conn, $sql_wishlist);
 							if(mysqli_num_rows($result_wishlist)>0){
+								echo "<br>";
 								echo 'Wishlist: ', "<br>";
 								$x = 0;
 								while($row = mysqli_fetch_assoc($result_wishlist)){
