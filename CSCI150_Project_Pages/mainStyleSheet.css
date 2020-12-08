@@ -6,36 +6,6 @@
     font-family: Arial;
 }
 
-p.commentText {
-    padding: 5px 5px;
-    font-family: fangsong;
-    background-color: white;
-    height: 40px;
-}
-
-a.commentSenderName {
-    color: white;
-    font-size: 20px;
-    font-family: fantasy;
-    padding: 0px;
-}
-
-div#comment_0 {
-    margin: auto;
-    background-color: #1154e6;
-    color: black;
-    height: 25px;
-    FONT-WEIGHT: 100;
-}
-
-div#commentContainer {
-    background-color: #1154e6;
-    margin-top: 25px;
-    width: 500px;
-    height: 75px;
-    padding: 10px 10px;
-}
-
 button {
     border: none;
     color: white;
@@ -1151,3 +1121,22 @@ img {
     }
 }
 
+div#commentContainer {
+    background-color: #1154e6;
+    margin-top: 25px;
+    width: 500px;
+    padding: 10px 10;
+    margin-bottom: 25px;
+}
+
+a.commentSenderName {
+    color: white;
+    font-size: 20;
+    font-family: fantasy;
+}
+
+p.commentText {
+    padding: 5px 5px;
+    background-color: white;
+    height: auto;
+}
