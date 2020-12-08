@@ -9,8 +9,8 @@
 	if(isset($_POST['submit'])){
 		
 		$itemselection = $_POST['itemselection'];
-		$sub = $_POST['sub'];
-		$myTextArea = $_POST['myTextArea'];
+		$sub = htmlspecialchars($_POST['sub'], ENT_QUOTES);
+		$myTextArea = htmlspecialchars($_POST['myTextArea'], ENT_QUOTES);
 		$user = $_SESSION['user_ID'];
 		//get the name of $image
 		//$imageName = $_FILES['image']['name'];
@@ -36,8 +36,8 @@
 		//move_uploaded_file($imageTempLocation, $imageDest);
 
 		//insert to db
-		$sql = "INSERT into post_base (user_ID, post_class, post_sub, post_body, post_date, post_imgname)
-					values ('$user', '$itemselection', '$sub', '$myTextArea','$date','null')"; 
+		$sql = "INSERT into post_base (user_ID, post_class, post_sub, post_body, post_date)
+					values ('$user', '$itemselection', '$sub', '$myTextArea','$date')"; 
 					
 		$send = mysqli_query($conn, $sql) or die (mysqli_error($conn)); 
 		

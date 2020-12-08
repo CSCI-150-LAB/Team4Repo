@@ -138,9 +138,6 @@
         </div>
 
         <div class="listingContainer">
-            <div class="listingImage">
-                <img id="listingImage" class="listingImage" src="<?php echo $imageLink; ?>" alt=""> <!--Change Source -->
-            </div>
             <div class="listingBody">
                 <p id="listingBody"><?php echo $description; ?></p>
             </div>
