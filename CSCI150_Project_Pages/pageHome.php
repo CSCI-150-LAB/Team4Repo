@@ -110,16 +110,6 @@
             var ulList = document.createElement("ul");
             ulList.classList.add("interactionButtons");
             divE.appendChild(ulList);
-            // share button is named copyBtn as shareBtn was not displaying for some reason
-            var li_1 = document.createElement("li");
-            li_1.classList.add("copyButton");
-            ulList.appendChild(li_1);
-
-            var button1 = document.createElement("a");
-            button1.id = "copyBtn";
-            button1.classList.add("copyBtn");
-            button1.innerHTML = "share";
-            li_1.appendChild(button1);
 
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");

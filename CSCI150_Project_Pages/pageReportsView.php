@@ -25,7 +25,7 @@
 							$fectchUserRow = mysqli_fetch_assoc($fectchUserResult);
 							
 							//dynamic echo forms with result from report db
-							echo '<div class="adminDiv" style="display: inline-block; padding:10px;">';
+							echo '<div style="display: inline-block; padding:10px;">';
 							echo '<form class="adminReportForm" action="pageReportsAction.php" method="get">';
 
 							echo 'Report Type: ' . $row['report_Type'];

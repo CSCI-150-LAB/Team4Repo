@@ -19,7 +19,7 @@
 
 							//dynamic echo forms with result from report db
 
-							echo '<div class="adminDiv" style="display: inline-block; padding:10px;">';
+							echo '<div style="display: inline-block; padding:10px;">';
 							echo '<form action="pageManageUserAction.php" method="get" class="adminManageUserForm" style="width:100%;">';
 
 							echo 'First Name - '.$row['user_first'].'<br>';
