@@ -139,7 +139,7 @@
                 
                 ?>
                 <div class="messageButtons">
-                    <input type="submit" id="button2" name="send" value="Send Message">
+                    <input type="submit" class="button2" name="send" value="Send Message">
                 </div>
             </form>
         </div>
