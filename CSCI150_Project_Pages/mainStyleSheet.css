@@ -323,7 +323,7 @@ input[type=submit] {
     background-color: #1E9AFF;
 }
 
-#button2 {
+.button2, #send {
     border: none;
     color: white;
     padding: 10px 24px;
@@ -346,7 +346,7 @@ input[type=submit] {
     box-sizing: border-box;
 }
 
-.button1:hover, #button2:hover, #donationButton:hover{
+.button1:hover, .button2:hover, #donationButton:hover, #send:hover{
     background-color: #1E79BE;
     color: white;
 }
@@ -355,9 +355,19 @@ input[type=submit] {
     display: none;   
 }
 
+.submitButton{
+    float: left;
+    display: inline-block;
+
+}
+.cancelButton{
+    float: right;
+    display: inline-block;
+
+}
+
 .formBox{
-    width: 75%;
-    position: absolute;
+    width: 50%;
     display: inline-block;
     background-color: #ffffff;
     border:none;

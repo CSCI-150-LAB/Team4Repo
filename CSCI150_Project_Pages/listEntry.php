@@ -99,14 +99,24 @@
         </div>
     </div>
 
-    <button class="button1 messageButton" onclick="openMessage()">Message</button>
+    <button class="button1" onclick="openMessage()">Message</button>
+
     <div class="messageBox" id= "messageBox" name="messageBox">
-        <form action="./messageSend.php" method="POST">
+
+        <form class = "formBox" action="./messageSend.php" method="POST">
             <label for="message">Message:</label>
             <input type="text" id="message" name="message" required>
-            <input type="submit" id="send" name="send" value="SEND">
+
+            <div class="submitButton">
+                <input type="submit" id="send" name="send" value="Send Message">
+            </div>
             <!-- Will cancel message pop up -->
-            <button class="button2 cancelButton" onclick="closeMessage()">Cancel Message</button>
+            <div class="cancelButton">
+                <button class="button2" onclick="closeMessage()">Cancel Message</button>
+            </div>
+
         </form>
+        
     </div>
+
 </body>

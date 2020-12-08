@@ -52,29 +52,29 @@
                          </div>';
                         while($receiver=mysqli_fetch_assoc($result))
                         { 
-                           echo' <div class="messageContainer">';
-                           echo' <div class="messageImage">';
-                           echo'       <img id="messageImage" class="messageImage" src=" '. $receiver['imageLink'].'">';
-                           echo'    </div>
-                                <div class="messageSubject">';
-                           echo'        <h3 id="messageSubject">Item: '.$receiver['subject'].' </h3>';
-                           echo'        <h4 id="messageSender">From: '.$sender['user_first'].' </h4>';
-                           echo'        <p id="messageText">Latest Message: '. $receiver['message'].' </p>';
-                           echo'        <div class="inboxButtons">
-                                        <p>
-                                        <form class="inboxButtons" action="./buttonActions.php" method="POST">
-                                            <input type="hidden" name="imageLink" value='.$receiver['imageLink'].'>
-                                            <input type="hidden" name="ID" value='.$sender['user_ID'].'>
-                                            <input type="hidden" name="title" value="'.$receiver["subject"].'">
-                                            <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
-                                            <input id="button3" type="submit" name="view" value="View Messages">
-                                            <input id="button3" type="submit" name="delete" value="Delete Conversation">
-                                            
-                                        </form>
-                                        </p>
+                            echo' <div class="messageContainer">';
+                            echo' <div class="messageImage">';
+                            echo'       <img id="messageImage" class="messageImage" src=" '. $receiver['imageLink'].'">';
+                            echo'    </div>
+                                    <div class="messageSubject">';
+                            echo'        <h3 id="messageSubject">Item: '.$receiver['subject'].' </h3>';
+                            echo'        <h4 id="messageSender">From: '.$sender['user_first'].' </h4>';
+                            echo'        <p id="messageText">Latest Message: '. $receiver['message'].' </p>';
+                            echo'        <div class="inboxButtons1">
+                                    <p>
+                                    <form class="inboxButtons" action="./buttonActions.php" method="POST">
+                                        <input type="hidden" name="imageLink" value='.$receiver['imageLink'].'>
+                                        <input type="hidden" name="ID" value='.$sender['user_ID'].'>
+                                        <input type="hidden" name="title" value="'.$receiver["subject"].'">
+                                        <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
+                                        <input id="button3" type="submit" name="view" value="View Messages">
+                                        <input id="button3" type="submit" name="delete" value="Delete Conversation">
+                                      
+                                    </form>
+                                    </p>
                                         </div>
                                     </div>
-                            </div>';
+                             </div>';
                         }
                     }
                 }
