@@ -7,7 +7,7 @@
         <div>
 	        <p>Select Class</p>
 	        <label for="itemselection"> </label>
-	        <select id="itemselection" name="itemselection" required>
+	        <select id="itemselection" name="itemselection" style="width: 100%;" required>
                     <option selected="" value="null">Tag:</option>
                     <option value="ACCT">Accountancy (ACCT)</option>
                     <option value="AFRS">Africana Studies Program (AFRS)</option>
@@ -153,7 +153,7 @@
  
         <div>
             <label></label>
-            <textarea id="myTextArea" name="myTextArea" required maxlength="1000" rows="30" cols="49" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
+            <textarea class="myTextArea" id="myTextArea" name="myTextArea" required maxlength="1000" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
         </div>
 
         <br><br>

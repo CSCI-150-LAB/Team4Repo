@@ -22,7 +22,7 @@
 				<input type="text" name="title" maxlength="100" placeholder="Title" required></input>
 			</div>
 			<div>
-				<textarea name="myTextArea" maxlength="1000" rows="30" cols="49" placeholder="Description" style="border:4px solid #1E9AFF;" required></textarea>
+				<textarea class="myTextArea" name="myTextArea" maxlength="1000"placeholder="Description" style="border:4px solid #1E9AFF;" required></textarea>
 			</div>
 			<div>
 				<label>Select image file:</label>
