@@ -25,8 +25,9 @@
 							$fectchUserRow = mysqli_fetch_assoc($fectchUserResult);
 							
 							//dynamic echo forms with result from report db
-							echo '<div class="adminDiv">';
+							echo '<div class="adminDiv" style="display: inline-block; padding:10px;">';
 							echo '<form class="adminReportForm" action="pageReportsAction.php" method="get">';
+
 							echo 'Report Type: ' . $row['report_Type'];
 							echo '<div>';
 							echo 'Posted by: '.$fectchUserRow['user_name'];
@@ -38,22 +39,24 @@
 							echo '</div>';
 							echo 'Post ID: '.$row['report_PostID'];
 							echo '<input type="hidden" name="postId" value="'.htmlspecialchars($row['report_PostID']).'"/>';
-							echo '<textarea rows="10" cols="50" readonly>';
+							echo '<br>';
+							echo '<textarea class="myTextArea" readonly>';
+
 							echo $row['report_Reasons'];
 							echo '</textarea>';
-							echo '<input type="submit" name="hidePost" value="Hide Post" style="height:2em;"/>';
+							echo '<input type="submit" name="hidePost" value="Hide Post" />';
 							echo '</form>';
 							
 							if($row['report_Type'] == "Donation Listing") {
 								echo '<form class="donationButton" method="get" action=./listEntry.php>';
-								echo '<input type="hidden" name="listID" value="'.htmlspecialchars($row['report_PostID']).'" style="height:2em;"/>';
+								echo '<input type="hidden" name="listID" value="'.htmlspecialchars($row['report_PostID']).'" />';
 								echo '<input type="submit" value="Go to post."/>';
 								echo '</form>';
 								echo '</div>';
 							}
 							else {
 								echo '<form class="donationButton" method="get" action=./forumEntry.php>';
-								echo '<input type="hidden" name="postID" value="'.htmlspecialchars($row['report_PostID']).'" style="height:2em;"/>';
+								echo '<input type="hidden" name="postID" value="'.htmlspecialchars($row['report_PostID']).'" />';
 								echo '<input type="submit" value="Go to post."/>';
 								echo '</form>';
 								echo '</div>';

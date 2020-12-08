@@ -26,7 +26,7 @@
 			</div>
 			<div>
 				<label>Select image file:</label>
-				<input type="file" name="image" accept="image/*" required>
+				<input style="margin: 5px 0px 10px;" type="file" name="image" accept="image/*" required="">
 				<input type="submit" name="submit">
 			</div>
 		</form>

@@ -6,6 +6,7 @@
     $poster = "No Data Loaded";
     $title = "No Data Loaded";
     $posterLink = "pageProfile.php";
+    $listID;
 
     if(isset($_GET['listID'])){
         GLOBAL $imageLink, $description, $poster, $conn, $title, $posterLink;
@@ -15,12 +16,13 @@
         $result = mysqli_fetch_array($conn->query($fetchEntries));
         $userID = $result['user_ID'];
 
-        $idToUsername = "SELECT user_name FROM userbase WHERE user_ID = $userID";
+        $idToUsername = "SELECT user_name, user_email FROM userbase WHERE user_ID = $userID";
 		$userbaseResult = mysqli_fetch_array($conn->query($idToUsername));
 
         $imageLink = "./upload_images/" . $result['listing_imgname'];
         $description = $result['listing_body'];
         $poster = $userbaseResult['user_name'];
+        $posterEmail = $userbaseResult['user_email'];
 
         $title = $result['listing_title'];
 
@@ -95,6 +97,8 @@
                 <a id="posterLink" href="<?php echo $posterLink; ?>" class="poster"> <!-- Change href and innerHTML -->
                     <?php echo $poster ?>
                 </a>
+                <br>
+                <p><?php echo $posterEmail; ?></p>
             </div>
         </div>
     </div>

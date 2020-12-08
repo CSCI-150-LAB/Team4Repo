@@ -15,8 +15,9 @@
 		</div>
         <div>
 		    <h1 style="text-align:center">Book Listings:</h1>
-            <button style="margin-bottom: 10px;" onclick="backToDirectory()">Back to Directory</button>
-            
+            <div class="backToDir">
+                <button style="margin: 10px 0px;" onclick="backToDirectory()">Back to Directory</button>
+            </div>
             <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
             
