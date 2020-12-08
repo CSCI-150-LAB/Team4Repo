@@ -10,7 +10,7 @@
         // $conn->query($sql) SELECT query in database to check user info
         $sql = "SELECT * FROM userbase WHERE user_email ='$email' AND user_ban = '0'";// AND user_pwd='$hashedPass' LIMIT 1";
         $result = $conn->query($sql);
-		
+
 		//check if query return any results, if not user was banned
 		if(mysqli_num_rows($result)==0){	
 			echo '<script type ="text/javascript">
@@ -21,13 +21,20 @@
 		
 		//assign $row to return values from $result into associate array
         $row = mysqli_fetch_assoc($result);
-		
-		
+        
+        
+
+        //get register_base data to check user if verified as well
+        $verficationCheck = "SELECT * FROM register_base WHERE user_ID='$row[user_ID]' LIMIT 1";
+        $verifyResults = $conn->query($verficationCheck);
+        $verifyRow = mysqli_fetch_assoc($verifyResults);
+
+
+
         //uses fetch_assoc and if $row returns an array then continue because there is data
         if (is_array($row)){
-			
             //decrypts password hash and checks it according Bcrypt used in sessionSignup.php
-            if(password_verify($pass, $row['user_pwd'])){
+            if((password_verify($pass, $row['user_pwd'])) and ($verifyRow['register_verified'] ==1) ){
                 session_start();
                 $_SESSION['user_ID'] = $row['user_ID'];
                 $_SESSION['firstName'] = $row['user_first'];

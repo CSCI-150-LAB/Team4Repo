@@ -114,10 +114,8 @@
     function backPage(){
         window.history.back();
     }
-    //sets innerHTML to hidden value we can grab in PHP
-    function setName(){
-        document.getElementById("hiddenVal").value = document.getElementById("a").innerHTML;
-    }
+    //html for another version of backPage
+    //<a href="javascript: history.go(-1)">Back to Forum Posts</a>
 
     function openMessage() {
     document.getElementById("messageBox").style.display = "block";
@@ -130,7 +128,8 @@
 <body onload="loadComments()">
 	<div class="mainHolder">
 	    <div class="backToListings">
-            <a href="javascript: history.go(-1)">Back to Listings</a>
+            
+            <button onclick="backPage()">Back to Forum</button>
             <button onclick="copyLink()">Copy Link</button>
         </div>
 
@@ -139,9 +138,6 @@
         </div>
 
         <div class="listingContainer">
-            <div class="listingImage">
-                <img id="listingImage" class="listingImage" src="<?php echo $imageLink; ?>" alt=""> <!--Change Source -->
-            </div>
             <div class="listingBody">
                 <p id="listingBody"><?php echo $description; ?></p>
             </div>
@@ -152,18 +148,7 @@
             </div>
         </div>
     </div>
-
-    <button class="button1 messageButton" onclick="openMessage()">Message</button>
-    <div class="messageBox" id= "messageBox" name="messageBox">
-        <form action="./messageSend.php" method="POST">
-            <label for="message">Message:</label>
-            <input type="text" id="message" name="message" required>
-            <input type="submit" id="send" name="send" value="SEND">
-            <!-- Will cancel message pop up -->
-            <button class="button2 cancelButton" onclick="closeMessage()">Cancel Message</button>
-        </form>
-    </div>
-    <div class="wishlistHolder">
+    <div class="commentFormHolder">
 		<form class= "commentForm" action="<?php echo './comment.php?postID=' . $_GET['postID'] ?>" method="POST">
 			<input type="text" id="comment" name="comment" placeholder="Type your comment here."required>
 			<div class="messageButtons">

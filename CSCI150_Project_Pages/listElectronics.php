@@ -1,21 +1,22 @@
 <?php
 	include 'header.php';
 ?>
+<script type="text/javascript">
+    function backToDirectory(){
+        window.location.href = "./listDonationDir.php";
+    }
+</script>
 <body onload="initialListings()">
 	<div class="mainHolder">
 		<div class="formHolder">
-			<form class="donationButton" method="post" action=./createDonation.php> 
+			<form class="donationForm" method="post" action=./createDonation.php> 
 				<input id="donationButton" type="submit" value="Create a Donation!"/> 
 			</form>
 		</div>
         <div>
 		    <h1 style="text-align:center">Electronic Listings:</h1>
-            <?php
-                if ($_SESSION['role'] == 'admin') {
-                    echo "<button type='button' onclick='deleteThisListing()'>Admin Button</button>;";
-                }
-            ?>
-            <a href="./listDonationDir.php">Back to Directory</a>
+
+            <button style="margin-bottom: 10px;" onclick="backToDirectory()">Back to Directory</button>
             <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
             
@@ -113,7 +114,7 @@
             var le = document.createElement("div");
             le.classList.add("listingEntry");
             le.id = "listing_" + i;
-
+            
             // image stuff
             var imgA = document.createElement("a");
             imgA.classList.add("listingThumbnail");
@@ -126,7 +127,7 @@
             imgImg.setAttribute("height", "52");
             imgImg.setAttribute("alt", "");
             imgA.appendChild(imgImg);
-
+            
             // entry div
             var divE = document.createElement("div");
             divE.classList.add("entry");

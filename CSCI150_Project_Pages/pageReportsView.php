@@ -10,6 +10,8 @@
 			//check for admin before display content
 			if ($_SESSION['role'] == 'admin') {
 				
+					echo '<h1>View all reports</h1>';
+					
 					//get info from report db
                     $sql = "SELECT * FROM reports_base WHERE reports_Delete = '0'";
 					$result = mysqli_query($conn, $sql);
@@ -23,25 +25,45 @@
 							$fectchUserRow = mysqli_fetch_assoc($fectchUserResult);
 							
 							//dynamic echo forms with result from report db
+							echo '<div style="display: inline-block; padding:10px;">';
+							echo '<form class="adminReportForm" action="pageReportsAction.php" method="get">';
+
+							echo 'Report Type: ' . $row['report_Type'];
 							echo '<div>';
-							echo '<form action="pageReportsAction.php" method="get">';
 							echo 'Posted by: '.$fectchUserRow['user_name'];
 							echo '<input type="hidden" name="reportID" value="'.htmlspecialchars($row['report_ID']).'"/>';
-							echo '<br>';
+							echo '</div>';
+							echo '<div>';
 							echo 'Poster ID: '.$fectchUserRow['user_ID'];
 							echo '<input type="hidden" name="posterId" value="'.htmlspecialchars($fectchUserRow['user_ID']).'"/>';
-							echo '<br>';
+							echo '</div>';
 							echo 'Post ID: '.$row['report_PostID'];
 							echo '<input type="hidden" name="postId" value="'.htmlspecialchars($row['report_PostID']).'"/>';
 							echo '<br>';
-							echo '<textarea rows="10" cols="50" readonly>';
+							echo '<textarea class="myTextArea" readonly>';
+
 							echo $row['report_Reasons'];
 							echo '</textarea>';
-							echo '<input type="submit" name="hidePost" value="Hide Post"/>';
+							echo '<input type="submit" name="hidePost" value="Hide Post" />';
 							echo '</form>';
-							echo '</div>';
-							echo '<br>';
+							
+							if($row['report_Type'] == "Donation Listing") {
+								echo '<form class="donationButton" method="get" action=./listEntry.php>';
+								echo '<input type="hidden" name="listID" value="'.htmlspecialchars($row['report_PostID']).'" />';
+								echo '<input type="submit" value="Go to post."/>';
+								echo '</form>';
+								echo '</div>';
+							}
+							else {
+								echo '<form class="donationButton" method="get" action=./forumEntry.php>';
+								echo '<input type="hidden" name="postID" value="'.htmlspecialchars($row['report_PostID']).'" />';
+								echo '<input type="submit" value="Go to post."/>';
+								echo '</form>';
+								echo '</div>';
+							}
+							
 						}
+						echo '</div>';
 					}else{
 						//if there is nothing to display
 						echo '<p align="center">There is no report.</p>';

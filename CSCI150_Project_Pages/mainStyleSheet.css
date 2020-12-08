@@ -6,16 +6,37 @@
     font-family: Arial;
 }
 
+button {
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: #1154e6;
+}
+
+.centerText{
+	text-align:center;
+}
+
+h1{
+	text-align:center;
+}
 body {
     margin: 5px;
     background-color: white;
 }
 
 .logoText {
-    /* based on a 2:1 image ratio*/
+    /* based on a 5:1 image ratio*/
     display: inline-block;
-    width: 20%;
-    height: 75px;
+    width: 250px;
+    height: 50px;
+    padding-bottom: 4px;
 }
 
 .navbar {
@@ -28,9 +49,9 @@ body {
     font-size: 16px;
 }
 
-.navbar a{
+.navbar a {
         padding: 16px 0;
-        width: 25%;
+        width: 20%;
         display: inline-block;
         float: left;
         font-size: 16px;
@@ -42,7 +63,7 @@ body {
 .dropdownContainer {
     float: left;
     overflow: hidden;
-    width: 25%;
+    width: 20%;
     display: inline-block;
     text-align: center;
 }
@@ -93,6 +114,11 @@ body {
     padding-bottom: 12px;
 }
 
+.profilePage {
+    margin: auto;
+    width: 50%;
+}
+
 table, th, td {
     border: 1px solid black;
     padding: 1px;
@@ -105,11 +131,11 @@ table, th, td {
 /* Page Elements CSS*/
 
 .logoLogin {
-    /* based on a 4:3 image ratio*/
-    display: block; 
-    margin: 10px auto 50px auto;
-    width: 50%;
-    height: 10%;
+    /* based on a 5:1 image ratio*/
+    display: block;
+    width: 500px;
+    height: 100px;
+    margin: 10px auto;
 }
 
 .homePageContent {
@@ -123,7 +149,7 @@ table, th, td {
 }
 
 .leftSide {
-    flex: 50%;
+    width: 325px;
 }
 
 .rightSide {
@@ -165,10 +191,20 @@ table, th, td {
 .newsFeed {
     padding: 10px;
     margin: 20px;
-    display: flex;
     background-color: #D1D1D1;
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.menuTitle {
+    margin: 0;
+    padding: 10px 0px;
+    width: 100%;
+    display: block;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .newUserText {
@@ -181,6 +217,20 @@ form {
     width: 400px;
     margin: auto;
     padding: 5px;
+}
+
+.myTextArea {
+    width: 100%;
+    height: 200px;
+}
+
+.backToDir {
+    margin: 5px 25px;
+}
+
+.currentFilter{
+    width: 50%; 
+    margin: 0px auto;
 }
 
 .loginBox {
@@ -198,6 +248,32 @@ form {
     width: 400px;
     margin: 20px auto;
     padding: 10px 5px 10px 5px;
+}
+
+.formHolder{
+    padding: 20px;
+    display:block;
+    text-align: center;
+}
+
+.donationForm {
+    background-color: #ffffff;
+    border: 1px solid #8a8a8a;
+    margin: auto;
+    padding: 5px;
+}
+
+#donationButton{
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: #1154e6;
 }
 
 input[type=text], input[type=password] {
@@ -261,7 +337,7 @@ input[type=submit] {
     background-color: #1E9AFF;
 }
 
-#button2 {
+.button2, #send {
     border: none;
     color: white;
     padding: 10px 24px;
@@ -284,7 +360,7 @@ input[type=submit] {
     box-sizing: border-box;
 }
 
-.button1:hover, #button2:hover, #donationButton:hover{
+.button1:hover, .button2:hover, #donationButton:hover, #send:hover{
     background-color: #1E79BE;
     color: white;
 }
@@ -293,9 +369,19 @@ input[type=submit] {
     display: none;   
 }
 
+.submitButton{
+    float: left;
+    display: inline-block;
+
+}
+.cancelButton{
+    float: right;
+    display: inline-block;
+
+}
+
 .formBox{
-    width: 75%;
-    position: absolute;
+    width: 50%;
     display: inline-block;
     background-color: #ffffff;
     border:none;
@@ -305,28 +391,7 @@ input[type=submit] {
     display: flex;
 }
 
-.formHolder{
-    padding: 20px;
-    display:block;
-    text-align: center;
-}
 
-.donationButton{
-    background-color: #ffffff;
-}
-
-#donationButton{
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 1px 1px;
-    cursor: pointer;
-    background-color: #1154e6;
-}
 
 .inboxHeader{
     text-align: center;
@@ -358,20 +423,19 @@ input[type=submit] {
 .messageImage{
     float: left;
     display: block;
-    max-width: 210px;
-    max-height: 210px;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 .inboxButtons{
-    width: 75%;
-    left: 110px;
+    width: 50%;
     bottom: 3px;
-    position: absolute;
+    margin: unset;
     display: flex;
 }
 
 #button3 {
-    border: none;
+    border: 1px black;
     color: white;
     padding: 10px 24px;
     text-align: center;
@@ -387,7 +451,6 @@ input[type=submit] {
     background-color: #1E79BE;
     color: white;
 }
-
 
 .backToListings {
     margin: 5px;
@@ -443,19 +506,17 @@ input[type=submit] {
 }
 
 .pageSwap {
-    margin: 20px 50px;
+    margin: 20px 25px;
 }
 
 .prevPage {
     display: inline-block;
     float: left;
-    /* margin-left: 50px; */
 }
 
 .nextPage {
     display: inline-block;
     float: right;
-    /* margin-right: 50px; */
 }
 
 
@@ -476,38 +537,605 @@ input[type=submit] {
     display: inline-block;
 }
 
+
+#messageText2{
+    color:white;
+    font-size: 16px;
+}
 .bubble{
-    border: 1px solid black;
-    font-size: 12px;
     display: block;
     line-height: 2;
-    width: 50%;
-    margin: 3;
 }
 
 .bubble-left{
     text-align: left;
+    position: relative;
+    background: gray;
+    padding: 5px;
+    color: #222;
+    border-radius: 3px;
+    margin-left: .4rem;
+    margin-right: auto;
+    margin-bottom: 2px;
+    max-width: 50%;
+}
+
+.bubble-left::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 15px solid gray;
+    left: -15px;
+    top: 15px;
 }
 
 .bubble-right{
     text-align: right;
+    position: relative;
+    background: #282828 ;
+    padding: 5px;
+    color: #222;
+    border-radius: 3px;
+    margin-right: .4rem;
+    margin-left: auto;
+    margin-bottom: 2px;
+    max-width: 50%;
+}
+
+.bubble-right::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 15px solid #282828 ;
+    right: -15px;
+    top: 15px;
+}
+
+.messageFormBox{
+    display: block;
+    margin: auto;
 }
 
 .formBox2{
-    width: 75%;
-    position: absolute;
-    display: block;
-    bottom: 10px;
+    width: 49vw;
+    bottom: 25%;
     background-color: #ffffff;
     border:none;
+
 }
 
 .chatHolder{
     background: #368dda;
     margin: 10px;
-    width: 75%;
-    height: 75%;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.mapHolder{
+    max-width: 70%;
+    max-height: 70%;
+    margin: auto;
+}
+
+.mapTitle{
+    padding: 25px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.mapText{
+    padding: 45px 0 ;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.mapLabels{
+    max-width: 50px;
+    max-height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mapKeyHolder {
+    margin: 10px auto;
+    height: 60px;
+}
+
+.mapKey{
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.mapLocation{
+    float: left;
+    width: 30%;
+    padding: 10px;
+}
+
+.mapPhotos{
+    padding-bottom: 40px;
+}
+
+.thanksText{
+    display: block;
+    text-align: center;
+}
+
+.emailLogo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.adminDiv{
+	display:block;
+	float:left; 
+	width:25%; 
+}
+
+.adminManageUserForm{
+	margin-top:5%;
+	background-color: aqua;
+	width:100%;
 }
 
 
-  
+.adminReportForm{
+	margin-top:5%;
+	background-color: aqua;
+}
+
+.adminButton{
+	display:block;
+	width:50%;
+}
+
+/* 
+    this style is only used when the max width of the screen is 768px
+    meaning if the width > 768px it uses the style above this comment
+*/
+@media only screen and (max-width: 768px) {
+    /* Universal CSS */
+    * {
+        border: 0px;
+        margin: 0px;
+        padding: 0px;
+        font-family: Arial;
+    }
+
+    body {
+        margin: 5px;
+        background-color: white;
+    }
+
+    .logoText {
+        /* based on a 5:1 image ratio*/
+        display: block;
+        width: 250px;
+        height: 50px;
+        margin: 0 auto;
+        padding-bottom: 4px;
+    }
+
+    .navbar {
+        overflow: hidden;
+        background-color: #1E9AFF;
+        width: 100%;
+        height: auto;
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 16px;
+    }
+
+        .navbar a {
+            padding: 16px 0;
+            width: 100%;
+            display: inline-block;
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+    .dropdownContainer {
+        float: left;
+        overflow: hidden;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
+
+        .dropdownContainer:hover .dropdownContent {
+            display: block;
+        }
+
+        .dropdownContainer .ddButton {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 16px 0;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover, .dropdownContainer:hover {
+            background-color: #1E79BE;
+        }
+
+    .dropdownContent {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        width: inherit;
+        text-align: center;
+        z-index: 1;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    }
+
+        .dropdownContent a {
+            width: 100%;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+            .dropdownContent a:hover {
+                background-color: #ddd;
+            }
+
+    .mainHolder {
+        padding-bottom: 12px;
+    }
+
+    table, th, td {
+        border-collapse: collapse;
+        border: 1px solid black;
+        padding: 1px;
+    }
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .imageDir{
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Page Elements CSS*/
+    .logoLogin {
+        /* based on a 5:1 image ratio*/
+        display: block;
+        width: 250px;
+        height: 50px;
+        margin: 10px auto;
+    }
+
+    .homePageContent {
+        padding: 0px;
+        display: flex;
+    }
+
+    .pageContent {
+        padding: 20px;
+        display: block;
+    }
+
+    .leftSide {
+        display: none;
+    }
+
+    .rightSide {
+        flex: 100%;
+    }
+    
+    .forumPreview {
+        margin: 20px 0px;
+        padding: 10px 0px;
+        display: block;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .listingMenu {
+        margin: 20px 0px;
+        padding: 0px;
+        display: block;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+        .listingMenu a {
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+            display: block;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            .listingMenu a:hover {
+                background-color: #A1A1A1;
+            }
+
+    .newsFeed {
+        padding: 10px;
+        margin: 20px;
+        background-color: #D1D1D1;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .menuTitle {
+        margin: 0;
+        padding: 10px 0px;
+        width: 100%;
+        display: block;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .newUserText {
+        padding-left: 5px;
+    }
+
+    form {
+        background-color: #b3b3b3;
+        border: 1px solid #8a8a8a;
+        width: 300px;
+        margin: auto;
+        padding: 5px;
+    }
+    
+    .myTextArea {
+        width: 100%;
+        height: 200px;
+    }
+
+    .backToDir {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .currentFilter {
+        width: 75%;
+        margin: 0px auto;
+    }
+
+    .loginBox {
+        padding: 20px;
+    }
+
+    .forgotPass {
+        padding: 20px 0px 0px 0px;
+        font-size: 16px;
+    }
+
+    .newUser {
+        background-color: #b3b3b3;
+        border: 1px solid #8a8a8a;
+        width: 300px;
+        margin: 20px auto;
+        padding: 10px 5px 10px 5px;
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #8a8a8a;
+        box-sizing: border-box;
+        background-color: rgba(100, 140, 190, 0.2); /*hexcode is #648DBE*/
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #002E6D;
+        color: white;
+        padding: 16px 0 16px 0;
+        border: 0px;
+        font-weight: bold;
+    }
+
+    .donationForm {
+        background-color: #ffffff;
+        border: 1px solid #8a8a8a;
+        width: 75%;
+        min-width: 300px;
+        margin: auto;
+        padding: 5px;
+    }
+
+    #donationButton {
+        border: none;
+        color: white;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 1px 1px;
+        cursor: pointer;
+        background-color: #1154e6;
+    }
+     #element.style {
+	    width: 50px;
+    	height: 30px;
+    	margin-top: 1%;
+    	color: white;
+    	background-color: #1154e6;
+    	display: inline-block;
+    	cursor: pointer;
+    	text-align: center;
+     }
+
+    .mapHolder {
+        max-width: 70%;
+        max-height: 70%;
+        margin: auto;
+    }
+
+    .mapTitle {
+        padding: 25px;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .mapText {
+        padding: 45px 0;
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .mapLabels {
+        max-width: 50px;
+        max-height: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mapKeyHolder {
+        margin: 10px auto;
+    }
+
+    .mapKey {
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .mapLocation {
+        margin: 0px auto;
+        width: 100%;
+        padding: 10px;
+        display: block;
+    }
+
+    .mapPhotos {
+        padding-bottom: 40px;
+    }
+
+    .messageContainer {
+        margin: 2px auto;
+        display: block;
+        border: 1px solid black;
+        width: 100%;
+        max-height: unset;
+        position: unset;
+    }
+
+    .messageSubject {
+        border-left: none;
+        font-size: 18px;
+        padding: 1px;
+        margin: 0;
+    }
+
+    .messageImage {
+        float: none;
+        margin: 5px auto;
+        display: block;
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .inboxButtons {
+        width: 75%;
+        padding: 5px;
+        position: unset;
+        display: block;
+        margin-top: 2px;
+    }
+
+    .listingContainer {
+        margin: 0 auto;
+        display: block;
+        border: 1px solid black;
+    }
+
+    .listingImage {
+        display: block;
+        max-width: 100%;
+        max-height: 50vh;
+        height: auto;
+        margin: auto;
+    }
+
+    .listingBody {
+        border-left: unset;
+        font-size: 18px;
+        padding: 5px 0px;
+        margin: 2px;
+        width: unset;
+        display: block
+    }
+
+    .listingPoster {
+        border-left: unset;
+        border-top: 1px solid black;
+        margin-left: unset;
+        padding: 5px 2px;
+        display: block;
+        align-items: center;
+    }
+
+    .formBox2 {
+        width: 49%;
+        position: unset;
+        display: block;
+        bottom: 25%;
+        background-color: #ffffff;
+        border: none;
+        margin: auto;
+    }
+}
+
+div#commentContainer {
+    background-color: #1154e6;
+    margin-top: 25px;
+    width: 500px;
+    padding: 10px 10;
+    margin-bottom: 25px;
+}
+
+a.commentSenderName {
+    color: white;
+    font-size: 20;
+    font-family: fantasy;
+}
+
+p.commentText {
+    padding: 5px 5px;
+    background-color: white;
+    height: auto;
+}

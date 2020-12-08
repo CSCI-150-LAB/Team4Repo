@@ -15,7 +15,8 @@
             }
             else {
                 $id=$_SESSION["user_ID"];
-                $query="SELECT * FROM message_base WHERE (receiver_ID= '$id' OR sender_ID='$id') AND receiver_delete='0' ORDER BY message_ID desc LIMIT 1";    
+                // query will return latest message between two users for an item they were discussing
+                $query="SELECT * FROM message_base WHERE message_ID IN (SELECT max(message_ID) FROM message_base WHERE ((receiver_ID= '$id' OR sender_ID='$id') AND receiver_delete='0') GROUP BY imageLink  ) ORDER BY message_ID desc;";
                 $result = $conn->query($query);
                 $receiver=mysqli_fetch_assoc($result);
                 //if there are any messages
@@ -26,17 +27,15 @@
                     $sender=mysqli_fetch_assoc($senderResults);
                     //if there are any messages
                     if(mysqli_num_rows($result) >= 0){
-                        //$num_rows = mysqli_num_rows($result);
-                        //echo "$num_rows Rows\n";
                         echo' <div class="messageContainer">';
                         echo' <div class="messageImage">';
                         echo'       <img id="messageImage" class="messageImage" src=" '. $receiver['imageLink'].'">';
                         echo'    </div>
-                            <div class="messageSubject">';
+                                <div class="messageSubject">';
                         echo'        <h3 id="messageSubject">Item: '.$receiver['subject'].' </h3>';
                         echo'        <h4 id="messageSender">From: '.$sender['user_first'].' </h4>';
                         echo'        <p id="messageText">Latest Message: '. $receiver['message'].' </p>';
-                        echo'        <div class="inboxButtons">
+                        echo'        <div class="inboxButtons1">
                                 <p>
                                 <form class="inboxButtons" action="./buttonActions.php" method="POST">
                                     <input type="hidden" name="imageLink" value='.$receiver['imageLink'].'>
@@ -45,39 +44,37 @@
                                     <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
                                     <input id="button3" type="submit" name="view" value="View Messages">
                                     <input id="button3" type="submit" name="delete" value="Delete Conversation">
-                                    <input id="button3" type="submit" name="report" value="Report User">
+                                  
                                 </form>
                                 </p>
+                                    </div>
                                 </div>
-                            </div>
-
-                        </div>';
+                         </div>';
                         while($receiver=mysqli_fetch_assoc($result))
                         { 
-                           echo' <div class="messageContainer">';
-                           echo' <div class="messageImage">';
-                           echo'       <img id="messageImage" class="messageImage" src=" '. $receiver['imageLink'].'">';
-                           echo'    </div>
-                                <div class="messageSubject">';
-                           echo'        <h3 id="messageSubject">Item: '.$receiver['subject'].' </h3>';
-                           echo'        <h4 id="messageSender">From: '.$sender['user_first'].' </h4>';
-                           echo'        <p id="messageText">Latest Message: '. $receiver['message'].' </p>';
-                           echo'        <div class="inboxButtons">
-                                        <p>
-                                        <form class="inboxButtons" action="./buttonActions.php" method="POST">
-                                            <input type="hidden" name="imageLink" value='.$receiver['imageLink'].'>
-                                            <input type="hidden" name="ID" value='.$sender['user_ID'].'>
-                                            <input type="hidden" name="title" value="'.$receiver["subject"].'">
-                                            <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
-                                            <input id="button3" type="submit" name="view" value="View Messages">
-                                            <input id="button3" type="submit" name="delete" value="Delete Conversation">
-                                            <input id="button3" type="submit" name="report" value="Report User">
-                                        </form>
-                                        </p>
+                            echo' <div class="messageContainer">';
+                            echo' <div class="messageImage">';
+                            echo'       <img id="messageImage" class="messageImage" src=" '. $receiver['imageLink'].'">';
+                            echo'    </div>
+                                    <div class="messageSubject">';
+                            echo'        <h3 id="messageSubject">Item: '.$receiver['subject'].' </h3>';
+                            echo'        <h4 id="messageSender">From: '.$sender['user_first'].' </h4>';
+                            echo'        <p id="messageText">Latest Message: '. $receiver['message'].' </p>';
+                            echo'        <div class="inboxButtons1">
+                                    <p>
+                                    <form class="inboxButtons" action="./buttonActions.php" method="POST">
+                                        <input type="hidden" name="imageLink" value='.$receiver['imageLink'].'>
+                                        <input type="hidden" name="ID" value='.$sender['user_ID'].'>
+                                        <input type="hidden" name="title" value="'.$receiver["subject"].'">
+                                        <input type="hidden" name="receiver" value="'.$receiver["receiver_ID"].'">
+                                        <input id="button3" type="submit" name="view" value="View Messages">
+                                        <input id="button3" type="submit" name="delete" value="Delete Conversation">
+                                      
+                                    </form>
+                                    </p>
                                         </div>
                                     </div>
-
-                            </div>';
+                             </div>';
                         }
                     }
                 }

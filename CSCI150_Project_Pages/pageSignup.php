@@ -6,7 +6,9 @@
 </head>
 <body>
     <div class="mainHolder">
-        <img class="logoLogin" src="./images/logoText.png" alt="Website Text Logo">
+        <div class="logoLogin">
+            <img src="./images/logoText.png" alt="Website Text Logo">
+        </div>
         <div class="pageContent">
             <!-- sessionSignup.php is what php file you want to send the login into to -->
             <!-- method="post" hides the sensitive data in th HTTP transaction -->

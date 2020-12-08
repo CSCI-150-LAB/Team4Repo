@@ -9,15 +9,15 @@
 		
 		//check for empty field
 		if(!empty($_GET['myTextArea'])){
-	
 			//using "get" method and assign result to new variables
 			$reasons = $_GET['myTextArea'];
 			$userID = $_GET['userID'];
 			$listID = $_GET['listID'];
+			$postType = $_GET['posttype'];
 			
 			//stm for database mysql
-			$sql = "INSERT INTO reports_base (report_PosterID, report_PostID, report_Reasons)
-						VALUES ('$userID','$listID','$reasons')";
+			$sql = "INSERT INTO reports_base (report_PosterID, report_PostID, report_Reasons, report_Type)
+						VALUES ('$userID','$listID','$reasons','$postType')";
 			
 			//query the stm with $conn(connection to db) or failed msg 
 			$send = mysqli_query($conn, $sql) or die(mysqli_error($conn));

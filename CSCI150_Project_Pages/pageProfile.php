@@ -34,11 +34,11 @@
 			<div>
 				<div id="userInfo">
 					<h1 style="text-align:center">User Profile</h1>
-					<labeL>First name:</label>
+					<label>First name:</label>
 					<input type="text" value="<?php echo $userF; ?>" readonly></input>
-					<labeL>Last name:</label>
+					<label>Last name:</label>
 					<input type="text" value="<?php echo $userL; ?>" readonly></input>
-					<labeL>User name:</label>
+					<label>User name:</label>
 					<input type="text" value="<?php echo $userU; ?>" readonly></input>
 					<label>Email:</label>
 					<input type="text" value="<?php echo $userE; ?>" readonly></input>
@@ -54,14 +54,14 @@
 						}
 					</script>
 				</div>
-				
+				<br>
 				<div class="wishlistHolder">
 					<?php
 						if($OwnPage){
 							echo '<form class= "wishlistForm" action="./wishlist.php" method="POST">
 								<input type="text" id="wishlist" name="wishlist" placeholder="What would you like to add to your wishlist?"required>
 									<div class="messageButtons">
-										<input type="submit" id="button2" value="Add to Wishlist">
+										<input type="submit" id="send" value="Add to Wishlist">
 									</div>
 							</form>';
 						}
@@ -72,7 +72,8 @@
 							$sql_wishlist = "SELECT wishlist_items FROM wishlist_base WHERE user_ID=$user";
 							$result_wishlist = mysqli_query($conn, $sql_wishlist);
 							if(mysqli_num_rows($result_wishlist)>0){
-								echo 'My Wishlist: ', "<br>";
+								echo "<br>";
+								echo 'Wishlist: ', "<br>";
 								$x = 0;
 								while($row = mysqli_fetch_assoc($result_wishlist)){
 									if($x >=1){
@@ -83,24 +84,27 @@
 								}
 							}
 							else{
-								echo 'Wishlist is Empty!';
+								
+								echo '<br> <h4> Wishlist is Empty!</h4>';
 
 							}
 						?>
 					</div>
 				</div>
-
-				<label>Donated History:</label>
+				
+				<br><br>
+				<h3>Donation History:</h3>
+				<br>
 				<div>
 					<?php
 						$sql2 = "SELECT listing_ID, listing_title, listing_body FROM listingbase WHERE user_ID=$user";
 						$result2 = mysqli_query($conn, $sql2);
 						if(mysqli_num_rows($result2)>0){
 							while($row = mysqli_fetch_assoc($result2)){
-								echo "<a href='./exListing1.php?listID=" . $row['listing_ID'] . "'>";
+								echo "<a href='./listEntry.php?listID=" . $row['listing_ID'] . "'>";
 								echo $row['listing_title'];
 								echo "</a>";
-								echo "<input type='text' id='shortEntry' value=" . $row['listing_body'] . " readonly>";
+								echo "<input type='text' id='shortEntry' value='" . $row['listing_body'] . "' readonly>";
 								echo "</input>";
 							}
 						}

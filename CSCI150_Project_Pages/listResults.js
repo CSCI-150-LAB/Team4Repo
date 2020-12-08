@@ -1,1 +1,0 @@
-var currentIndex = 1;

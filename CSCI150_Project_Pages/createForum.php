@@ -2,12 +2,12 @@
    require ("./header.php");
 ?>
 <body>
-    <h1>Create A Forum</h1>
+    <h1 style="text-align:center color:red">Create a post</h1>
     <form action="./createforumdata.php" method="post" target="_blank" enctype="multipart/form-data">
         <div>
 	        <p>Select Class</p>
 	        <label for="itemselection"> </label>
-	        <select id="itemselection" name="itemselection" required>
+	        <select id="itemselection" name="itemselection" style="width: 100%;" required>
                     <option selected="" value="null">Tag:</option>
                     <option value="ACCT">Accountancy (ACCT)</option>
                     <option value="AFRS">Africana Studies Program (AFRS)</option>
@@ -153,14 +153,11 @@
  
         <div>
             <label></label>
-            <textarea id="myTextArea" name="myTextArea" required maxlength="1000"rows="30" cols="60" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
+            <textarea class="myTextArea" id="myTextArea" name="myTextArea" required maxlength="1000" placeholder="Write post..." spellcheck = "true" style="border:4px solid #1E9AFF;"></textarea>
         </div>
 
-        <div>
-		    <label>Select image file:</label>
-		    <input type="file" name="image" accept="image/*" required>
-	    </div>
         <br><br>
+
         <input type="submit" value="post" name ="submit">
     </form>
 </body>

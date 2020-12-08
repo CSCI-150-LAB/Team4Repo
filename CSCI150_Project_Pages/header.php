@@ -7,11 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./mainStyleSheet.css">
 </head>
-<img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
+<a href="./pageHome.php">
+    <img class="logoText" src="./images/logoText.png" alt="Website Text Logo">
+</a>
 <div class="navbar">
     <a href="pageHome.php">Home</a>
     <a href="pageForum.php">Forums</a>
     <a href="listDonationDir.php">Donation Listings</a>
+    <a href="meetupLocations.php">MeetUp Locations</a>
     <div class="dropdownContainer">
         <button class="ddButton" id="userButton">Profile</button>
         <div class="dropdownContent" id="myDropdown">
@@ -20,7 +23,7 @@
 			<?php
 				if ($_SESSION['role'] == 'admin') {
 					echo '<a href="pageManageUser.php">Manage Users</a>';
-                    echo '<a href="pageReportsView.php">View Donation Listings Reports</a>';
+                    echo '<a href="pageReportsView.php">View Reports</a>';
                 }
 			?>
             <a href="sessionLogout.php">Logout</a>
