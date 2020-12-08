@@ -22,7 +22,7 @@
             
             if($conn->query($updateKey)){
                 echo "Account verification Successful! You may now <a href='./pageLogin.php'>Login</a>.";
-                header( "refresh:5;url=./pageLogin.php" );
+                header( "refresh:3;url=./pageLogin.php" );
             }
             else{
                 header('Location: ./pageSignup.php?Registration=Failed');

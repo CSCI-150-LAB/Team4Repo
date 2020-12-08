@@ -59,7 +59,7 @@
 <body>
 	<div class="mainHolder">
 	    <div class="backToListings">
-            <a href="javascript: history.go(-1)">Back to Listings</a>
+            <button onclick="backPage()">Back to Listings</button>
             <button onclick="copyLink()">Copy Link</button>
         </div>
 		<?php
