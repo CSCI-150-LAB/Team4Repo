@@ -16,12 +16,7 @@
 		</div>
         <div>
 		    <h1 style="text-align:center">Other Listings:</h1>
-            <?php
-                if ($_SESSION['role'] == 'admin') {
-                    echo "<button type='button' onclick='deleteThisListing()'>Admin Button</button>";
-                }
-            ?>
-            <button onclick="backToDirectory()">Back to Directory</button>
+            <button style="margin-bottom: 10px;" onclick="backToDirectory()">Back to Directory</button>
             <!-- leave listingHolder empty it gets wiped when loading entries -->
             <div id="listingHolder">
             

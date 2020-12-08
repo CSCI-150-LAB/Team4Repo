@@ -10,12 +10,14 @@
 				<input id="donationButton" type="submit" value="Create a Post!"/> 
 			</form>
 		</div>
-
-        <input type="text" id="currentFilterBox" value="Filter: No Filter Selected" readonly/>
+        
+        <div class = "currentFilter">
+            <input  type="text" id="currentFilterBox" value="Class Filter: No Filter Selected" readonly/>
+        </div>
         <div class="tagSearch">
 			<div class="centerText">
             <select class="tagList" name="tagList" id="tagList">
-                    <option selected="" value="null">Search by tag:</option>
+                    <option selected="" value="null">Search by Class:</option>
                     <option value="ACCT">Accountancy (ACCT)</option>
                     <option value="AFRS">Africana Studies Program (AFRS)</option>
                     <option value="AGBS">Agricultural Business (AGBS)</option>
@@ -182,7 +184,7 @@
     margin: 1px 1px;
     cursor: pointer;
     background-color: #1154e6;">
-	>>Next&gt;&gt;</button>
+	Next&gt;&gt;</button>
             </div>
         </div>
 	</div>
@@ -282,10 +284,10 @@
         ?>
         
         if (filter == "null"){
-            document.getElementById("currentFilterBox").value = "Filter: No Filter Selected";
+            document.getElementById("currentFilterBox").value = "Class Filter: No Filter Selected";
         }
         else {
-            document.getElementById("currentFilterBox").value = "Filter: " + filter;
+            document.getElementById("currentFilterBox").value = "Class Filter: " + filter;
         }
         document.getElementById("listingHolder").innerHTML = "";
         for (var i = 0; i < jsArr.length; i++) {
@@ -336,17 +338,7 @@
             var ulList = document.createElement("ul");
             ulList.classList.add("interactionButtons");
             divE.appendChild(ulList);
-            // share button is named copyBtn as shareBtn was not displaying for some reason
-            var li_1 = document.createElement("li");
-            li_1.classList.add("copyButton");
-            ulList.appendChild(li_1);
-
-            var button1 = document.createElement("a");
-            button1.id = "copyBtn";
-            button1.classList.add("copyBtn");
-            button1.innerHTML = "share";
-            li_1.appendChild(button1);
-
+            
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
             ulList.appendChild(li_3);
@@ -372,10 +364,10 @@
         ?>
 
         if (filter == "null"){
-            document.getElementById("currentFilterBox").value = "Filter: No Filter Selected";
+            document.getElementById("currentFilterBox").value = "Class Filter: No Filter Selected";
         }
         else {
-            document.getElementById("currentFilterBox").value = "Filter: " + filter;
+            document.getElementById("currentFilterBox").value = "Class Filter: " + filter;
         }
         document.getElementById("listingHolder").innerHTML = "";
         for (var i = 0; i < jsArr.length; i++) {
@@ -427,16 +419,7 @@
             var ulList = document.createElement("ul");
             ulList.classList.add("interactionButtons");
             divE.appendChild(ulList);
-            // share button is named copyBtn as shareBtn was not displaying for some reason
-            var li_1 = document.createElement("li");
-            li_1.classList.add("copyButton");
-            ulList.appendChild(li_1);
-
-            var button1 = document.createElement("a");
-            button1.id = "copyBtn";
-            button1.classList.add("copyBtn");
-            button1.innerHTML = "share";
-            li_1.appendChild(button1);
+           
 
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
@@ -463,10 +446,10 @@
         ?>
         
         if (filter == "null"){
-            document.getElementById("currentFilterBox").value = "Filter: No Filter Selected";
+            document.getElementById("currentFilterBox").value = "Class Filter: No Filter Selected";
         }
         else {
-            document.getElementById("currentFilterBox").value = "Filter: " + filter;
+            document.getElementById("currentFilterBox").value = "Class Filter: " + filter;
         }
         document.getElementById("listingHolder").innerHTML = "";
         for (var i = 0; i < jsArr.length; i++) {
@@ -518,16 +501,7 @@
             var ulList = document.createElement("ul");
             ulList.classList.add("interactionButtons");
             divE.appendChild(ulList);
-            // share button is named copyBtn as shareBtn was not displaying for some reason
-            var li_1 = document.createElement("li");
-            li_1.classList.add("copyButton");
-            ulList.appendChild(li_1);
-
-            var button1 = document.createElement("a");
-            button1.id = "copyBtn";
-            button1.classList.add("copyBtn");
-            button1.innerHTML = "share";
-            li_1.appendChild(button1);
+            
 
             var li_3 = document.createElement("li");
             li_3.classList.add("reportButton");
