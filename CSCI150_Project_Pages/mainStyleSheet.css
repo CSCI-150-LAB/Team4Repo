@@ -6,6 +6,36 @@
     font-family: Arial;
 }
 
+p.commentText {
+    padding: 5px 5px;
+    font-family: fangsong;
+    background-color: white;
+    height: 40px;
+}
+
+a.commentSenderName {
+    color: white;
+    font-size: 20;
+    font-family: fantasy;
+    padding: 0px;
+}
+
+div#comment_0 {
+    margin: auto;
+    background-color: #1154e6;
+    color: black;
+    height: 25px;
+    padding FONT-WEIGHT: 100;
+}
+
+div#commentContainer {
+    background-color: #1154e6;
+    margin-top: 25px;
+    width: 500px;
+    height: 75px;
+    padding: 10px 10;
+}
+
 button {
     border: none;
     color: white;
@@ -24,6 +54,7 @@ button {
 }
 
 h1{
+	color:red;
 	text-align:center;
 }
 body {
@@ -322,7 +353,7 @@ input[type=submit] {
     background-color: #1E9AFF;
 }
 
-.button2, #send {
+#button2 {
     border: none;
     color: white;
     padding: 10px 24px;
@@ -345,7 +376,7 @@ input[type=submit] {
     box-sizing: border-box;
 }
 
-.button1:hover, .button2:hover, #donationButton:hover, #send:hover{
+.button1:hover, #button2:hover, #donationButton:hover{
     background-color: #1E79BE;
     color: white;
 }
@@ -354,19 +385,9 @@ input[type=submit] {
     display: none;   
 }
 
-.submitButton{
-    float: left;
-    display: inline-block;
-
-}
-.cancelButton{
-    float: right;
-    display: inline-block;
-
-}
-
 .formBox{
-    width: 50%;
+    width: 75%;
+    position: absolute;
     display: inline-block;
     background-color: #ffffff;
     border:none;
@@ -408,20 +429,20 @@ input[type=submit] {
 .messageImage{
     float: left;
     display: block;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 210px;
+    max-height: 210px;
 }
 
 .inboxButtons{
-    max-width: 50%;
+    width: 50%;
+    left: 110px;
     bottom: 3px;
     position: absolute;
     display: flex;
-    
 }
 
 #button3 {
-    border: 1px black;
+    border: none;
     color: white;
     padding: 10px 24px;
     text-align: center;
@@ -437,6 +458,7 @@ input[type=submit] {
     background-color: #1E79BE;
     color: white;
 }
+
 
 .backToListings {
     margin: 5px;
@@ -525,79 +547,33 @@ input[type=submit] {
     display: inline-block;
 }
 
-
 #messageText2{
     color:white;
     font-size: 16px;
 }
 .bubble{
+    border: 1px solid black;
     display: block;
     line-height: 2;
+    margin: 3px;
 }
 
 .bubble-left{
     text-align: left;
-    position: relative;
-    background: gray;
-    padding: 5px;
-    color: #222;
-    border-radius: 3px;
-    margin-left: .4rem;
-    margin-right: auto;
-    margin-bottom: 2px;
-    max-width: 50%;
-}
-
-.bubble-left::after{
-    content: "";
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 15px solid gray;
-    left: -15px;
-    top: 15px;
 }
 
 .bubble-right{
     text-align: right;
-    position: relative;
-    background: #282828 ;
-    padding: 5px;
-    color: #222;
-    border-radius: 3px;
-    margin-right: .4rem;
-    margin-left: auto;
-    margin-bottom: 2px;
-    max-width: 50%;
-}
-
-.bubble-right::after{
-    content: "";
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 15px solid #282828 ;
-    right: -15px;
-    top: 15px;
-}
-
-.messageFormBox{
-    display: block;
-    margin: auto;
 }
 
 .formBox2{
-    width: 49vw;
+    width: 49%;
+    position: absolute;
+    display: block;
     bottom: 25%;
     background-color: #ffffff;
     border:none;
-
+    margin: auto;
 }
 
 .chatHolder{
@@ -665,29 +641,6 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 40%;
-}
-
-.adminDiv{
-	display:block;
-	float:left; 
-	width:25%; 
-}
-
-.adminManageUserForm{
-	margin-top:5%;
-	background-color: aqua;
-	width:100%;
-}
-
-
-.adminReportForm{
-	margin-top:5%;
-	background-color: aqua;
-}
-
-.adminButton{
-	display:block;
-	width:50%;
 }
 
 /* 
